@@ -41,7 +41,7 @@ class npu_sequence #(
 
             RANDOM_TEST: begin
                 assert(req.randomize())
-                else `uvm_fatal("SEQ", "Randomization failed")
+                else `uvm_fatal("SEQ", "randomize failed")
             end
         endcase
 

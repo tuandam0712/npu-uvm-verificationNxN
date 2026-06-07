@@ -67,10 +67,10 @@ class npu_scoreboard #(
 
             if (errors == 0) begin
                 pass_count++;
-                `uvm_info("SCB_PASS", $sformatf("MATCH transaction=%0d", pass_count), UVM_MEDIUM)
+                `uvm_info("SCB_PASS", $sformatf("match trans=%0d", pass_count), UVM_MEDIUM)
             end else begin
                 fail_count++;
-                `uvm_error("SCB_FAIL", $sformatf("MISMATCH! errors=%0d total_fail=%0d", errors, fail_count))
+                `uvm_error("SCB_FAIL", $sformatf("mismatch! err=%0d total_fail=%0d", errors, fail_count))
             end
         end
     endtask

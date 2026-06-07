@@ -15,7 +15,7 @@ class npu_driver #(
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
         if (!uvm_config_db #(virtual npu_if #(N, width))::get(this, "", "vif", vif)) begin
-            `uvm_fatal("NOVIF", "Virtual interface not found")
+            `uvm_fatal("NOVIF", "virtual interface not found")
         end
     endfunction
 

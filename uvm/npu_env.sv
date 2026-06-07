@@ -6,6 +6,7 @@ class npu_env #(
 
     npu_agent      #(N, width) agent;
     npu_scoreboard #(N, width) scb;
+    npu_coverage #(N, width) cov;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -15,11 +16,13 @@ class npu_env #(
         super.build_phase(phase);
         agent = npu_agent      #(N, width)::type_id::create("agent", this);
         scb   = npu_scoreboard #(N, width)::type_id::create("scb", this);
+        cov = npu_coverage #(N, width)::type_id::create("cov", this);
     endfunction
 
     function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
         agent.in_mon.analysis_port.connect(scb.in_export);
         agent.out_mon.analysis_port.connect(scb.out_export);
+        agent.in_mon.analysis_port.connect(cov.analysis_export);
     endfunction
 endclass

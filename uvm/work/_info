@@ -9,10 +9,10 @@ z2
 cModel Technology
 Z0 dD:/questa/examples
 T_opt
-!s110 1780679001
-VzDWK=Ul0T^5NKlG`2PPRR0
+!s110 1780849899
+VfVo@W@3zU5akca]HScCh72
 Z1 04 10 4 work tb_npu_nxn fast 0
-=1-a036bc3321a6-6a230159-3-42c0
+=1-a036bc3321a6-6a259ceb-21f-639c
 o-quiet -auto_acc_if_foreign -work work
 Z2 tCvgOpt 0
 n@_opt
@@ -29,54 +29,54 @@ R3
 R0
 Ynpu_if
 Z4 DXx6 sv_std 3 std 0 22 d=_JfHTnXCN[H5FjiaJJc0
-Z5 !s110 1780678960
+!s110 1780678960
 !i10b 1
 !s100 ljkL16n5L]SOT:5[R5RP80
 I96FHd;gbD_dAPBPGJN^J82
-Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z5 VDg1SIo80bB@j0V0VzS_@n1
 !s105 npu_if_sv_unit
 S1
-Z7 dD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm
+Z6 dD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm
 w1780590485
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv
 L0 1
-Z8 OL;L;10.7c;67
+Z7 OL;L;10.7c;67
 r1
 !s85 0
 31
-Z9 !s108 1780678960.000000
+Z8 !s108 1780678960.000000
 !s107 D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv|
 !i113 0
-Z10 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z9 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 Xnpu_pkg
 !s115 npu_if
 R4
-Z11 DXx6 mtiUvm 7 uvm_pkg 0 22 3zPkj@YUcM=M^m3zCLh<H1
-R5
+Z10 DXx6 mtiUvm 7 uvm_pkg 0 22 3zPkj@YUcM=M^m3zCLh<H1
+!s110 1780849892
 !i10b 1
-!s100 RIHSeTK^]nJkGOAF:JT1e2
-IOnlN=9@e_ifKQ[<bcRzj21
-VOnlN=9@e_ifKQ[<bcRzj21
+!s100 NmW8RL9J@2E3RD;HI2BD_0
+I<H4>@be[Bd=@];hCimo3^2
+V<H4>@be[Bd=@];hCimo3^2
 S1
-R7
-w1780678221
+R6
+w1780849886
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv
-Z12 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
-Z13 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
-Z14 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
-Z15 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
-Z16 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
-Z17 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
-Z18 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
-Z19 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
-Z20 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
-Z21 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
-Z22 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
-Z23 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
+Z11 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
+Z12 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
+Z13 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
+Z14 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
+Z15 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
+Z16 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
+Z17 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
+Z18 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
+Z19 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
+Z20 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
+Z21 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
+Z22 FD:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
 Fnpu_sequence_item.sv
 Fnpu_sequence.sv
 Fnpu_sequencer.sv
@@ -84,68 +84,69 @@ Fnpu_driver.sv
 Fnpu_monitor.sv
 Fnpu_agent.sv
 Fnpu_scoreboard.sv
+Fnpu_coverage.sv
 Fnpu_env.sv
 Fnpu_test.sv
 Fnpu_test_wrapper.sv
 L0 1
-R8
+R7
 r1
 !s85 0
 31
-R9
-!s107 npu_test_wrapper.sv|npu_test.sv|npu_env.sv|npu_scoreboard.sv|npu_agent.sv|npu_monitor.sv|npu_driver.sv|npu_sequencer.sv|npu_sequence.sv|npu_sequence_item.sv|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv|
+!s108 1780849892.000000
+!s107 npu_test_wrapper.sv|npu_test.sv|npu_env.sv|npu_coverage.sv|npu_scoreboard.sv|npu_agent.sv|npu_monitor.sv|npu_driver.sv|npu_sequencer.sv|npu_sequence.sv|npu_sequence_item.sv|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv|
 !i113 0
-R10
+R9
 R2
 vnpu_top_NXN
 R4
-Z24 !s110 1780678961
+Z23 !s110 1780678961
 !i10b 1
 !s100 hYo:Ba<cl0c<46Kl3Sdmj3
 IDN^DIBaiJOW8bWz2:oQ3H3
-R6
+R5
 !s105 npu_top_NXN_sv_unit
 S1
-R7
+R6
 w1780590399
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv
 L0 1
-R8
+R7
 r1
 !s85 0
 31
-Z25 !s108 1780678961.000000
+Z24 !s108 1780678961.000000
 !s107 D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv|
 !i113 0
-R10
+R9
 R2
 nnpu_top_@n@x@n
 vpe
 R4
-R24
+R23
 !i10b 1
 !s100 _WSZL<@KF^Y@fM?l@gz942
 IRSkO4OD=e6d^k[LBlNY3e3
-R6
+R5
 !s105 pe_sv_unit
 S1
-R7
+R6
 w1780678951
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv
 L0 1
-R8
+R7
 r1
 !s85 0
 31
-R25
+R24
 !s107 D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv|
 !i113 0
-R10
+R9
 R2
 vsa_controller_NxN
 R4
@@ -153,15 +154,15 @@ R4
 !i10b 1
 !s100 M3T_GJUI;<PQ^eHXlC>d>1
 I8DJ4`9`Q8D8k]KXb]Y=;c0
-R6
+R5
 !s105 sa_controller_NxN_sv_unit
 S1
-R7
+R6
 w1780678982
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv
 L0 1
-R8
+R7
 r1
 !s85 0
 31
@@ -169,40 +170,40 @@ r1
 !s107 D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv|
 !i113 0
-R10
+R9
 R2
 nsa_controller_@nx@n
 vsystolic_arr_NxN
 R4
-R24
+R23
 !i10b 1
 !s100 :PkEZUogL7V<dEEfK@G?f3
 IaH0WD?@4Cm`KB8joCS;bz3
-R6
+R5
 !s105 systolic_arr_NxN_sv_unit
 S1
-R7
+R6
 w1780678882
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv
 L0 1
-R8
+R7
 r1
 !s85 0
 31
-R25
+R24
 !s107 D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv|
 !i113 0
-R10
+R9
 R2
 nsystolic_arr_@nx@n
 vtb_npu_nxn
 R4
-R11
-Z26 DXx4 work 7 npu_pkg 0 22 OnlN=9@e_ifKQ[<bcRzj21
+R10
+Z25 DXx4 work 7 npu_pkg 0 22 OnlN=9@e_ifKQ[<bcRzj21
 DXx4 work 18 tb_npu_nxn_sv_unit 0 22 Ean=H]m<e3<VV]<V>CAkK0
-R6
+R5
 r1
 !s85 0
 !i10b 1
@@ -210,23 +211,23 @@ r1
 Ik[B[l`K;cfJdRe`gC@J=42
 !s105 tb_npu_nxn_sv_unit
 S1
-R7
-Z27 w1780590459
-Z28 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv
-Z29 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv
+R6
+Z26 w1780590459
+Z27 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv
+Z28 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv
 L0 6
-R8
+R7
 31
-R9
-Z30 !s107 D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv|
-Z31 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv|
+R8
+Z29 !s107 D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv|
+Z30 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv|
 !i113 0
-R10
+R9
 R2
 Xtb_npu_nxn_sv_unit
 R4
-R11
-R26
+R10
+R25
 VEan=H]m<e3<VV]<V>CAkK0
 r1
 !s85 0
@@ -235,10 +236,11 @@ r1
 IEan=H]m<e3<VV]<V>CAkK0
 !i103 1
 S1
-R7
+R6
+R26
 R27
 R28
-R29
+R11
 R12
 R13
 R14
@@ -250,15 +252,14 @@ R19
 R20
 R21
 R22
-R23
 L0 3
-R8
+R7
 31
-R9
+R8
+R29
 R30
-R31
 !i113 0
-R10
+R9
 R2
 vtb_rtl_random
 R4
@@ -266,15 +267,15 @@ R4
 !i10b 1
 !s100 IKGz1N9P2SE3g=Tk@EJ;B2
 I3l[9=IZPf;91D<97di3F>1
-R6
+R5
 !s105 tb_rtl_random_sv_unit
 S1
-R7
+R6
 w1780590411
 8D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv
 FD:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv
 L0 3
-R8
+R7
 r1
 !s85 0
 31
@@ -282,5 +283,5 @@ r1
 !s107 D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv|
 !i113 0
-R10
+R9
 R2

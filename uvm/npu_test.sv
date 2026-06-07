@@ -8,7 +8,7 @@ class npu_test #(
     typedef seq_t::test_mode_e test_mode_t;
 
     npu_env #(N, width) env;
-    int num_random_tests = 1;
+    int num_random_tests = 100;
     int num_directed_tests = 2;
 
     function new(string name, uvm_component parent);
@@ -34,7 +34,7 @@ class npu_test #(
             end
             begin
                 repeat (5000) @(posedge env.agent.out_mon.vif.clk);
-                `uvm_fatal("TEST_TIMEOUT", "Timeout waiting for done")
+                `uvm_fatal("TEST_TIMEOUT", "timeout waiting for done")
             end
         join_any
         disable fork;
@@ -45,7 +45,7 @@ class npu_test #(
     task run_phase(uvm_phase phase);
         phase.raise_objection(this);
 
-        `uvm_info("TEST", $sformatf("Start NPU test: N=%0d width=%0d directed=%0d random=%0d",
+        `uvm_info("TEST", $sformatf("start NPU test: N=%0d width=%0d directed=%0d random=%0d",
             N, width, num_directed_tests, num_random_tests), UVM_LOW)
 
         run_one_sequence(seq_t::ZERO_TEST, "zero_seq");
@@ -71,13 +71,9 @@ class npu_test #(
         total_tests = num_directed_tests + num_random_tests;
 
         if (error_count > 0 || fatal_count > 0) begin
-            `uvm_error("TEST_RESULT", $sformatf(
-                "FAILED: tests=%0d errors=%0d fatals=%0d",
-                total_tests, error_count, fatal_count))
+            `uvm_error("test result", $sformatf("failed: tests=%0d errors=%0d fatals=%0d", total_tests, error_count, fatal_count))
         end else begin
-            `uvm_info("TEST_RESULT", $sformatf(
-                "PASSED: tests=%0d directed=%0d random=%0d",
-                total_tests, num_directed_tests, num_random_tests), UVM_LOW)
+            `uvm_info("test result", $sformatf("passed: tests=%0d directed=%0d random=%0d", total_tests, num_directed_tests, num_random_tests), UVM_LOW)
         end
     endfunction
 endclass
