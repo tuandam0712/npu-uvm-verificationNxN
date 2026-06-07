@@ -1,0 +1,58 @@
+# Current time Fri Jun 05 23:48:37 2026
+# Program = vish
+# Id = "10.7c"
+# Version = "2018.08"
+# Date = "Aug 18 2018"
+# Platform = win64
+
+Exception c0000005 has occurred at address 404554b3. Traceback:
+# 0    0x404554b3: 'TPedit_Init + 0xa1493'
+# 1    0x4045c17c: 'TPedit_Init + 0xa815c'
+# 2    0x4045d37a: 'TPedit_Init + 0xa935a'
+# 3    0x4045993d: 'TPedit_Init + 0xa591d'
+# 4    0x4045992f: 'TPedit_Init + 0xa590f'
+# 5    0x4045992f: 'TPedit_Init + 0xa590f'
+# 6    0x40456986: 'TPedit_Init + 0xa2966'
+# 7    0x40332237: 'Mtirpc_Init + 0x1706e7'
+# 8    0x760d6234: 'TclInvokeStringCommand + 0x84'
+# 9    0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 10   0xafed0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 11   0xafed1dbb: 'Itcl_ExecMethod + 0x23b'
+# 12   0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 13   0xafed0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 14   0xafed1dbb: 'Itcl_ExecMethod + 0x23b'
+# 15   0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 16   0xafed0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 17   0xafed1dbb: 'Itcl_ExecMethod + 0x23b'
+# 18   0xafed9879: 'Itcl_EvalArgs + 0x1c9'
+# 19   0xafed4b51: 'Itcl_HandleInstance + 0x2c1'
+# 20   0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 21   0xafed0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 22   0xafed1dbb: 'Itcl_ExecMethod + 0x23b'
+# 23   0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 24   0xafed0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 25   0xafed1dbb: 'Itcl_ExecMethod + 0x23b'
+# 26   0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 27   0xafed0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 28   0xafed1dbb: 'Itcl_ExecMethod + 0x23b'
+# 29   0xafed9879: 'Itcl_EvalArgs + 0x1c9'
+# 30   0xafed4b51: 'Itcl_HandleInstance + 0x2c1'
+# 31   0x760d6c03: 'TclNRRunCallbacks + 0x63'
+# 32   0x760d586c: 'TclCleanupCommand + 0x88c'
+# 33   0x760d8d4f: 'Tcl_EvalEx + 0x1f'
+# 34   0x75f1431a: 'Tk_BindEvent + 0x91a'
+# 35   0x75f4bd41: 'TkBindEventProc + 0x291'
+# 36   0x75f5c614: 'Tk_HandleEvent + 0x2f4'
+# 37   0x75f5b2da: 'TkDeleteThreadExitHandler + 0x31a'
+# 38   0x7617d41c: 'Tcl_ServiceEvent + 0x9c'
+# 39   0x7617d019: 'Tcl_DoOneEvent + 0x89'
+# 40   0x75f5aee5: 'Tk_MainLoop + 0x25'
+# 41   0x75f9d282: 'Tk_MainEx + 0x932'
+# 42   0x401e4590: 'Mtirpc_Init + 0x22a40'
+# 43   0x401e6c38: 'Mtirpc_Init + 0x250e8'
+# 44   0x40626dd7: 'Tclsqlite_Init + 0x5717'
+# 45   0xb783e8d7: 'BaseThreadInitThunk + 0x17'
+# 46   0xb87ec3fc: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
