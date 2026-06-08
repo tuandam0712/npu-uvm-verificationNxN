@@ -34,7 +34,7 @@ class npu_coverage #(
         option.per_instance = 1;
         cp_matrix_type: coverpoint sample_matrix_type{
             bins zero = {MATRIX_ZERO};
-            bins indentity = {MATRIX_IDENTITY};
+            bins identity = {MATRIX_IDENTITY};
             bins random = {MATRIX_RANDOM};
             ignore_bins ignore_other = {MATRIX_OTHER};
         }
@@ -82,4 +82,50 @@ class npu_coverage #(
         super.report_phase(phase);
         `uvm_info("COV",$sformatf("in data cov = %.2f%%, mat pattern cov = %.2f%%", cg_input_data.get_coverage(), cg_matrix_pattern.get_coverage()), UVM_LOW)
     endfunction
+endclass
+class npu_output_coverage #(
+    parameter int N = 8,
+    parameter int width = 8
+) extends uvm_subscriber #(npu_sequence_item #(N, width));
+
+    `uvm_component_param_utils(npu_output_coverage #(N, width))
+
+    typedef npu_sequence_item #(N, width) item_t;
+
+    localparam int ACC_WIDTH = 2*width + $clog2(N);
+
+    int signed sample_c;
+
+    covergroup cg_output_data;
+        option.per_instance = 1;
+
+        cp_c_value: coverpoint sample_c {
+            bins zero     = {0};
+            bins positive = {[1:32767]};
+            bins negative = {[-32768:-1]};
+        }
+    endgroup
+
+    function new(string name, uvm_component parent);
+        super.new(name, parent);
+        cg_output_data = new();
+    endfunction
+
+    virtual function void write(item_t t);
+        for (int i = 0; i < N; i++) begin
+            for (int j = 0; j < N; j++) begin
+                sample_c = t.act[i][j];
+                cg_output_data.sample();
+            end
+        end
+    endfunction
+
+    function void report_phase(uvm_phase phase);
+        super.report_phase(phase);
+        `uvm_info("COV_OUT",
+            $sformatf("output data coverage = %.2f%%",
+                      cg_output_data.get_coverage()),
+            UVM_LOW)
+    endfunction
+
 endclass
