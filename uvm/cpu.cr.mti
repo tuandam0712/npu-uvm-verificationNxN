@@ -1,9 +1,9 @@
-D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv
+D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
--- Compiling interface npu_if
+-- Compiling module tb_rtl_random
 
 Top level modules:
-	--none--
+	tb_rtl_random
 
 } {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
@@ -16,12 +16,12 @@ QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 Top level modules:
 	tb_npu_nxn
 
-} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/tb_rtl_random.sv
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_if.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
--- Compiling module tb_rtl_random
+-- Compiling interface npu_if
 
 Top level modules:
-	tb_rtl_random
+	--none--
 
 } {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv {2 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
@@ -32,13 +32,6 @@ QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 Top level modules:
 	npu_top_NXN
 
-} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv
-QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
--- Compiling module pe
-
-Top level modules:
-	pe
-
 } {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv {2 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 -- Compiling module systolic_arr_NxN
@@ -48,6 +41,20 @@ QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 Top level modules:
 	systolic_arr_NxN
 
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module pe
+
+Top level modules:
+	pe
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module sa_controller_NxN
+
+Top level modules:
+	sa_controller_NxN
+
 } {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 -- Compiling package npu_pkg
@@ -56,12 +63,5 @@ QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 
 Top level modules:
 	--none--
-
-} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv
-QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
--- Compiling module sa_controller_NxN
-
-Top level modules:
-	sa_controller_NxN
 
 } {} {}}
