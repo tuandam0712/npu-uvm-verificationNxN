@@ -1,6 +1,6 @@
-NxN Systolic Array NPU Verification using UVM
+## NxN Systolic Array NPU Verification using UVM
 
-Overview
+## Overview
 
 This project implements and verifies a parameterizable NxN Neural Processing Unit(NPU) based on a systolic array architecture for signed INT8 matrix multiplication.
 
@@ -24,7 +24,7 @@ Current regression status:
 - 100% matrix pattern coverage
 - 100% out data coverage
 
-Top architecture
+## Top architecture
 ![Top Architecture](images/dir1.png)
 
 The design consists of 2 major RTL blocks:
@@ -43,7 +43,7 @@ NxN Systolic Array
 - input matrix B propagates verically across the array
 - A wavefront based valid signal propagates together with the operands to guarantee timing alignment
 
-Processing Element (PE)
+## Processing Element (PE)
 
 Each PE is intetionally designed as a lightweight MAC cell.
 
@@ -66,7 +66,7 @@ Operand forwarding is not implemented inside the PE
 
 Data propagation and skew management are handled at the systolic array level
 
-RTL Structure
+## RTL Structure
 
 rtl/
 |-- pe.sv
@@ -92,3 +92,6 @@ Controls computation sequencing and latency management.
 npu_top_NxN.sv
 
 Top level integration of controller and systolic array.
+
+## Verification Architecture
+![Verification Architecture](images/dir2.png)
