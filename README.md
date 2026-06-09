@@ -95,3 +95,38 @@ Top level integration of controller and systolic array.
 
 ## Verification Architecture
 ![Verification Architecture](images/dir2.png)
+
+## Scoreboard and Golden Model
+
+The verification environent uses a self_checking scoreboard
+
+Input trans captured by the input monitor are used to gen expected matrix multiplication results through a golden refrence model
+
+Output trans captured by the output monitor are compared against the expected results
+
+A trans is reported as PASS only when all matrix elements match the expected reference values
+
+This approach enables automated regression testing without manual waveform inspection
+
+## SystemVerilog Assertions
+
+Implemented assertion categories:
+
+### Processing Element (PE)
+
+- Reset behavior
+- Clear behavior
+- Hold behavior
+- MAC operation correctness
+
+### Controller
+
+- State transition checking
+- Done pulse width checking
+- Start-to-done latency checking
+
+### Systolic Array
+
+- Valid wavefront propagation
+- Operand alignment checking
+- No-X checking during valid operation
