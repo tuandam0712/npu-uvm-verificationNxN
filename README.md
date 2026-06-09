@@ -144,3 +144,83 @@ Implemented assertion categories:
 - Valid wavefront propagation
 - Operand alignment checking
 - No-X checking during valid operation
+
+## Functional Coverage
+Functional coverage is used to measure verification completeness and scenario exploration
+
+Input data coverage
+
+The following input categories are covered:
+- Posistive values
+- Negative values
+- Zero values
+- Cross combinations between A and B operands
+
+Matrix pattern coverage
+
+Directed test pattern include:
+- Zero Matrix
+- Identity Matrix
+- Random Matrix
+
+Output data coverage
+
+Output matrix elements are monitored and categorized into:
+- Positive results
+- Negative results
+- Zero results
+
+Covreage closure target:
+- 100% input coverage
+- 100% matrix pattern coverage
+- 100% output coverage
+
+## Regression Results
+
+The verification environment was executed using both directed and constrained-random testing
+
+Regression Summary:
+
+Metric          Result 
+Total Tests     102    
+Directed Tests  2      
+Random Tests    100    
+Passed          102    
+Failed          0      
+UVM Errors      0      
+UVM Fatals      0      
+
+Coverage Summary:
+Coverage Type            Result 
+Input Data Coverage      100%   
+Matrix Pattern Coverage  100%   
+Output Data Coverage     100%   
+
+## How To Run
+
+Compile RTL:
+
+```bash
+vlib work
+vlog -sv rtl/*.sv
+```
+
+Compile Verification Environment:
+
+```bash
+vlog -sv tb/*.sv
+vlog -sv uvm/*.sv
+```
+
+Run Simulation:
+
+```bash
+vsim work.tb_npu_nxn
+run -all
+```
+
+Run Regression:
+
+```bash
+make regress
+```
