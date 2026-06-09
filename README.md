@@ -197,33 +197,37 @@ Input Data Coverage      100%
 Matrix Pattern Coverage  100%   
 Output Data Coverage     100%   
 
-## How To Run
+## How to Run
 
-Compile RTL:
+### Run normal UVM regression
+```tcl
+do scripts/run_uvm.do
+Expected result:
+102/102 tests passed
+0 UVM errors
+0 UVM fatals
 
-```bash
-vlib work
-vlog -sv rtl/*.sv
-```
+Functional coverage 100%
 
-Compile Verification Environment:
+Run coverage closure
+tcl
+do scripts/run_cov.do
+This flow runs:
+- UVM normal regression
+- RTL reset-abort coverage test
+- UCDB coverage merge
+Final coverage report generation
 
-```bash
-vlog -sv tb/*.sv
-vlog -sv uvm/*.sv
-```
+Expected coverage result:
 
-Run Simulation:
-
-```bash
-vsim work.tb_npu_nxn
-run -all
-```
-
-Run Regression:
-
-```bash
-make regress
+Coverage Type	        Result
+Statement Coverage	    100%
+Branch Coverage	        100%
+Condition Coverage	    100%
+Expression Coverage	    100%
+FSM State Coverage	    100%
+FSM Transition Coverage	100%
+Functional Coverage	    100%
 ```
 ## Future Work 
 
