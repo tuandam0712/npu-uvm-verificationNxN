@@ -18,41 +18,39 @@ Current regression status:
 - 100% matrix pattern coverage
 - 100% out data coverage
 Top architecture
-## Top Architecture
-
 ```mermaid
-flowchart TB
+flowchart LR
+    A["Matrix A<br/>a_in[N][N]"]
+    B["Matrix B<br/>b_in[N][N]"]
+    C["Matrix C<br/>c_out[N][N]"]
+
     subgraph TOP["npu_top_NxN"]
-        CTRL["sa_controller_NxN<br/>FSM: IDLE / CLEAR / COMPUTE / WAIT_DRAIN / DONE"]
-        ARR["systolic_arr_NxN<br/>Parameterizable NxN PE Array"]
-
-        CTRL -- clear --> ARR
-        CTRL -- valid_in --> ARR
-        CTRL -- done --> DONE["done"]
-    end
-
-    AIN["Matrix A input<br/>a_in[N][N]"] --> ARR
-    BIN["Matrix B input<br/>b_in[N][N]"] --> ARR
-
-    ARR --> COUT["Matrix C output<br/>c_out[N][N]"]
-
-    subgraph ARR_DETAIL["Inside systolic_arr_NxN"]
         direction TB
 
-        subgraph PEGRID["NxN Processing Element Grid"]
+        CTRL["sa_controller_NxN<br/><br/>FSM States:<br/>IDLE<br/>CLEAR<br/>COMPUTE<br/>WAIT_DRAIN<br/>DONE"]
+
+        subgraph ARR["systolic_arr_NxN"]
             direction TB
 
-            R0["PE[0][0]  PE[0][1]  ...  PE[0][N-1]"]
-            R1["PE[1][0]  PE[1][1]  ...  PE[1][N-1]"]
-            RX["..."]
-            RN["PE[N-1][0] PE[N-1][1] ... PE[N-1][N-1]"]
+            subgraph GRID["NxN PE Grid"]
+                direction TB
+                R0["PE  PE  PE  PE<br/>PE  PE  PE  PE<br/>PE  PE  PE  PE<br/>PE  PE  PE  PE"]
+            end
+
+            ASKEW["A horizontal propagation →"]
+            BSKEW["B vertical propagation ↓"]
+            VLD["valid wavefront"]
         end
 
-        ASKEW["A skew / horizontal propagation"]
-        BSKEW["B skew / vertical propagation"]
-        VPROP["pe_valid wavefront propagation"]
-
-        ASKEW --> PEGRID
-        BSKEW --> PEGRID
-        VPROP --> PEGRID
+        CTRL -->|"clear / valid_in"| ARR
+        ARR -->|"done feedback"| CTRL
     end
+
+    A --> ARR
+    B --> ARR
+    ARR --> C
+
+    ASKEW --> GRID
+    BSKEW --> GRID
+    VLD --> GRID
+```
