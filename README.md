@@ -54,7 +54,7 @@ The controller manages the computation flow using five states:
 NxN Systolic Array
 - The systolic array is composed of NxN Processing Elements (PEs)
 - Input matrix A propagates horizontally across the array
-- input matrix B propagates verically across the array
+- input matrix B propagates vertically across the array
 - A wavefront based valid signal propagates together with the operands to guarantee timing alignment
 
 ## Processing Element (PE)
@@ -93,7 +93,7 @@ rtl/
 
 pe.sv
 
-Implements signed Multiply Accmulate (MAC)functionality.
+Implements signed Multiply Accumulate (MAC)functionality.
 
 systolic_arr_NxN.sv
 
@@ -151,7 +151,7 @@ Functional coverage is used to measure verification completeness and scenario ex
 Input data coverage
 
 The following input categories are covered:
-- Posistive values
+- Positive values
 - Negative values
 - Zero values
 - Cross combinations between A and B operands
@@ -170,7 +170,7 @@ Output matrix elements are monitored and categorized into:
 - Negative results
 - Zero results
 
-Covreage closure target:
+Coverage closure target:
 - 100% input coverage
 - 100% matrix pattern coverage
 - 100% output coverage
@@ -225,3 +225,15 @@ Run Regression:
 ```bash
 make regress
 ```
+## Future Work 
+
+Future improvements include:
+
+- AXI-Stream interface support
+- DMA integration
+- Advanced protocol assertions
+- Coverage closure automation
+- Regression infrastructure enhancement
+- Formal verification exploration
+- Reusable AI accelerator verification framework
+Long-term goal: evolve this project into a reusable open-source verification platform for AI accelerator IPs
