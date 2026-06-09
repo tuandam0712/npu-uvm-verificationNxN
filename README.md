@@ -1,5 +1,19 @@
 # NxN Systolic Array NPU Verification using UVM
 
+## Table of Contents
+
+- Overview
+- Top Architecture
+- Processing Element
+- RTL Structure
+- Verification Architecture
+- Scoreboard and Golden Model
+- SystemVerilog Assertions
+- Functional Coverage
+- Regression Results
+- How to Run
+- Future Work
+
 ## Overview
 
 This project implements and verifies a parameterizable NxN Neural Processing Unit(NPU) based on a systolic array architecture for signed INT8 matrix multiplication.
