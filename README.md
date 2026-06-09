@@ -1,10 +1,10 @@
-## NxN Systolic Array NPU Verification using UVM
+# NxN Systolic Array NPU Verification using UVM
 
 ## Overview
 
 This project implements and verifies a parameterizable NxN Neural Processing Unit(NPU) based on a systolic array architecture for signed INT8 matrix multiplication.
 
-The RTL design is developed inn SystemVerilog and supports configurable array dimesions through parameterization.
+The RTL design is developed in SystemVerilog and supports configurable array dimensions through parameterization.
 
 A complete UVM verification environment is built to validate functionality, timing behavior, and data propagation across the systolic array.
 
@@ -45,7 +45,7 @@ NxN Systolic Array
 
 ## Processing Element (PE)
 
-Each PE is intetionally designed as a lightweight MAC cell.
+Each PE is intentionally designed as a lightweight MAC cell.
 
 Inputs:
 - a_in
@@ -54,13 +54,13 @@ Inputs:
 - clear
 
 Output:
-- accmulated result
+- accumulated result
 
 Operation priority:
 - Reset
 - Clear
 - MAC operation
-- Hold accmulated value
+- Hold accumulated value
 
 Operand forwarding is not implemented inside the PE
 
@@ -98,9 +98,9 @@ Top level integration of controller and systolic array.
 
 ## Scoreboard and Golden Model
 
-The verification environent uses a self_checking scoreboard
+The verification environment uses a self_checking scoreboard
 
-Input trans captured by the input monitor are used to gen expected matrix multiplication results through a golden refrence model
+Input trans captured by the input monitor are used to gen expected matrix multiplication results through a golden reference model
 
 Output trans captured by the output monitor are compared against the expected results
 
