@@ -2,9 +2,7 @@
 
 ## 1. Scope
 This doc defines the verification strategy for the parameterizable NxN systolic array based NPU
-
 The objective is to verify functional correctness, timing behavior, control sequencing, operand propagation, and accumulator across all supported configurations
-
 Verification methods include:
 - Directed testing
 - Constrained random testing
@@ -35,33 +33,31 @@ The controller shall:
 The NPU shall produce matrix multiplication results matching the golden model.
 ## 3. Verification Matrix
 
-Feature         Directed  Random  SVA  Coverage 
-PE Reset            ✔        -     ✔      - 
-PE Clear            ✔        -     ✔      - 
-PE Hold             ✔        -     ✔      - 
-PE MAC              ✔        ✔     ✔      - 
-A Propagation       ✔        ✔     ✔      ✔ 
-B Propagation       ✔        ✔     ✔      ✔ 
-Valid Wavefront     ✔        ✔     ✔      ✔ 
-Controller FSM      ✔        ✔     ✔      ✔ 
-Matrix Multiply     ✔        ✔     -       ✔ 
-
+| Feature | Directed | Random | SVA | Coverage |
+|---------|----------|--------|-----|----------|
+| PE Reset | ✔ | - | ✔ | - |
+| PE Clear | ✔ | - | ✔ | - |
+| PE Hold | ✔ | - | ✔ | - |
+| PE MAC | ✔ | ✔ | ✔ | - |
+| A Propagation | ✔ | ✔ | ✔ | ✔ |
+| B Propagation | ✔ | ✔ | ✔ | ✔ |
+| Valid Wavefront | ✔ | ✔ | ✔ | ✔ |
+| Controller FSM | ✔ | ✔ | ✔ | ✔ |
+| Matrix Multiply | ✔ | ✔ | - | ✔ |
 ## 4. Risk Analysis
 
-Risk    Description                 Detection Method
- ID   
-R1  Accumulator not cleared       Directed Test + SVA 
-R2  MAC computation incorrect     Scoreboard 
-R3  Valid propagation misaligned  Array SVA 
-R4  Drain latency incorrect       Controller SVA 
-R5  Operand skew mismatch         Directed Test + SVA 
-
+| ID | Risk Description | Detection Method |
+|----|------------------|------------------|
+| R1 | Accumulator not cleared | Directed Test + SVA |
+| R2 | MAC computation incorrect | Scoreboard |
+| R3 | Valid propagation misaligned | Array SVA |
+| R4 | Drain latency incorrect | Controller SVA |
+| R5 | Operand skew mismatch | Directed Test + SVA |
 ## 5. Functional Coverage Plan
 Input Data Coverage
 - Positive values
 - Negative values
 - Zero values
-
 Cross Coverage
 - Positive × Positive
 - Positive × Negative
@@ -72,17 +68,14 @@ Cross Coverage
 - Zero × Positive
 - Zero × Negative
 - Zero × Zero
-
 Matrix Pattern Coverage
 - Zero Matrix
 - Identity Matrix
 - Random Matrix
-
 Output Coverage
 - Positive results
 - Negative results
 - Zero results
-
 ## 6. Closure Criteria
 Verification is considered complete when:
 - All directed tests pass
@@ -91,25 +84,22 @@ Verification is considered complete when:
 - Functional coverage reaches 100%
 - No UVM errors
 - No UVM fatals
-
 ## 7. Verification Traceability Matrix
 
-Feature             Test                Assertion               Coverage            Status 
-PE Reset        Directed Reset Test     p_pe_rstn                   —                PASS 
-PE Clear        Directed Clear Test     p_pe_clear                  —                PASS 
-PE Hold         Directed Hold Test      p_pe_stable                 —                PASS 
-PE MAC          Directed + Random       p_pe_math           Input Data Coverage      PASS 
-A Propagation   Random Matrix Tests     p_a_delay           Input Coverage           PASS 
-B Propagation   Random Matrix Tests     p_b_delay           Input Coverage           PASS 
-Valid Wavefront Directed + Random       p_valid_wavefront   Matrix Coverage          PASS 
-No-X Operation  Random Matrix Tests     p_no_x_when_valid           —                PASS 
-Controller FSM  Directed + Random       p_state_transition  Matrix Coverage          PASS 
-Done Pulse      Directed Tests          p_done_one_cycle            —                PASS 
-Start-to-Done   Directed Tests          p_start_to_done_latency     —                PASS 
-Latency  
-End-to-End      Directed + Random               —  Matrix Pattern Coverage           PASS 
-Matrix Multiply  
-
+| Feature | Test | Assertion | Coverage | Status |
+|---------|------|-----------|----------|--------|
+| PE Reset | Directed Reset Test | p_pe_rstn | — | PASS |
+| PE Clear | Directed Clear Test | p_pe_clear | — | PASS |
+| PE Hold | Directed Hold Test | p_pe_stable | — | PASS |
+| PE MAC | Directed + Random | p_pe_math | Input Data Coverage | PASS |
+| A Propagation | Random Matrix Tests | p_a_delay | Input Coverage | PASS |
+| B Propagation | Random Matrix Tests | p_b_delay | Input Coverage | PASS |
+| Valid Wavefront | Directed + Random | p_valid_wavefront | Matrix Coverage | PASS |
+| No-X Operation | Random Matrix Tests | p_no_x_when_valid | — | PASS |
+| Controller FSM | Directed + Random | p_state_transition | Matrix Coverage | PASS |
+| Done Pulse | Directed Tests | p_done_one_cycle | — | PASS |
+| Start-to-Done Latency | Directed Tests | p_start_to_done_latency | — | PASS |
+| End-to-End Matrix Multiply | Directed + Random | — | Matrix Pattern Coverage | PASS |
 ## Coverage Closure
 The final coverage database was generated by merging:
 1. UVM normal regression coverage
