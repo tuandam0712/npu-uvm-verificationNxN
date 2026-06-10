@@ -1,3 +1,4 @@
+file mkdir logs
 transcript file logs/compile.log
 if {[file exists work]} {
     vdel -all -lib work

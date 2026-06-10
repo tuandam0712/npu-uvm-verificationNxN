@@ -1,0 +1,163 @@
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 18 2018
+# vmap work work 
+# Modifying D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/cpu.mpf
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:41:41 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/pe.sv 
+# -- Compiling module pe
+# 
+# Top level modules:
+# 	pe
+# End time: 22:41:41 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:41:41 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/sa_controller_NxN.sv 
+# -- Compiling module sa_controller_NxN
+# 
+# Top level modules:
+# 	sa_controller_NxN
+# End time: 22:41:41 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:41:41 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/systolic_arr_NxN.sv 
+# -- Compiling module systolic_arr_NxN
+# ** Warning: rtl/systolic_arr_NxN.sv(10): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/systolic_arr_NxN.sv(11): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	systolic_arr_NxN
+# End time: 22:41:41 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:41:41 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/npu_top_NxN.sv 
+# -- Compiling module npu_top_NXN
+# ** Warning: rtl/npu_top_NxN.sv(9): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/npu_top_NxN.sv(10): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	npu_top_NXN
+# End time: 22:41:41 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:41:41 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/apb_npu_wrapper.sv 
+# -- Compiling module apb_npu_wrapper
+# 
+# Top level modules:
+# 	apb_npu_wrapper
+# End time: 22:41:41 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:41:41 on Jun 10,2026
+# vlog -reportprogress 300 -sv tb/npu_if.sv 
+# ** Error: (vlog-7) Failed to open design unit file "tb/npu_if.sv" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 22:41:41 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: D:/questa/win64/vlog failed.
+# Error in macro ./scripts/compile.do line 12
+# D:/questa/win64/vlog failed.
+#     while executing
+# "vlog -sv tb/npu_if.sv"
+
+do scripts/compile.do
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 18 2018
+# vmap work work 
+# Modifying D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/cpu.mpf
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/pe.sv 
+# -- Compiling module pe
+# 
+# Top level modules:
+# 	pe
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/sa_controller_NxN.sv 
+# -- Compiling module sa_controller_NxN
+# 
+# Top level modules:
+# 	sa_controller_NxN
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/systolic_arr_NxN.sv 
+# -- Compiling module systolic_arr_NxN
+# ** Warning: rtl/systolic_arr_NxN.sv(10): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/systolic_arr_NxN.sv(11): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	systolic_arr_NxN
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/npu_top_NxN.sv 
+# -- Compiling module npu_top_NXN
+# ** Warning: rtl/npu_top_NxN.sv(9): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/npu_top_NxN.sv(10): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	npu_top_NXN
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/apb_npu_wrapper.sv 
+# -- Compiling module apb_npu_wrapper
+# 
+# Top level modules:
+# 	apb_npu_wrapper
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv uvm/npu_if.sv 
+# -- Compiling interface npu_if
+# 
+# Top level modules:
+# 	--none--
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+incdir+uvm" uvm/npu_pkg.sv 
+# -- Compiling package npu_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) uvm/npu_pkg.sv(3): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 22:42:57 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:57 on Jun 10,2026
+# vlog -reportprogress 300 -sv tb/tb_npu_nxn.sv 
+# ** Note: (vlog-2286) tb/tb_npu_nxn.sv(5): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package tb_npu_nxn_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package npu_pkg
+# -- Compiling module tb_npu_nxn
+# 
+# Top level modules:
+# 	tb_npu_nxn
+# End time: 22:42:58 on Jun 10,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:42:58 on Jun 10,2026
+# vlog -reportprogress 300 -sv tb/tb_rtl_random.sv 
+# ** Error: (vlog-7) Failed to open design unit file "tb/tb_rtl_random.sv" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 22:42:58 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: D:/questa/win64/vlog failed.
+# Error in macro ./scripts/compile.do line 15
+# D:/questa/win64/vlog failed.
+#     while executing
+# "vlog -sv tb/tb_rtl_random.sv"
