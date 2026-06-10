@@ -15,7 +15,6 @@ module npu_top_NXN #(
 
     logic ctrl_valid_in;
     logic ctrl_clear;
-
     sa_controller_NxN #(
         .N(N)
     ) u_ctrl (
@@ -26,7 +25,6 @@ module npu_top_NXN #(
         .clear    (ctrl_clear),
         .done     (done)
     );
-
     systolic_arr_NxN #(
         .N(N),
         .width(width),
@@ -40,7 +38,5 @@ module npu_top_NXN #(
         .b_in     (b_in),
         .c        (c)
     );
-
     assign valid_in = ctrl_valid_in;
-
 endmodule

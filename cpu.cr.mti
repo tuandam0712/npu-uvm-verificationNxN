@@ -42,13 +42,6 @@ QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 Top level modules:
 	pe
 
-} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv
-QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
--- Compiling module apb_npu_wrapper
-
-Top level modules:
-	apb_npu_wrapper
-
 } {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv
 QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
 -- Compiling package npu_pkg
