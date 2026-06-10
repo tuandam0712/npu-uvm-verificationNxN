@@ -14,4 +14,5 @@ vlog -sv uvm/npu_if.sv
 vlog -sv +incdir+uvm uvm/npu_pkg.sv
 vlog -sv tb/tb_npu_nxn.sv
 vlog -sv tb/tb_rtl_random.sv
+vlog -sv tb/apb_wrapper_smoke_tb.sv
 puts "compile completed."

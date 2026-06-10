@@ -161,3 +161,183 @@ do scripts/compile.do
 # D:/questa/win64/vlog failed.
 #     while executing
 # "vlog -sv tb/tb_rtl_random.sv"
+vsim -c -do scripts/compile.do
+# No design specified
+do scripts
+# Cannot open macro file: scripts
+do scripts/compile.do
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 18 2018
+# vmap work work 
+# Modifying D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/cpu.mpf
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/pe.sv 
+# -- Compiling module pe
+# 
+# Top level modules:
+# 	pe
+# End time: 22:48:44 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/sa_controller_NxN.sv 
+# -- Compiling module sa_controller_NxN
+# 
+# Top level modules:
+# 	sa_controller_NxN
+# End time: 22:48:44 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/systolic_arr_NxN.sv 
+# -- Compiling module systolic_arr_NxN
+# ** Warning: rtl/systolic_arr_NxN.sv(10): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/systolic_arr_NxN.sv(11): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	systolic_arr_NxN
+# End time: 22:48:44 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/npu_top_NxN.sv 
+# -- Compiling module npu_top_NXN
+# ** Warning: rtl/npu_top_NxN.sv(9): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: rtl/npu_top_NxN.sv(10): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	npu_top_NXN
+# End time: 22:48:44 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+cover=sbcfe" rtl/apb_npu_wrapper.sv 
+# -- Compiling module apb_npu_wrapper
+# 
+# Top level modules:
+# 	apb_npu_wrapper
+# End time: 22:48:44 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv uvm/npu_if.sv 
+# -- Compiling interface npu_if
+# 
+# Top level modules:
+# 	--none--
+# End time: 22:48:44 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:44 on Jun 10,2026
+# vlog -reportprogress 300 -sv "+incdir+uvm" uvm/npu_pkg.sv 
+# -- Compiling package npu_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) uvm/npu_pkg.sv(3): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 22:48:45 on Jun 10,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:45 on Jun 10,2026
+# vlog -reportprogress 300 -sv tb/tb_npu_nxn.sv 
+# ** Note: (vlog-2286) tb/tb_npu_nxn.sv(5): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package tb_npu_nxn_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package npu_pkg
+# -- Compiling module tb_npu_nxn
+# 
+# Top level modules:
+# 	tb_npu_nxn
+# End time: 22:48:45 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:45 on Jun 10,2026
+# vlog -reportprogress 300 -sv tb/tb_rtl_random.sv 
+# -- Compiling module tb_rtl_random
+# 
+# Top level modules:
+# 	tb_rtl_random
+# End time: 22:48:45 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:48:45 on Jun 10,2026
+# vlog -reportprogress 300 -sv tb/apb_wrapper_smoke_tb.sv 
+# -- Compiling module apb_wrapper_smoke_tb
+# 
+# Top level modules:
+# 	apb_wrapper_smoke_tb
+# End time: 22:48:45 on Jun 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# compile completed.
+vsim -c apb_wrapper_smoke_tb -do "run -all; quit"
+# vsim -c apb_wrapper_smoke_tb -do "run -all; quit" 
+# Start time: 22:48:54 on Jun 10,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.apb_wrapper_smoke_tb(fast)
+# Loading work.apb_npu_wrapper(fast)
+# run -all
+#  quit
+vsim tb/apb_wrapper_smoke_tb.sv
+# OpenFile tb/apb_wrapper_smoke_tb.sv
+# run -all
+#  quit
+run -all
+vsim work.apb_wrapper_smoke_tb
+# End time: 22:53:12 on Jun 10,2026, Elapsed time: 0:04:18
+# Errors: 0, Warnings: 0
+# vsim work.apb_wrapper_smoke_tb 
+# Start time: 22:53:12 on Jun 10,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.apb_wrapper_smoke_tb(fast)
+# Loading work.apb_npu_wrapper(fast)
+run -all
+vsim -c work.apb_wrapper_smoke_tb -do "run -all; quit"
+# End time: 22:54:11 on Jun 10,2026, Elapsed time: 0:00:59
+# Errors: 0, Warnings: 0
+# vsim -c work.apb_wrapper_smoke_tb -do "run -all; quit" 
+# Start time: 22:54:11 on Jun 10,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading sv_std.std
+# Loading work.apb_wrapper_smoke_tb(fast)
+# Loading work.apb_npu_wrapper(fast)
+# run -all
+#  quit
+# Compile of apb_npu_wrapper.sv was successful.
+# Compile of npu_top_NXN.sv was successful with warnings.
+# Compile of pe.sv was successful.
+# Compile of sa_controller_NxN.sv was successful.
+# Compile of systolic_arr_NxN.sv was successful with warnings.
+# Compile of tb_npu_nxn.sv was successful with warnings.
+# Compile of npu_if.sv was successful.
+# Compile of npu_pkg.sv was successful.
+# Compile of apb_wrapper_smoke_tb.sv was successful.
+# 9 compiles, 1 failed with no errors.
+vsim -c work.apb_wrapper_smoke_tb
+# End time: 22:54:36 on Jun 10,2026, Elapsed time: 0:00:25
+# Errors: 0, Warnings: 0
+# vsim -c work.apb_wrapper_smoke_tb 
+# Start time: 22:54:36 on Jun 10,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.apb_wrapper_smoke_tb(fast)
+run -all
+# APB smoke test started
+# Compile of apb_wrapper_smoke_tb.sv was successful.
+vsim -c work.apb_wrapper_smoke_tb
+# End time: 22:57:33 on Jun 10,2026, Elapsed time: 0:02:57
+# Errors: 0, Warnings: 0
+# vsim -c work.apb_wrapper_smoke_tb 
+# Start time: 22:57:33 on Jun 10,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.apb_wrapper_smoke_tb(fast)
+run -all
+# APB smoke test started
+# APB smoke test pass. status = 00000001
+# ** Note: $finish    : D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/apb_wrapper_smoke_tb.sv(99)
+#    Time: 105 ns  Iteration: 0  Instance: /apb_wrapper_smoke_tb
+# 1
+# Break at D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/apb_wrapper_smoke_tb.sv line 99
