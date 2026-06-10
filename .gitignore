@@ -1,0 +1,11 @@
+# Questa/ModelSim generated files
+/logs/
+logs/
+work/
+modelsim.ini
+modelsim.ini_lock
+modelsim.ini_new
+transcript
+*.wlf
+*.vcd
+*.ucdb
