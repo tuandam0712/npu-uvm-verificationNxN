@@ -9,3 +9,5 @@ transcript
 *.wlf
 *.vcd
 *.ucdb
+*.mpf
+*.mti
