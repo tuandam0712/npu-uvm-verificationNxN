@@ -1,0 +1,15 @@
+# ModelSim / Questa simulation artifacts
+work/
+logs/
+
+transcript
+modelsim.ini
+modelsim.ini_lock
+modelsim.ini_new
+
+*.ucdb
+*.wlf
+*.vcd
+
+*.mpf
+*.mti
