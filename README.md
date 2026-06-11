@@ -83,14 +83,10 @@ Data propagation and skew management are handled at the systolic array level
 ## RTL Structure
 
 rtl/
-|-- pe.sv
-|
-|-- systolic_arr_NxN.sv
-|
-|-- sa_controller_NxN.sv
-|
-|-- npu_top_NxN.sv
-
+├── pe.sv
+├── systolic_arr_NxN.sv
+├── sa_controller_NxN.sv
+└── npu_top_NxN.sv
 pe.sv
 
 Implements signed Multiply Accumulate (MAC)functionality.
