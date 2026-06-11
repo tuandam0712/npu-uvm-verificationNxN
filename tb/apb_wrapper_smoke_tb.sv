@@ -1,5 +1,6 @@
 module apb_wrapper_smoke_tb;
     localparam int N = 8;
+    localparam int NUM_TESTS = 100;
     logic        pclk;
     logic        presetn;
     logic        psel;
@@ -22,6 +23,12 @@ module apb_wrapper_smoke_tb;
     int idx;
     int expected;
     int error_count;
+    int A_mat [0:N-1][0:N-1];
+    int B_mat [0:N-1][0:N-1];
+    int C_exp [0:N-1][0:N-1];
+    int k;
+    int test_id;
+    int val;
     apb_npu_wrapper #(
         .N(N),
         .DATA_WIDTH(8),
@@ -85,6 +92,17 @@ module apb_wrapper_smoke_tb;
             paddr   <= 32'h0;
         end
     endtask
+    task automatic calc_golden();
+        for (row = 0; row < N; row++) begin
+            for (col = 0; col < N; col++) begin
+                C_exp[row][col] = 0;
+
+                for (k = 0; k < N; k++) begin
+                    C_exp[row][col] += A_mat[row][k] * B_mat[k][col];
+                end
+            end
+        end
+    endtask
     initial begin
         pclk = 1'b0;
         forever #5 pclk = ~pclk; // 100MHz clock
@@ -102,67 +120,72 @@ module apb_wrapper_smoke_tb;
 
         repeat (3) @(posedge pclk);
         presetn = 1'b1;
+            for (test_id = 0; test_id < NUM_TESTS; test_id++) begin
+            $display("APB random test %0d started", test_id);
+            // Write A = identity matrix
+            for (row = 0; row < N; row++) begin
+                for (col = 0; col < N; col++) begin
+                    idx = row*N + col;
 
-        // Write A = identity matrix
-        for (row = 0; row < N; row++) begin
-            for (col = 0; col < N; col++) begin
-                idx = row*N + col;
+                    val = $urandom_range(0, 3);
+                    A_mat[row][col] = val;
 
-                if (row == col) begin
-                    apb_write_task(ADDR_A_BASE + 4*idx, 32'd1);
-                end else begin
-                    apb_write_task(ADDR_A_BASE + 4*idx, 32'd0);
+                    apb_write_task(ADDR_A_BASE + 4*idx, A_mat[row][col]);
+                end
+            end
+
+            // Write B = simple matrix: B[row][col] = row + col + 1
+            for (row = 0; row < N; row++) begin
+                for (col = 0; col < N; col++) begin
+                    idx = row*N + col;
+
+                    val = $urandom_range(0, 3);
+                    B_mat[row][col] = val;
+
+                    apb_write_task(ADDR_B_BASE + 4*idx, B_mat[row][col]);
+                end
+            end
+            calc_golden();
+            // Start NPU
+            apb_write_task(ADDR_CONTROL, 32'h1);
+
+            // Poll STATUS.done
+            status_data = 32'h0;
+            repeat (100) begin
+                apb_read_task(ADDR_STATUS, status_data);
+                if (status_data[0]) begin
+                    break;
+                end
+            end
+
+            if (!status_data[0]) begin
+                $error("Timeout waiting for NPU done. STATUS=%h", status_data);
+            end else begin
+                $display("NPU done detected. STATUS=%h", status_data);
+            end
+
+            // Read C and compare with B
+            for (row = 0; row < N; row++) begin
+                for (col = 0; col < N; col++) begin
+                    idx = row*N + col;
+                    expected = C_exp[row][col];
+
+                    apb_read_task(ADDR_C_BASE + 4*idx, read_data);
+
+                    if (read_data !== expected) begin
+                        $error("C mismatch at [%0d][%0d]. Got=%0d Expected=%0d",
+                            row, col, read_data, expected);
+                        error_count++;
+                    end
                 end
             end
         end
-
-        // Write B = simple matrix: B[row][col] = row + col + 1
-        for (row = 0; row < N; row++) begin
-            for (col = 0; col < N; col++) begin
-                idx = row*N + col;
-                apb_write_task(ADDR_B_BASE + 4*idx, row + col + 1);
-            end
-        end
-
-        // Start NPU
-        apb_write_task(ADDR_CONTROL, 32'h1);
-
-        // Poll STATUS.done
-        status_data = 32'h0;
-        repeat (100) begin
-            apb_read_task(ADDR_STATUS, status_data);
-            if (status_data[0]) begin
-                break;
-            end
-        end
-
-        if (!status_data[0]) begin
-            $error("Timeout waiting for NPU done. STATUS=%h", status_data);
-        end else begin
-            $display("NPU done detected. STATUS=%h", status_data);
-        end
-
-        // Read C and compare with B
-        for (row = 0; row < N; row++) begin
-            for (col = 0; col < N; col++) begin
-                idx = row*N + col;
-                expected = row + col + 1;
-
-                apb_read_task(ADDR_C_BASE + 4*idx, read_data);
-
-                if (read_data !== expected) begin
-                    $error("C mismatch at [%0d][%0d]. Got=%0d Expected=%0d",
-                           row, col, read_data, expected);
-                    error_count++;
-                end
-            end
-        end
-
         if (error_count == 0) begin
-            $display("APB matrix smoke test PASS");
+           $display("APB random regression PASS: %0d tests", NUM_TESTS);
         end else begin
-            $fatal(1, "APB matrix smoke test FAILED with %0d errors", error_count);
+            $fatal(1, "APB random regression FAILED with %0d errors", error_count);
         end
+
         #20;
         $finish;
     end
