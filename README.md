@@ -181,21 +181,25 @@ The verification environment was executed using both directed and constrained-ra
 
 Regression Summary:
 
-Metric          Result 
-Total Tests     102    
-Directed Tests  2      
-Random Tests    100    
-Passed          102    
-Failed          0      
-UVM Errors      0      
-UVM Fatals      0      
+| Metric | Result |
+|---|---:|
+| Total Tests | 102 |
+| Directed Tests | 2 |
+| Random Tests | 100 |
+| Passed | 102 |
+| Failed | 0 |
+| UVM Errors | 0 |
+| UVM Fatals | 0 |  
 
 Coverage Summary:
 
-Coverage Type            Result 
-Input Data Coverage      100%   
-Matrix Pattern Coverage  100%   
-Output Data Coverage     100%   
+| Coverage Type | Result |
+|---|---:|
+| Input Data Coverage | 100% |
+| Matrix Pattern Coverage | 100% |
+| Output Data Coverage | 100% |
+| Assertions | 100% |
+| Total Functional Coverage | 100% |
 
 ## How to Run
 
