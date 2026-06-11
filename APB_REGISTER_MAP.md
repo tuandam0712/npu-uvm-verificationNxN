@@ -43,17 +43,17 @@ C[i][j] address = 0x0000_0210 + 4 * (i*N + j)
 5. Read Matrix C through APB
 6. Compare Matrix C with golden model
 ## Current Verification Status
-Current APB smoke test:
-
-A = Identity Matrix
-B = Simple Matrix
-Expected C = A x B = B
-Result: PASS
-
-Verified features:
-- APB write CONTROL.start
-- APB read STATUS.done/busy
-- APB write Matrix A
-- APB write Matrix B
-- APB read Matrix C
-- NPU computation through APB wrapper
+Current APB random test:
+- 100 APB random matrix tests
+- Matrix A written through APB
+- Matrix B written through APB
+- CONTROL.start write verified
+- STATUS.done polling verified
+- Matrix C readback verified
+- Golden model comparison PASS
+Result:
+- Passed: 100/100
+- Failed: 0
+Current limitation:
+- APB wrapper uses zero-wait-state response
+- APB UVM agent is planned as next step
