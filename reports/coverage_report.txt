@@ -1,0 +1,1117 @@
+COVERGROUP COVERAGE:
+-----------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal    Status               
+                                                                                              
+-----------------------------------------------------------------------------------------------
+ TYPE /npu_pkg/npu_coverage/npu_coverage__1/cg_input_data 
+                                                      100.00%        100    Covered              
+    covered/total bins:                                    15         15                      
+    missing/total bins:                                     0         15                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cg_input_data::cp_a_value              100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          158          1    Covered              
+        bin positive                                     3216          1    Covered              
+        bin negative                                     3154          1    Covered              
+    Coverpoint cg_input_data::cp_b_value              100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          161          1    Covered              
+        bin positive                                     3113          1    Covered              
+        bin negative                                     3254          1    Covered              
+    Cross cg_input_data::cross_a_b_sign               100.00%        100    Covered              
+        covered/total bins:                                 9          9                      
+        missing/total bins:                                 0          9                      
+        % Hit:                                        100.00%        100                      
+        bin <zero,zero>                                   120          1    Covered              
+        bin <positive,zero>                                25          1    Covered              
+        bin <negative,zero>                                16          1    Covered              
+        bin <zero,positive>                                13          1    Covered              
+        bin <positive,positive>                          1571          1    Covered              
+        bin <negative,positive>                          1529          1    Covered              
+        bin <zero,negative>                                25          1    Covered              
+        bin <positive,negative>                          1620          1    Covered              
+        bin <negative,negative>                          1609          1    Covered              
+ Covergroup instance \/npu_pkg::npu_coverage::npu_coverage__1::cg_input_data  
+                                                      100.00%        100    Covered              
+    covered/total bins:                                    15         15                      
+    missing/total bins:                                     0         15                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cp_a_value                             100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          158          1    Covered              
+        bin positive                                     3216          1    Covered              
+        bin negative                                     3154          1    Covered              
+    Coverpoint cp_b_value                             100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          161          1    Covered              
+        bin positive                                     3113          1    Covered              
+        bin negative                                     3254          1    Covered              
+    Cross cross_a_b_sign                              100.00%        100    Covered              
+        covered/total bins:                                 9          9                      
+        missing/total bins:                                 0          9                      
+        % Hit:                                        100.00%        100                      
+        bin <zero,zero>                                   120          1    Covered              
+        bin <positive,zero>                                25          1    Covered              
+        bin <negative,zero>                                16          1    Covered              
+        bin <zero,positive>                                13          1    Covered              
+        bin <positive,positive>                          1571          1    Covered              
+        bin <negative,positive>                          1529          1    Covered              
+        bin <zero,negative>                                25          1    Covered              
+        bin <positive,negative>                          1620          1    Covered              
+        bin <negative,negative>                          1609          1    Covered              
+ TYPE /npu_pkg/npu_coverage/npu_coverage__1/cg_matrix_pattern 
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     3          3                      
+    missing/total bins:                                     0          3                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cg_matrix_pattern::cp_matrix_type      100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        ignore_bin ignore_other                             0               ZERO                 
+        bin zero                                            1          1    Covered              
+        bin identity                                        1          1    Covered              
+        bin random                                        100          1    Covered              
+ Covergroup instance \/npu_pkg::npu_coverage::npu_coverage__1::cg_matrix_pattern  
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     3          3                      
+    missing/total bins:                                     0          3                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cp_matrix_type                         100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        ignore_bin ignore_other                             0               ZERO                 
+        bin zero                                            1          1    Covered              
+        bin identity                                        1          1    Covered              
+        bin random                                        100          1    Covered              
+ TYPE /npu_pkg/npu_output_coverage/npu_output_coverage__1/cg_output_data 
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     3          3                      
+    missing/total bins:                                     0          3                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cg_output_data::cp_c_value             100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          120          1    Covered              
+        bin positive                                     3229          1    Covered              
+        bin negative                                     3179          1    Covered              
+ Covergroup instance \/npu_pkg::npu_output_coverage::npu_output_coverage__1::cg_output_data  
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     3          3                      
+    missing/total bins:                                     0          3                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cp_c_value                             100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          120          1    Covered              
+        bin positive                                     3229          1    Covered              
+        bin negative                                     3179          1    Covered              
+
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 3
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/tb_npu_nxn/dut/u_ctrl/A_START_TO_DONE_LATENCY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(86)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_DONE_ONE_CYCLE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(97)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_CLEAR_ONE_CYCLE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(108)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_VALID_ONLY_IN_COMPUTE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(119)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_IDLE_TO_CLEAR
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(130)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_CLEAR_TO_COMPUTE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(141)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_COMPUTE_TO_DRAIN
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(153)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_DRAIN_EVENTUALLY_DONE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(166)
+                                                        0          1
+/tb_npu_nxn/dut/u_ctrl/A_DONE_TO_IDLE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(177)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[7]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[6]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[5]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[4]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[3]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[2]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[1]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[7]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[6]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[5]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[4]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[3]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[2]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[1]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/gen_nox[0]/gen_nox_col[0]/A_NO_X_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(218)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[7]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[6]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[5]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[4]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[3]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[2]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[1]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[7]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[7]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[7]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[7]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[6]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[6]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[6]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[6]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[5]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[5]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[5]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[5]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[4]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[4]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[4]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[4]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[3]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[3]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[3]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[3]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[2]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[2]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[2]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[2]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[1]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[1]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[1]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[1]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[0]/u_pe/A_PE_RESET_CLEAR_ACC
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[0]/u_pe/A_PE_CLEAR_PRIORITY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(49)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[0]/u_pe/A_PE_HOLD_WHEN_INVALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(60)
+                                                        0          1
+/tb_npu_nxn/dut/u_arr/pe_rows[0]/pe_cols[0]/u_pe/A_PE_MAC_WHEN_VALID
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(76)
+                                                        0          1
+/npu_pkg/npu_sequence/npu_sequence__1/body/#ublk#91973479#42/immed__43
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_sequence.sv(43)
+                                                        0          1
