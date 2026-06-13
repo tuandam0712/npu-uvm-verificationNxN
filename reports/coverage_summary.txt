@@ -1,10 +1,171 @@
-Coverage Report Totals BY INSTANCES: Number of Instances 73
+COVERGROUP COVERAGE:
+-----------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal    Status               
+                                                                                              
+-----------------------------------------------------------------------------------------------
+ TYPE /npu_pkg/npu_coverage/npu_coverage__1/cg_input_data 
+                                                      100.00%        100    Covered              
+    covered/total bins:                                    35         35                      
+    missing/total bins:                                     0         35                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cg_input_data::cp_a_value              100.00%        100    Covered              
+        covered/total bins:                                 5          5                      
+        missing/total bins:                                 0          5                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          214          1    Covered              
+        bin min_negative                                  144          1    Covered              
+        bin max_positive                                  144          1    Covered              
+        bin positive                                     3176          1    Covered              
+        bin negative                                     3106          1    Covered              
+    Coverpoint cg_input_data::cp_b_value              100.00%        100    Covered              
+        covered/total bins:                                 5          5                      
+        missing/total bins:                                 0          5                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          225          1    Covered              
+        bin min_negative                                  155          1    Covered              
+        bin max_positive                                  145          1    Covered              
+        bin positive                                     3064          1    Covered              
+        bin negative                                     3195          1    Covered              
+    Cross cg_input_data::cross_a_b_value              100.00%        100    Covered              
+        covered/total bins:                                25         25                      
+        missing/total bins:                                 0         25                      
+        % Hit:                                        100.00%        100                      
+        bin <zero,zero>                                   176          1    Covered              
+        bin <min_negative,zero>                             4          1    Covered              
+        bin <max_positive,zero>                             4          1    Covered              
+        bin <positive,zero>                                25          1    Covered              
+        bin <negative,zero>                                16          1    Covered              
+        bin <zero,min_negative>                             1          1    Covered              
+        bin <min_negative,min_negative>                    76          1    Covered              
+        bin <max_positive,min_negative>                    12          1    Covered              
+        bin <positive,min_negative>                        26          1    Covered              
+        bin <negative,min_negative>                        40          1    Covered              
+        bin <zero,max_positive>                             1          1    Covered              
+        bin <min_negative,max_positive>                    16          1    Covered              
+        bin <max_positive,max_positive>                    80          1    Covered              
+        bin <positive,max_positive>                        31          1    Covered              
+        bin <negative,max_positive>                        17          1    Covered              
+        bin <zero,positive>                                12          1    Covered              
+        bin <min_negative,positive>                        22          1    Covered              
+        bin <max_positive,positive>                        18          1    Covered              
+        bin <positive,positive>                          1522          1    Covered              
+        bin <negative,positive>                          1490          1    Covered              
+        bin <zero,negative>                                24          1    Covered              
+        bin <min_negative,negative>                        26          1    Covered              
+        bin <max_positive,negative>                        30          1    Covered              
+        bin <positive,negative>                          1572          1    Covered              
+        bin <negative,negative>                          1543          1    Covered              
+ Covergroup instance \/npu_pkg::npu_coverage::npu_coverage__1::cg_input_data  
+                                                      100.00%        100    Covered              
+    covered/total bins:                                    35         35                      
+    missing/total bins:                                     0         35                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cp_a_value                             100.00%        100    Covered              
+        covered/total bins:                                 5          5                      
+        missing/total bins:                                 0          5                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          214          1    Covered              
+        bin min_negative                                  144          1    Covered              
+        bin max_positive                                  144          1    Covered              
+        bin positive                                     3176          1    Covered              
+        bin negative                                     3106          1    Covered              
+    Coverpoint cp_b_value                             100.00%        100    Covered              
+        covered/total bins:                                 5          5                      
+        missing/total bins:                                 0          5                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          225          1    Covered              
+        bin min_negative                                  155          1    Covered              
+        bin max_positive                                  145          1    Covered              
+        bin positive                                     3064          1    Covered              
+        bin negative                                     3195          1    Covered              
+    Cross cross_a_b_value                             100.00%        100    Covered              
+        covered/total bins:                                25         25                      
+        missing/total bins:                                 0         25                      
+        % Hit:                                        100.00%        100                      
+        bin <zero,zero>                                   176          1    Covered              
+        bin <min_negative,zero>                             4          1    Covered              
+        bin <max_positive,zero>                             4          1    Covered              
+        bin <positive,zero>                                25          1    Covered              
+        bin <negative,zero>                                16          1    Covered              
+        bin <zero,min_negative>                             1          1    Covered              
+        bin <min_negative,min_negative>                    76          1    Covered              
+        bin <max_positive,min_negative>                    12          1    Covered              
+        bin <positive,min_negative>                        26          1    Covered              
+        bin <negative,min_negative>                        40          1    Covered              
+        bin <zero,max_positive>                             1          1    Covered              
+        bin <min_negative,max_positive>                    16          1    Covered              
+        bin <max_positive,max_positive>                    80          1    Covered              
+        bin <positive,max_positive>                        31          1    Covered              
+        bin <negative,max_positive>                        17          1    Covered              
+        bin <zero,positive>                                12          1    Covered              
+        bin <min_negative,positive>                        22          1    Covered              
+        bin <max_positive,positive>                        18          1    Covered              
+        bin <positive,positive>                          1522          1    Covered              
+        bin <negative,positive>                          1490          1    Covered              
+        bin <zero,negative>                                24          1    Covered              
+        bin <min_negative,negative>                        26          1    Covered              
+        bin <max_positive,negative>                        30          1    Covered              
+        bin <positive,negative>                          1572          1    Covered              
+        bin <negative,negative>                          1543          1    Covered              
+ TYPE /npu_pkg/npu_coverage/npu_coverage__1/cg_matrix_pattern 
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     6          6                      
+    missing/total bins:                                     0          6                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cg_matrix_pattern::cp_matrix_type      100.00%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                        100.00%        100                      
+        ignore_bin ignore_other                             0               ZERO                 
+        bin zero                                            1          1    Covered              
+        bin identity                                        1          1    Covered              
+        bin random                                        101          1    Covered              
+        bin all_positive                                    1          1    Covered              
+        bin all_negative                                    1          1    Covered              
+        bin sparse                                          1          1    Covered              
+ Covergroup instance \/npu_pkg::npu_coverage::npu_coverage__1::cg_matrix_pattern  
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     6          6                      
+    missing/total bins:                                     0          6                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cp_matrix_type                         100.00%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                        100.00%        100                      
+        ignore_bin ignore_other                             0               ZERO                 
+        bin zero                                            1          1    Covered              
+        bin identity                                        1          1    Covered              
+        bin random                                        101          1    Covered              
+        bin all_positive                                    1          1    Covered              
+        bin all_negative                                    1          1    Covered              
+        bin sparse                                          1          1    Covered              
+ TYPE /npu_pkg/npu_output_coverage/npu_output_coverage__1/cg_output_data 
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     5          5                      
+    missing/total bins:                                     0          5                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cg_output_data::cp_c_value             100.00%        100    Covered              
+        covered/total bins:                                 5          5                      
+        missing/total bins:                                 0          5                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          184          1    Covered              
+        bin large_negative                               3130          1    Covered              
+        bin large_positive                               3242          1    Covered              
+        bin small_negative                                 85          1    Covered              
+        bin small_positive                                 67          1    Covered              
+ Covergroup instance \/npu_pkg::npu_output_coverage::npu_output_coverage__1::cg_output_data  
+                                                      100.00%        100    Covered              
+    covered/total bins:                                     5          5                      
+    missing/total bins:                                     0          5                      
+    % Hit:                                            100.00%        100                      
+    Coverpoint cp_c_value                             100.00%        100    Covered              
+        covered/total bins:                                 5          5                      
+        missing/total bins:                                 0          5                      
+        % Hit:                                        100.00%        100                      
+        bin zero                                          184          1    Covered              
+        bin large_negative                               3130          1    Covered              
+        bin large_positive                               3242          1    Covered              
+        bin small_negative                                 85          1    Covered              
+        bin small_positive                                 67          1    Covered              
 
-    Enabled Coverage            Active      Hits    Misses    Weight % Covered
-    ----------------            ------      ----    ------    ------ ---------
-    Cover Group Types                3        na        na         1    100.00
-    Coverpoints/Crosses              5        na        na         1        na
-        Covergroup Bins             21        21         0         1    100.00
-    Assertions                     330       330         0         1    100.00
-Total coverage (filtered view): 100.00%
-
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 3

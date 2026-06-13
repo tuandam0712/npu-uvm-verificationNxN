@@ -9,7 +9,7 @@ class npu_test #(
 
     npu_env #(N, width) env;
     int num_random_tests = 100;
-    int num_directed_tests = 2;
+    int num_directed_tests = 6;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -50,7 +50,10 @@ class npu_test #(
 
         run_one_sequence(seq_t::ZERO_TEST, "zero_seq");
         run_one_sequence(seq_t::IDENTITY_TEST, "identity_seq");
-
+        run_one_sequence(seq_t::MIN_MAX_TEST, "min_max_seq");
+        run_one_sequence(seq_t::ALL_POSITIVE_TEST, "all_positive_seq");
+        run_one_sequence(seq_t::ALL_NEGATIVE_TEST, "all_negative_seq");
+        run_one_sequence(seq_t::SPARSE_TEST, "sparse_seq");
         for (int iter = 0; iter < num_random_tests; iter++) begin
             run_one_sequence(seq_t::RANDOM_TEST, $sformatf("rand_seq_%0d", iter));
         end

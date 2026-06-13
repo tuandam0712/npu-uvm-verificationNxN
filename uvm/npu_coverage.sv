@@ -8,7 +8,10 @@ class npu_coverage #(
         MATRIX_ZERO,
         MATRIX_IDENTITY,
         MATRIX_RANDOM,
-        MATRIX_OTHER
+        MATRIX_OTHER,
+        ALL_POSITIVE,
+        ALL_NEGATIVE,
+        SPARSE
     } matrix_type_e;
     matrix_type_e sample_matrix_type;
     int signed sample_a;
@@ -18,17 +21,21 @@ class npu_coverage #(
 
         cp_a_value: coverpoint sample_a {
             bins zero     = {0};
-            bins positive = {[1:63]};
-            bins negative = {[-64:-1]};
+            bins min_negative = {-64};
+            bins max_positive = {63};
+            bins positive = {[1:62]};
+            bins negative = {[-63:-1]};
         }
 
         cp_b_value: coverpoint sample_b {
             bins zero     = {0};
-            bins positive = {[1:63]};
-            bins negative = {[-64:-1]};
+            bins min_negative = {-64};
+            bins max_positive = {63};
+            bins positive = {[1:62]};
+            bins negative = {[-63:-1]};
         }
 
-        cross_a_b_sign: cross cp_a_value, cp_b_value;
+        cross_a_b_value: cross cp_a_value, cp_b_value;
     endgroup
     covergroup cg_matrix_pattern;
         option.per_instance = 1;
@@ -36,6 +43,9 @@ class npu_coverage #(
             bins zero = {MATRIX_ZERO};
             bins identity = {MATRIX_IDENTITY};
             bins random = {MATRIX_RANDOM};
+            bins all_positive = {ALL_POSITIVE};
+            bins all_negative = {ALL_NEGATIVE};
+            bins sparse = {SPARSE};
             ignore_bins ignore_other = {MATRIX_OTHER};
         }
     endgroup
@@ -65,9 +75,45 @@ class npu_coverage #(
         end
         return 1;
     endfunction
+    function bit is_all_positive(input item_t t);
+        for (int i = 0; i < N; i++) begin
+            for (int j = 0; j < N; j++) begin
+                if(t.a[i][j] != 63) return 0;
+                if(t.b[i][j] != 63) return 0;
+            end
+        end
+        return 1;
+    endfunction
+    function bit is_all_negative(input item_t t);
+        for (int i = 0; i < N; i++) begin
+            for (int j = 0; j < N; j++) begin
+                if(t.a[i][j] != -64) return 0;
+                if(t.b[i][j] != -64) return 0;
+            end
+        end
+        return 1;
+    endfunction
+    function bit is_sparse(input item_t t);
+        for (int i = 0; i < N; i++) begin
+            for (int j = 0; j < N; j++) begin
+                if(i == j) begin
+                    if(t.a[i][j] != 5) return 0;
+                    if(t.b[i][j] != -2) return 0;
+                end
+                else begin
+                    if(t.a[i][j] != 0) return 0;
+                    if(t.b[i][j] != 0) return 0;
+                end
+            end
+        end
+        return 1;
+    endfunction
     virtual function void write(item_t t);
         if(is_zero_matrix(t)) sample_matrix_type = MATRIX_ZERO;
         else if(is_identity_matrix(t)) sample_matrix_type = MATRIX_IDENTITY;
+        else if(is_all_positive(t)) sample_matrix_type = ALL_POSITIVE;
+        else if(is_all_negative(t)) sample_matrix_type = ALL_NEGATIVE;
+        else if(is_sparse(t)) sample_matrix_type = SPARSE;
         else sample_matrix_type = MATRIX_RANDOM;
         cg_matrix_pattern.sample();
         for (int i = 0; i < N; i++) begin
@@ -101,8 +147,10 @@ class npu_output_coverage #(
 
         cp_c_value: coverpoint sample_c {
             bins zero     = {0};
-            bins positive = {[1:32767]};
-            bins negative = {[-32768:-1]};
+            bins large_negative = {[-32768:-101]};
+            bins large_positive = {[101:32767]};
+            bins small_negative = {[-100:-1]};
+            bins small_positive = {[1:100]};
         }
     endgroup
 
