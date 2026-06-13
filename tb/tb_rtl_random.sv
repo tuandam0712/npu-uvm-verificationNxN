@@ -208,8 +208,8 @@ module tb_rtl_random;
         for (int test_id = 1; test_id <= NUM_TESTS; test_id++) begin
             for (int i = 0; i < N; i++) begin
                 for (int j = 0; j < N; j++) begin
-                    A[i][j] = ($random(seed) % 128) - 64;
-                    B[i][j] = ($random(seed) % 128) - 64;
+                    A[i][j] = ($random(seed) % (1 << (width-1)));
+                    B[i][j] = ($random(seed) % (1 << (width-1)));
                 end
             end
 

@@ -31,8 +31,7 @@ module apb_wrapper_smoke_tb;
     int val;
     apb_npu_wrapper #(
         .N(N),
-        .DATA_WIDTH(8),
-        .ACC_WIDTH(32)
+        .DATA_WIDTH(8)
     ) dut (
         .pclk    (pclk),
         .presetn (presetn),
@@ -127,7 +126,7 @@ module apb_wrapper_smoke_tb;
                 for (col = 0; col < N; col++) begin
                     idx = row*N + col;
 
-                    val = $urandom_range(0, 3);
+                    val = $urandom_range(0, 6) - 3;
                     A_mat[row][col] = val;
 
                     apb_write_task(ADDR_A_BASE + 4*idx, A_mat[row][col]);
@@ -139,7 +138,7 @@ module apb_wrapper_smoke_tb;
                 for (col = 0; col < N; col++) begin
                     idx = row*N + col;
 
-                    val = $urandom_range(0, 3);
+                    val = $urandom_range(0, 6) - 3;
                     B_mat[row][col] = val;
 
                     apb_write_task(ADDR_B_BASE + 4*idx, B_mat[row][col]);

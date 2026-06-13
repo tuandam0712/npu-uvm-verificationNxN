@@ -143,70 +143,45 @@ module systolic_arr_NxN #(
             end
         end
     endgenerate
-    //sva
-    // generate
-    //     for (genvar i = 0; i < N; i++) begin : gen_valid_latency
-    //         for (genvar j = 0; j < N; j++) begin : gen_valid_latency_col
-    //             localparam int LAT = i + j;
-                
-    //             // Nếu LAT == 0, valid_in chính là pe_valid[0][0]
-    //             if (LAT == 0) begin
-    //                 property p_valid_wavefront_00;
-    //                     @(posedge clk) disable iff (!rst_n)
-    //                     valid_in |-> pe_valid[i][j];
-    //                 endproperty
-    //                 A_VALID_WAVEFRONT_00: assert property(p_valid_wavefront_00);
-    //             end
-    //             else begin
-    //                 property p_valid_wavefront;
-    //                     @(posedge clk) disable iff (!rst_n)
-    //                     valid_in |-> ##LAT pe_valid[i][j];
-    //                 endproperty
-    //                 A_VALID_WAVEFRONT: assert property(p_valid_wavefront);
-    //             end
-    //         end
-    //     end
-    // endgenerate
-    // generate
-    //     for (genvar i = 0; i < N; i++) begin : gen_a_latency
-    //         for (genvar j = 0; j < N; j++) begin : gen_a_latency_col
-    //             if (j == 0) begin
-    //                 property p_a_delay0;
-    //                     @(posedge clk) disable iff (!rst_n)
-    //                     pe_valid[i][j] |-> (a_wire[i][j] == a_in[i]);
-    //                 endproperty
-    //                 A_A_DELAY0: assert property(p_a_delay0);
-    //             end
-    //             else begin
-    //                 property p_a_delay;
-    //                     @(posedge clk) disable iff (!rst_n)
-    //                     pe_valid[i][j] |-> (a_wire[i][j] == $past(a_in[i], j));
-    //                 endproperty
-    //                 A_A_DELAY: assert property(p_a_delay);
-    //             end
-    //         end
-    //     end
-    // endgenerate
-    // generate
-    //     for (genvar i = 0; i < N; i++) begin : gen_b_latency
-    //         for (genvar j = 0; j < N; j++) begin : gen_b_latency_col
-    //             if (i == 0) begin
-    //                 property p_b_delay0;
-    //                     @(posedge clk) disable iff (!rst_n)
-    //                     pe_valid[i][j] |-> (b_wire[i][j] == b_in[j]);
-    //                 endproperty
-    //                 A_B_DELAY0: assert property(p_b_delay0);
-    //             end
-    //             else begin
-    //                 property p_b_delay;
-    //                     @(posedge clk) disable iff (!rst_n)
-    //                     pe_valid[i][j] |-> (b_wire[i][j] == $past(b_in[j], i));
-    //                 endproperty
-    //                 A_B_DELAY: assert property(p_b_delay);
-    //             end
-    //         end
-    //     end
-    // endgenerate
+    generate
+        for (genvar i = 0; i < N; i++) begin : gen_valid_latency
+            for (genvar j = 0; j < N; j++) begin : gen_valid_latency_col
+                localparam int LAT = i + j + 1;
+                property p_valid_wavefront;
+                    @(posedge clk) disable iff (!rst_n || clear)
+                    valid_in |-> ##LAT pe_valid[i][j];
+                endproperty
+                A_VALID_WAVEFRONT: assert property(p_valid_wavefront)
+                else $error("[ARR_SVA] Valid wavefront failed at PE[%0d][%0d], expected delay %0d", i, j, LAT);
+            end
+        end
+    endgenerate
+    generate
+        for (genvar i = 0; i < N; i++) begin : gen_a_latency
+            for (genvar j = 0; j < N; j++) begin : gen_a_latency_col
+                localparam int LAT = i + j + 1;
+                property p_a_delay;
+                    @(posedge clk) disable iff (!rst_n || clear)
+                    pe_valid[i][j] |-> (a_wire[i][j] == $past(a_in[i], LAT));
+                endproperty
+                A_A_DELAY: assert property(p_a_delay)
+                else $error("[ARR_SVA] A operand mismatch at PE[%0d][%0d], expected past value of a_in[%0d] from %0d cycles ago", i, j, i, LAT);
+            end
+        end
+    endgenerate
+    generate
+        for (genvar i = 0; i < N; i++) begin : gen_b_latency
+            for (genvar j = 0; j < N; j++) begin : gen_b_latency_col
+                localparam int LAT = i + j + 1;
+                property p_b_delay;
+                    @(posedge clk) disable iff (!rst_n || clear)
+                    pe_valid[i][j] |-> (b_wire[i][j] == $past(b_in[j], LAT));
+                endproperty
+                A_B_DELAY: assert property(p_b_delay)
+                else $error("[ARR_SVA] B operand mismatch at PE[%0d][%0d], expected past value of b_in[%0d] from %0d cycles ago", i, j, j, LAT);
+            end
+        end
+    endgenerate
     generate
         for (genvar i = 0; i < N; i++) begin : gen_nox
             for (genvar j = 0; j < N; j++) begin : gen_nox_col

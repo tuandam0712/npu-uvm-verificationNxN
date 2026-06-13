@@ -25,7 +25,7 @@ module apb_npu_wrapper #(
     logic start_pulse, busy, done;
     logic [DATA_WIDTH-1:0] a_regs [0:NUM_ELEMS-1];
     logic [DATA_WIDTH-1:0] b_regs [0:NUM_ELEMS-1];
-    logic [ACC_WIDTH-1:0] c_regs [0:NUM_ELEMS-1];
+    logic signed [ACC_WIDTH-1:0] c_regs [0:NUM_ELEMS-1];
     integer i;
     logic signed [DATA_WIDTH-1:0] npu_a_in [0:N-1];
     logic signed [DATA_WIDTH-1:0] npu_b_in [0:N-1];
@@ -103,7 +103,7 @@ module apb_npu_wrapper #(
                 default: begin
                     prdata = 32'h0;
                     if((paddr >= ADDR_C_BASE) && (paddr < ADDR_C_BASE + NUM_ELEMS*4)) begin
-                        prdata = c_regs[(paddr - ADDR_C_BASE) >> 2];
+                        prdata = 32'($signed(c_regs[(paddr - ADDR_C_BASE) >> 2]));
                     end
                 end
             endcase
