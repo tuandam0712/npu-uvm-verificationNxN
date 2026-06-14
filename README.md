@@ -1,56 +1,54 @@
 # NxN Systolic Array NPU Verification using UVM
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Top Architecture](#top-architecture)
-- [Processing Element](#processing-element-pe)
-- [RTL Structure](#rtl-structure)
-- [Verification Architecture](#verification-architecture)
-- [Scoreboard and Golden Model](#scoreboard-and-golden-model)
-- [SystemVerilog Assertions](#systemverilog-assertions)
-- [Functional Coverage](#functional-coverage)
-- [Regression Results](#regression-results)
-- [How to Run](#how-to-run)
-- [Future Work](#future-work)
-
 ## Overview
 
-This project implements and verifies a parameterizable NxN Neural Processing Unit (NPU) based on a systolic array architecture for signed INT8 matrix multiplication.
+This project implements and verifies a parameterizable NxN systolic-array-based NPU for signed INT8 matrix multiplication.
 
-The RTL design is developed in SystemVerilog and supports configurable array dimensions through parameterization.
+The RTL design is written in SystemVerilog and supports configurable array size through parameters. The current verified configuration is:
 
-A complete UVM verification environment is built to validate functionality, timing behavior, and data propagation across the systolic array.
+```text
+N     = 8
+width = 8
+```
 
-Verification techniques used in this project include:
+The verification environment is built using UVM and focuses on functional correctness, systolic data propagation, controller sequencing, scoreboard checking, assertions, and functional coverage.
+
+Verification techniques used in the current project:
 
 - Directed testing
 - Constrained-random testing
-- Golden-model scoreboard checking
+- Back-to-back transaction testing
+- Self-checking scoreboard
 - SystemVerilog Assertions (SVA)
 - Functional coverage
-- Regression testing
+- Regression testing in QuestaSim/ModelSim
 
-Current regression status:
+## Current Regression Status
+
+The latest clean regression contains:
 
 | Metric | Result |
 |---|---:|
-| Total Tests | 106 |
+| Total Tests | 126 |
 | Directed Tests | 6 |
+| Back-to-Back Random Tests | 20 |
 | Random Tests | 100 |
-| Passed | 106 |
+| Passed | 126 |
 | Failed | 0 |
+| UVM Warnings | 0 |
 | UVM Errors | 0 |
 | UVM Fatals | 0 |
 
-Current functional coverage status:
+Latest functional coverage result:
 
 | Coverage Type | Result |
 |---|---:|
 | Input Data Coverage | 100% |
 | Matrix Pattern Coverage | 100% |
+| Scenario Coverage | 100% |
 | Output Data Coverage | 100% |
-| Total Functional Coverage | 100% |
+
+> Note: These numbers refer to the UVM functional coverage and regression log currently produced by the project. Code coverage closure such as statement, branch, condition, expression, and FSM transition coverage is not claimed unless a separate coverage report is generated and committed.
 
 ## Top Architecture
 
@@ -68,16 +66,27 @@ The controller manages the computation flow using the following states:
 - WAIT_DRAIN
 - DONE
 
+Main controller responsibilities:
+
+- Generate the `clear` signal before computation.
+- Generate the `valid_in` signal during input loading.
+- Control the compute and drain latency.
+- Assert `done` when the output matrix is ready.
+
 ### NxN Systolic Array
 
-- The systolic array is composed of NxN Processing Elements (PEs).
-- Input matrix A propagates horizontally across the array.
-- Input matrix B propagates vertically across the array.
-- A wavefront-based valid signal propagates together with the operands to guarantee timing alignment.
+The systolic array is composed of NxN processing elements.
+
+Main behavior:
+
+- Matrix A operands propagate horizontally.
+- Matrix B operands propagate vertically.
+- Valid signals propagate as a wavefront to align data movement and MAC operations.
+- Output matrix elements are accumulated inside the PEs.
 
 ## Processing Element (PE)
 
-Each PE is intentionally designed as a lightweight MAC cell.
+Each PE is a signed multiply-accumulate cell.
 
 Inputs:
 
@@ -94,10 +103,10 @@ Operation priority:
 
 1. Reset
 2. Clear
-3. MAC operation
-4. Hold accumulated value
+3. MAC operation when `valid = 1`
+4. Hold accumulated value when not computing
 
-Operand forwarding is not implemented inside the PE. Data propagation and skew management are handled at the systolic array level.
+Operand forwarding is not implemented inside the PE. Operand skewing and propagation are handled at the systolic array level.
 
 ## RTL Structure
 
@@ -111,9 +120,9 @@ rtl/
 
 | File | Description |
 |---|---|
-| `pe.sv` | Implements signed Multiply-Accumulate (MAC) functionality. |
-| `systolic_arr_NxN.sv` | Implements operand skewing, valid propagation, and PE interconnection. |
-| `sa_controller_NxN.sv` | Controls computation sequencing and latency management. |
+| `pe.sv` | Signed multiply-accumulate processing element. |
+| `systolic_arr_NxN.sv` | NxN PE interconnection, operand propagation, and valid wavefront. |
+| `sa_controller_NxN.sv` | FSM controller for clear, compute, drain, and done sequencing. |
 | `npu_top_NxN.sv` | Top-level integration of controller and systolic array. |
 
 ## Verification Architecture
@@ -122,7 +131,8 @@ rtl/
 
 The UVM environment includes:
 
-- Sequence
+- Sequence item
+- Sequences
 - Driver
 - Input monitor
 - Output monitor
@@ -132,44 +142,50 @@ The UVM environment includes:
 - Environment
 - Test
 
+The environment is transaction-based. For a normal transaction, the driver sends one matrix multiplication operation, the input monitor captures the input matrix transaction, the output monitor captures the output matrix when `done` is asserted, and the scoreboard compares actual output against the golden model.
+
 ## Scoreboard and Golden Model
 
-The verification environment uses a self-checking scoreboard.
+The scoreboard is self-checking.
 
-Input transactions captured by the input monitor are used to generate expected matrix multiplication results through a golden reference model.
+Input transactions captured by the input monitor are used to compute the expected matrix multiplication result:
 
-Output transactions captured by the output monitor are compared against the expected results.
+```text
+C[i][j] = sum(A[i][k] * B[k][j]) for k = 0 to N-1
+```
 
-A transaction is reported as PASS only when all matrix elements match the expected reference values.
+The golden model computes the full-precision result using a 64-bit signed temporary value, then casts the expected result to the DUT accumulator width before comparison. This matches the fixed-width hardware accumulator behavior.
 
-This approach enables automated regression testing without manual waveform inspection.
+A transaction is reported as PASS only when all matrix elements match.
 
 ## SystemVerilog Assertions
 
-Implemented assertion categories:
+The project includes SVA checks for important RTL behavior.
 
-### Processing Element (PE)
+Assertion categories:
+
+### Processing Element
 
 - Reset behavior
 - Clear behavior
 - Hold behavior
-- MAC operation correctness
+- MAC operation behavior
 
 ### Controller
 
-- State transition checking
-- Done pulse width checking
-- Start-to-done latency checking
+- FSM transition behavior
+- `done` behavior
+- Start-to-done sequencing/latency behavior
 
 ### Systolic Array
 
 - Valid wavefront propagation
-- Operand alignment checking
+- Operand alignment
 - No-X checking during valid operation
 
 ## Functional Coverage
 
-Functional coverage is used to measure verification completeness and scenario exploration.
+Functional coverage is used to measure input value classes, matrix patterns, scenario types, and output value ranges.
 
 ### Input Data Coverage
 
@@ -178,11 +194,9 @@ Input operands A and B are categorized into boundary-aware value classes:
 - Zero value
 - Minimum negative boundary value: `-64`
 - Maximum positive boundary value: `63`
-- Normal positive range: `[1:62]`
-- Normal negative range: `[-63:-1]`
+- Positive range: `[1:62]`
+- Negative range: `[-63:-1]`
 - Cross coverage between A and B value classes
-
-This improves the previous sign-only coverage by explicitly checking important boundary values used by signed INT8 MAC operations.
 
 ### Matrix Pattern Coverage
 
@@ -190,14 +204,22 @@ Directed matrix patterns include:
 
 - Zero matrix
 - Identity matrix
-- Random matrix
+- Min/max boundary matrix
 - All-positive matrix
 - All-negative matrix
 - Sparse matrix
+- Random matrix
+
+### Scenario Coverage
+
+Current scenario coverage includes:
+
+- Normal transaction spacing
+- Back-to-back transactions with zero idle gap
 
 ### Output Data Coverage
 
-Output matrix elements are categorized into:
+Output matrix elements are categorized into magnitude-aware classes:
 
 - Zero result
 - Small positive result
@@ -205,25 +227,19 @@ Output matrix elements are categorized into:
 - Small negative result
 - Large negative result
 
-Coverage closure target:
-
-- 100% input data coverage
-- 100% matrix pattern coverage
-- 100% output data coverage
-
 ## Regression Results
-
-The verification environment was executed using both directed and constrained-random testing.
 
 ### Regression Summary
 
 | Metric | Result |
 |---|---:|
-| Total Tests | 106 |
+| Total Tests | 126 |
 | Directed Tests | 6 |
+| Back-to-Back Random Tests | 20 |
 | Random Tests | 100 |
-| Passed | 106 |
+| Passed | 126 |
 | Failed | 0 |
+| UVM Warnings | 0 |
 | UVM Errors | 0 |
 | UVM Fatals | 0 |
 
@@ -233,64 +249,80 @@ The verification environment was executed using both directed and constrained-ra
 |---|---:|
 | Input Data Coverage | 100% |
 | Matrix Pattern Coverage | 100% |
+| Scenario Coverage | 100% |
 | Output Data Coverage | 100% |
-| Total Functional Coverage | 100% |
-
-Questa-generated coverage reports are stored under `reports/` when the coverage script is executed.
-
-Generated simulator databases such as `.ucdb`, `.wlf`, `.vcd`, `work/`, and raw transcripts are intentionally excluded from the repository.
 
 ## How to Run
 
-### Run normal UVM regression
+### Run UVM regression
 
 ```tcl
 do scripts/run_uvm.do
 ```
 
-Expected result:
+Expected clean result:
 
 ```text
-106/106 tests passed
-0 UVM errors
-0 UVM fatals
+tests=126 directed=6 btb=20 random=100
+SCB_PASS trans=126
+UVM_WARNING : 0
+UVM_ERROR   : 0
+UVM_FATAL   : 0
 ```
 
-### Run coverage closure
+### Run coverage
 
 ```tcl
 do scripts/run_cov.do
 ```
 
-This flow runs:
+Expected functional coverage result:
 
-- UVM normal regression
-- RTL reset-abort coverage test
-- UCDB coverage merge
-- Final coverage report generation
+```text
+input data coverage   = 100%
+matrix pattern cov    = 100%
+scenario cov          = 100%
+output data coverage  = 100%
+```
 
-Expected coverage result:
+## Current Limitations
 
-| Coverage Type | Result |
-|---|---:|
-| Statement Coverage | 100% |
-| Branch Coverage | 100% |
-| Condition Coverage | 100% |
-| Expression Coverage | 100% |
-| FSM State Coverage | 100% |
-| FSM Transition Coverage | 100% |
-| Functional Coverage | 100% |
+### Reset During Compute
+
+True reset-during-compute is not claimed as a supported verified feature in the current UVM environment.
+
+The current UVM environment is transaction-based and assumes that a started transaction eventually produces a valid `done` response. A reset asserted in the middle of computation aborts the active transaction and may legally produce no output. Supporting this correctly requires reset-aware driver, monitor, and scoreboard synchronization.
+
+This was analyzed during development, but it is not included in the clean regression to avoid false scoreboard mismatches or unstable transaction pairing.
+
+### Code Coverage
+
+Functional coverage is reported by the UVM coverage model. Full RTL code coverage closure is not claimed unless the corresponding Questa coverage report is generated and reviewed.
 
 ## Future Work
 
-Future improvements include:
+Planned improvements:
 
-- APB UVM agent and APB protocol-level verification
-- Advanced protocol assertions
-- Reset and start/busy corner-case sequences
-- Coverage closure automation
-- Regression infrastructure enhancement
-- Formal verification exploration
-- Reusable AI accelerator verification framework
+- Reset-aware UVM flow for true reset-during-compute testing
+- Start-while-busy corner-case testing
+- APB or AXI-Lite wrapper verification
+- Protocol-level assertions
+- More detailed latency and performance counters
+- Formal checks for PE/controller properties
+- Regression automation and report generation
 
-Long-term goal: evolve this project into a reusable open-source verification platform for AI accelerator IPs.
+## Project Summary
+
+Current verified status:
+
+```text
+NPU NxN UVM verification
+Configuration: N=8, width=8
+Directed tests: 6
+Back-to-back random tests: 20
+Random tests: 100
+Total clean regression: 126 tests
+Scoreboard: width-accurate golden model
+Functional coverage: input/matrix/scenario/output coverage all 100%
+Reset-during-compute: documented as future reset-aware enhancement
+```
