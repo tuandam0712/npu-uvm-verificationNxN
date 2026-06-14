@@ -11,7 +11,7 @@ interface npu_if #(
     logic signed [width-1:0] a [N-1:0];
     logic signed [width-1:0] b [N-1:0];
     logic signed [ACC_WIDTH-1:0] c [N-1:0][N-1:0];
-
+    int scenario;
     clocking drv_cb @(posedge clk);
         default input #1step output #0;
         output rst_n, start;

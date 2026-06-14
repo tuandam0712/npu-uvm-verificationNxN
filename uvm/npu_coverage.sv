@@ -14,6 +14,7 @@ class npu_coverage #(
         SPARSE
     } matrix_type_e;
     matrix_type_e sample_matrix_type;
+    item_t::scenario_e sample_scenario;
     int signed sample_a;
     int signed sample_b;
     covergroup cg_input_data;
@@ -49,10 +50,19 @@ class npu_coverage #(
             ignore_bins ignore_other = {MATRIX_OTHER};
         }
     endgroup
+    covergroup cg_scenario;
+        option.per_instance = 1;
+
+        cp_scenario: coverpoint sample_scenario {
+            bins normal       = {item_t::SCENARIO_NORMAL};
+            bins back_to_back = {item_t::SCENARIO_BACK_TO_BACK};
+        }
+    endgroup
     function new(string name, uvm_component parent);
         super.new(name, parent);
         cg_input_data = new();
         cg_matrix_pattern = new();
+        cg_scenario = new();
     endfunction
     function bit is_zero_matrix(input item_t t);
         for (int i = 0; i < N; i++) begin
@@ -115,6 +125,8 @@ class npu_coverage #(
         else if(is_all_negative(t)) sample_matrix_type = ALL_NEGATIVE;
         else if(is_sparse(t)) sample_matrix_type = SPARSE;
         else sample_matrix_type = MATRIX_RANDOM;
+        // sample_scenario = t.scenario;
+        // cg_scenario.sample();
         cg_matrix_pattern.sample();
         for (int i = 0; i < N; i++) begin
             for (int j = 0; j < N; j++) begin
@@ -124,9 +136,18 @@ class npu_coverage #(
             end
         end
     endfunction
+    function void sample_scenario_cov(item_t::scenario_e scenario);
+        sample_scenario = scenario;
+        cg_scenario.sample();
+    endfunction
     function void report_phase(uvm_phase phase);
         super.report_phase(phase);
-        `uvm_info("COV",$sformatf("in data cov = %.2f%%, mat pattern cov = %.2f%%", cg_input_data.get_coverage(), cg_matrix_pattern.get_coverage()), UVM_LOW)
+        `uvm_info("COV",
+            $sformatf("in data cov = %.2f%%, mat pattern cov = %.2f%%, scenario cov = %.2f%%",
+                    cg_input_data.get_coverage(),
+                    cg_matrix_pattern.get_coverage(),
+                    cg_scenario.get_coverage()),
+            UVM_LOW)
     endfunction
 endclass
 class npu_output_coverage #(

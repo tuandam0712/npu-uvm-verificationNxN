@@ -13,7 +13,10 @@ class npu_sequence #(
         ALL_NEGATIVE_TEST,
         SPARSE_TEST
     } test_mode_e;
+    typedef npu_sequence_item #(N, width) item_t;
+    typedef item_t::scenario_e scenario_e;
 
+    scenario_e scenario = item_t::SCENARIO_NORMAL;
     test_mode_e mode = RANDOM_TEST;
 
     function new(string name = "npu_sequence");
@@ -24,6 +27,7 @@ class npu_sequence #(
         npu_sequence_item #(N, width) req;
 
         req = npu_sequence_item #(N, width)::type_id::create("req");
+        req.scenario = scenario;
         start_item(req);
 
         case (mode)
