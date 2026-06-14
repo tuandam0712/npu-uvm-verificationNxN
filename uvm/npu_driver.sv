@@ -7,7 +7,6 @@ class npu_driver #(
     typedef npu_sequence_item #(N, width) item_t;
 
     virtual npu_if #(N, width) vif;
-
     function new(string name, uvm_component parent);
         super.new(name, parent);
     endfunction
@@ -29,10 +28,8 @@ class npu_driver #(
             seq_item_port.get_next_item(req);
             wait(vif.done === 1'b0);
             @(posedge vif.clk);
-
             drive_transaction(req);
             seq_item_port.item_done();
-
             wait(vif.done === 1'b1);
             @(posedge vif.clk);
         end

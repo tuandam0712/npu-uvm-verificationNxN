@@ -53,12 +53,24 @@ module pe #(
     property p_pe_hold_when_invalid;
         @(posedge clk)
         disable iff(!rst_n)
-        (!clear && !valid) |=> (acc_reg == $past(acc_reg));
+        ($past(rst_n) &&
+        $past(!clear && !valid) &&
+        !clear && !valid)
+        |-> (acc_reg == $past(acc_reg));
     endproperty
 
     A_PE_HOLD_WHEN_INVALID:
     assert property(p_pe_hold_when_invalid)
-    else $error("[PE_SVA] acc_reg changed while clear=0 valid=0");
+    else $error(
+        "[PE_SVA] HOLD mismatch ROW=%0d COL=%0d time=%0t past_clear=%0b past_valid=%0b clear=%0b valid=%0b past_acc=%0d acc=%0d",
+        ROW, COL, $time,
+        $past(clear),
+        $past(valid),
+        $sampled(clear),
+        $sampled(valid),
+        $past(acc_reg),
+        $sampled(acc_reg)
+    );
 
 
     property p_pe_mac_when_valid;

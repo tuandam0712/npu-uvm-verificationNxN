@@ -18,7 +18,7 @@ module tb_npu_nxn;
         .b_in(vif.b),
         .done(vif.done),
         .c(vif.c),
-        .valid_in(vif.valid_in)  // THÊM DÒNG NÀY
+        .valid_in(vif.valid_in) 
     );
     
     always #5 clk = ~clk;
