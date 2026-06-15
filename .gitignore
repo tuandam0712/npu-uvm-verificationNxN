@@ -7,7 +7,9 @@ transcript
 *.jou
 *.log
 *.tmp
-
+*.ini
+*.mpf
+*.cr.mti
 # Coverage database
 coverage.ucdb
 *.cov

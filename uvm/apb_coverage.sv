@@ -22,9 +22,9 @@ class apb_coverage extends uvm_subscriber #(apb_sequence_item);
         cp_addr: coverpoint addr {
             bins control = {32'h0000_0000};
             bins status  = {32'h0000_0004};
-            bins a_base  = {32'h0000_0010};
-            bins b_base  = {32'h0000_0110};
-            bins c_base  = {32'h0000_0210};
+            bins a_region = {[32'h0000_0010 : 32'h0000_010C]};
+            bins b_region = {[32'h0000_0110 : 32'h0000_020C]};
+            bins c_region = {[32'h0000_0210 : 32'h0000_030C]};
             bins other   = default;
         }
 

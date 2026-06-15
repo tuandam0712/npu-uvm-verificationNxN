@@ -39,7 +39,7 @@ The APB wrapper UVM environment focuses on register-mapped access, APB-controlle
 APB wrapper documentation is provided in:
 
 ```text
-docs/APB_REG_MAP.md
+docs/APB_REGISTER_MAP.md
 docs/APB_TESTPLAN.md
 ```
 

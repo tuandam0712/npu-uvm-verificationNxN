@@ -1,3 +1,4 @@
+file mkdir reports
 transcript file reports/apb_regression.log
 
 if {[file exists work]} {
@@ -16,7 +17,7 @@ vlog -sv +incdir+rtl rtl/apb_npu_wrapper.sv
 vlog -sv +incdir+uvm uvm/apb_if.sv
 vlog -sv +incdir+uvm uvm/apb_pkg.sv
 
-vlog -sv +incdir+uvm uvm/apb_protocol_sva.sv
+vlog -sv +incdir+tb tb/apb_protocol_sva.sv
 
 vlog -sv +incdir+uvm +incdir+rtl tb/tb_apb_npu_wrapper.sv
 
