@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module apb_wrapper_smoke_tb;
     localparam int N = 8;
     localparam int NUM_TESTS = 100;
