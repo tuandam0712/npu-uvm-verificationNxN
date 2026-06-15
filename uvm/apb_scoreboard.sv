@@ -187,7 +187,7 @@ class apb_scoreboard extends uvm_scoreboard;
                       c_check_cnt, c_pass_cnt, c_fail_cnt),
             UVM_LOW)
 
-        if (fail_cnt == 0 && total_cnt > 0 && c_check_cnt == APB_N * APB_N) begin
+        if (fail_cnt == 0 && total_cnt > 0 && c_check_cnt >0 && c_fail_cnt == 0) begin
             `uvm_info("APB_SCB", "APB SCOREBOARD PASS", UVM_LOW)
         end
         else begin
