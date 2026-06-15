@@ -19,6 +19,7 @@ class apb_test extends uvm_test;
         apb_matrix_compute_sequence compute_seq;
         apb_zero_matrix_sequence zero_seq;
         apb_sparse_matrix_sequence sparse_seq;
+        apb_random_matrix_sequence random_seq;
         phase.raise_objection(this);
 
         seq = apb_reg_access_sequence::type_id::create("seq");
@@ -29,6 +30,8 @@ class apb_test extends uvm_test;
         zero_seq.start(env.agent.sqr);
         sparse_seq = apb_sparse_matrix_sequence::type_id::create("sparse_seq");
         sparse_seq.start(env.agent.sqr);
+        random_seq = apb_random_matrix_sequence::type_id::create("random_seq");
+        random_seq.start(env.agent.sqr);
         phase.drop_objection(this);
     endtask
 
