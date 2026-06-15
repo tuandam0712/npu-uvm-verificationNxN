@@ -2,7 +2,7 @@ package apb_pkg;
 
     import uvm_pkg::*;
     `include "uvm_macros.svh"
-
+    `include "apb_reg_map.sv"
     `include "apb_sequence_item.sv"
     `include "apb_sequence.sv"
     `include "apb_sequencer.sv"

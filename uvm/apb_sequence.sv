@@ -61,22 +61,22 @@ class apb_reg_access_sequence extends apb_base_sequence;
         `uvm_info("APB_SEQ", "Starting APB register access sequence", UVM_LOW)
 
         // CONTROL register
-        apb_write(32'h0000_0000, 32'h0000_0000);
-        apb_read (32'h0000_0000);
+        apb_write(APB_CONTROL_ADDR, 32'h0000_0000);
+        apb_read (APB_CONTROL_ADDR);
 
         // STATUS register
-        apb_read (32'h0000_0004);
+        apb_read (APB_STATUS_ADDR);
 
         // A matrix region
-        apb_write(32'h0000_0010, 32'h0000_0001);
-        apb_read (32'h0000_0010);
+        apb_write(APB_A_BASE, 32'h0000_0001);
+        apb_read (APB_A_BASE);
 
         // B matrix region
-        apb_write(32'h0000_0040, 32'h0000_0002);
-        apb_read (32'h0000_0040);
+        apb_write(APB_B_BASE, 32'h0000_0002);
+        apb_read (APB_B_BASE);
 
         // C matrix region
-        apb_read (32'h0000_0080);
+        apb_read (APB_C_BASE);
 
         `uvm_info("APB_SEQ", "Finished APB register access sequence", UVM_LOW)
     endtask
