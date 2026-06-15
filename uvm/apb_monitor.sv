@@ -34,7 +34,7 @@ class apb_monitor extends uvm_monitor;
                             item.wdata,
                             item.rdata,
                             item.slverr),
-                    UVM_LOW)
+                    UVM_HIGH)
             end
         end
     endtask

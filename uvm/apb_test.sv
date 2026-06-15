@@ -16,12 +16,13 @@ class apb_test extends uvm_test;
 
     task run_phase(uvm_phase phase);
         apb_reg_access_sequence seq;
-
+        apb_matrix_compute_sequence compute_seq;
         phase.raise_objection(this);
 
         seq = apb_reg_access_sequence::type_id::create("seq");
         seq.start(env.agent.sqr);
-
+        compute_seq = apb_matrix_compute_sequence::type_id::create("compute_seq");
+        compute_seq.start(env.agent.sqr);
         phase.drop_objection(this);
     endtask
 

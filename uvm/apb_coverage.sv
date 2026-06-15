@@ -49,7 +49,7 @@ class apb_coverage extends uvm_subscriber #(apb_sequence_item);
                       t.addr,
                       t.slverr,
                       cg_apb.get_coverage()),
-            UVM_LOW)
+            UVM_HIGH)
     endfunction
 
     function void report_phase(uvm_phase phase);

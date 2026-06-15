@@ -51,7 +51,7 @@ class apb_scoreboard extends uvm_scoreboard;
                       item.addr,
                       item.wdata,
                       item.rdata),
-            UVM_LOW)
+            UVM_HIGH)
     endfunction
 
     function void report_phase(uvm_phase phase);
