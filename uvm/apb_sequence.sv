@@ -349,3 +349,68 @@ class apb_random_matrix_sequence extends apb_base_sequence;
     endtask
 
 endclass
+class apb_signed_matrix_sequence extends apb_base_sequence;
+
+    `uvm_object_utils(apb_signed_matrix_sequence)
+
+    function new(string name = "apb_signed_matrix_sequence");
+        super.new(name);
+    endfunction
+
+    task body();
+        bit [31:0] status;
+        int poll_count;
+        int val;
+
+        `uvm_info("APB_SEQ", "Starting APB signed matrix sequence", UVM_LOW)
+
+        // 1. Write A = diagonal matrix, diagonal = -1
+        // For 8-bit signed, -1 = 8'hFF.
+        for (int i = 0; i < APB_N; i++) begin
+            for (int j = 0; j < APB_N; j++) begin
+                if (i == j)
+                    apb_write(apb_a_addr(i, j), 32'h0000_00FF);
+                else
+                    apb_write(apb_a_addr(i, j), 32'h0000_0000);
+            end
+        end
+
+        // 2. Write B = positive pattern 1..64
+        for (int i = 0; i < APB_N; i++) begin
+            for (int j = 0; j < APB_N; j++) begin
+                val = i * APB_N + j + 1;
+                apb_write(apb_b_addr(i, j), val);
+            end
+        end
+
+        // 3. Start NPU
+        apb_write(APB_CONTROL_ADDR, 32'h0000_0001);
+
+        // 4. Poll done bit
+        poll_count = 0;
+        do begin
+            apb_read_data(APB_STATUS_ADDR, status);
+            poll_count++;
+
+            if (poll_count > 200) begin
+                `uvm_error("APB_SEQ", "Timeout waiting for NPU done in signed matrix sequence")
+                break;
+            end
+        end while (status[0] !== 1'b1);
+
+        `uvm_info("APB_SEQ",
+            $sformatf("Signed matrix done observed after %0d polls, status=0x%08h",
+                      poll_count, status),
+            UVM_LOW)
+
+        // 5. Read C matrix
+        for (int i = 0; i < APB_N; i++) begin
+            for (int j = 0; j < APB_N; j++) begin
+                apb_read(apb_c_addr(i, j));
+            end
+        end
+
+        `uvm_info("APB_SEQ", "Finished APB signed matrix sequence", UVM_LOW)
+    endtask
+
+endclass

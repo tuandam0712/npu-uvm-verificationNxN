@@ -50,7 +50,11 @@ class apb_driver extends uvm_driver #(apb_sequence_item);
         // Sample response at completed ACCESS cycle
         item.rdata  = vif.prdata;
         item.slverr = vif.pslverr;
-
+        if (item.slverr) begin
+            `uvm_warning("APB_DRV",
+                $sformatf("APB slave error detected addr=0x%08h write=%0b",
+                        item.addr, item.write))
+        end
         // ACCESS -> IDLE
         vif.psel    <= 1'b0;
         vif.penable <= 1'b0;
