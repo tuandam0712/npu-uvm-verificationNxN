@@ -12,6 +12,9 @@ class apb_scoreboard extends uvm_scoreboard;
     int c_pass_cnt;
     int c_fail_cnt;
 
+    int signed a_mem [APB_N * APB_N];
+    int signed b_mem [APB_N * APB_N];
+
     function new(string name = "apb_scoreboard", uvm_component parent = null);
         super.new(name, parent);
     endfunction
@@ -28,6 +31,21 @@ class apb_scoreboard extends uvm_scoreboard;
         c_check_cnt = 0;
         c_pass_cnt  = 0;
         c_fail_cnt  = 0;
+
+        for (int i = 0; i < APB_N * APB_N; i++) begin
+            a_mem[i] = 0;
+            b_mem[i] = 0;
+        end
+    endfunction
+
+    function bit is_a_addr(bit [31:0] addr);
+        return ((addr >= APB_A_BASE) &&
+                (addr <  APB_A_BASE + APB_N * APB_N * APB_WORD_BYTES));
+    endfunction
+
+    function bit is_b_addr(bit [31:0] addr);
+        return ((addr >= APB_B_BASE) &&
+                (addr <  APB_B_BASE + APB_N * APB_N * APB_WORD_BYTES));
     endfunction
 
     function bit is_c_addr(bit [31:0] addr);
@@ -35,22 +53,44 @@ class apb_scoreboard extends uvm_scoreboard;
                 (addr <  APB_C_BASE + APB_N * APB_N * APB_WORD_BYTES));
     endfunction
 
+    function int get_a_index(bit [31:0] addr);
+        return (addr - APB_A_BASE) >> 2;
+    endfunction
+
+    function int get_b_index(bit [31:0] addr);
+        return (addr - APB_B_BASE) >> 2;
+    endfunction
+
     function int get_c_index(bit [31:0] addr);
         return (addr - APB_C_BASE) >> 2;
     endfunction
 
-    function int expected_c_value(int index);
-        // Current compute sequence:
-        // A = identity
-        // B[index] = index + 1
-        // Therefore C = B
-        return index + 1;
+    function int signed sign_extend_data(bit [31:0] data);
+        bit signed [APB_DATA_WIDTH-1:0] tmp;
+        tmp = data[APB_DATA_WIDTH-1:0];
+        return tmp;
+    endfunction
+
+    function int signed expected_c_value(int c_index);
+        int row;
+        int col;
+        int signed sum;
+
+        row = c_index / APB_N;
+        col = c_index % APB_N;
+        sum = 0;
+
+        for (int k = 0; k < APB_N; k++) begin
+            sum += a_mem[row * APB_N + k] * b_mem[k * APB_N + col];
+        end
+
+        return sum;
     endfunction
 
     function void write(apb_sequence_item item);
         int index;
-        int expected;
-        int actual;
+        int signed expected;
+        int signed actual;
 
         total_cnt++;
 
@@ -72,8 +112,28 @@ class apb_scoreboard extends uvm_scoreboard;
             end
         end
 
-        // Golden check for C matrix reads
-        if ((item.write == 1'b0) && is_c_addr(item.addr)) begin
+        // Capture A/B writes into scoreboard memory model
+        if (item.write == 1'b1 && is_a_addr(item.addr)) begin
+            index = get_a_index(item.addr);
+            a_mem[index] = sign_extend_data(item.wdata);
+
+            `uvm_info("APB_SCB",
+                $sformatf("A model update index=%0d value=%0d",
+                          index, a_mem[index]),
+                UVM_HIGH)
+        end
+        else if (item.write == 1'b1 && is_b_addr(item.addr)) begin
+            index = get_b_index(item.addr);
+            b_mem[index] = sign_extend_data(item.wdata);
+
+            `uvm_info("APB_SCB",
+                $sformatf("B model update index=%0d value=%0d",
+                          index, b_mem[index]),
+                UVM_HIGH)
+        end
+
+        // Check C reads against dynamic golden model
+        if (item.write == 1'b0 && is_c_addr(item.addr)) begin
             index    = get_c_index(item.addr);
             expected = expected_c_value(index);
             actual   = $signed(item.rdata);
@@ -95,6 +155,7 @@ class apb_scoreboard extends uvm_scoreboard;
             end
             else begin
                 c_pass_cnt++;
+
                 `uvm_info("APB_SCB",
                     $sformatf("C PASS index=%0d expected=%0d actual=%0d",
                               index, expected, actual),
@@ -126,7 +187,7 @@ class apb_scoreboard extends uvm_scoreboard;
                       c_check_cnt, c_pass_cnt, c_fail_cnt),
             UVM_LOW)
 
-        if (fail_cnt == 0 && total_cnt > 0) begin
+        if (fail_cnt == 0 && total_cnt > 0 && c_check_cnt == APB_N * APB_N) begin
             `uvm_info("APB_SCB", "APB SCOREBOARD PASS", UVM_LOW)
         end
         else begin

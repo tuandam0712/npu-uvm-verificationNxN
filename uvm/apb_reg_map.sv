@@ -7,6 +7,7 @@ localparam bit [31:0] APB_B_BASE = 32'h0000_0110;
 localparam bit [31:0] APB_C_BASE = 32'h0000_0210;
 localparam int APB_N = 8;
 localparam int APB_WORD_BYTES = 4;
+localparam int APB_DATA_WIDTH = 8;
 
 function automatic bit [31:0] apb_a_addr(int row, int col);
     return APB_A_BASE + (row * APB_N + col) * APB_WORD_BYTES;
