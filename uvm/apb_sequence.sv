@@ -414,3 +414,91 @@ class apb_signed_matrix_sequence extends apb_base_sequence;
     endtask
 
 endclass
+class apb_status_behavior_sequence extends apb_base_sequence;
+
+    `uvm_object_utils(apb_status_behavior_sequence)
+
+    function new(string name = "apb_status_behavior_sequence");
+        super.new(name);
+    endfunction
+
+    task body();
+        bit [31:0] status;
+        int poll_count;
+
+        `uvm_info("APB_SEQ", "Starting APB status behavior sequence", UVM_LOW)
+
+        // 1. Read STATUS before start
+        apb_read_data(APB_STATUS_ADDR, status);
+
+        `uvm_info("APB_SEQ",
+            $sformatf("STATUS before new start = 0x%08h done=%0b busy=%0b",
+                      status, status[0], status[1]),
+            UVM_LOW)
+
+        // 2. Write A = identity matrix
+        for (int i = 0; i < APB_N; i++) begin
+            for (int j = 0; j < APB_N; j++) begin
+                if (i == j)
+                    apb_write(apb_a_addr(i, j), 32'h0000_0001);
+                else
+                    apb_write(apb_a_addr(i, j), 32'h0000_0000);
+            end
+        end
+
+        // 3. Write B = simple pattern
+        for (int i = 0; i < APB_N; i++) begin
+            for (int j = 0; j < APB_N; j++) begin
+                apb_write(apb_b_addr(i, j), i * APB_N + j + 1);
+            end
+        end
+
+        // 4. Start NPU
+        apb_write(APB_CONTROL_ADDR, 32'h0000_0001);
+
+        // 5. Read STATUS immediately after start a few times
+        for (int k = 0; k < 3; k++) begin
+            apb_read_data(APB_STATUS_ADDR, status);
+
+            `uvm_info("APB_SEQ",
+                $sformatf("STATUS during compute sample %0d = 0x%08h done=%0b busy=%0b",
+                          k, status, status[0], status[1]),
+                UVM_LOW)
+        end
+
+        // 6. Poll until done
+        poll_count = 0;
+        do begin
+            apb_read_data(APB_STATUS_ADDR, status);
+            poll_count++;
+
+            if (poll_count > 200) begin
+                `uvm_error("APB_SEQ", "Timeout waiting for NPU done in status behavior sequence")
+                break;
+            end
+        end while (status[0] !== 1'b1);
+
+        `uvm_info("APB_SEQ",
+            $sformatf("STATUS done observed after %0d polls, status=0x%08h done=%0b busy=%0b",
+                      poll_count, status, status[0], status[1]),
+            UVM_LOW)
+
+        // 7. Read STATUS after done
+        apb_read_data(APB_STATUS_ADDR, status);
+
+        `uvm_info("APB_SEQ",
+            $sformatf("STATUS after done = 0x%08h done=%0b busy=%0b",
+                      status, status[0], status[1]),
+            UVM_LOW)
+
+        // 8. Read C matrix to let scoreboard check this compute too
+        for (int i = 0; i < APB_N; i++) begin
+            for (int j = 0; j < APB_N; j++) begin
+                apb_read(apb_c_addr(i, j));
+            end
+        end
+
+        `uvm_info("APB_SEQ", "Finished APB status behavior sequence", UVM_LOW)
+    endtask
+
+endclass

@@ -21,6 +21,7 @@ class apb_test extends uvm_test;
         apb_sparse_matrix_sequence sparse_seq;
         apb_random_matrix_sequence random_seq;
         apb_signed_matrix_sequence signed_seq;
+        apb_status_behavior_sequence status_seq;
         phase.raise_objection(this);
 
         seq = apb_reg_access_sequence::type_id::create("seq");
@@ -35,6 +36,8 @@ class apb_test extends uvm_test;
         random_seq.start(env.agent.sqr);
         signed_seq = apb_signed_matrix_sequence::type_id::create("signed_seq");
         signed_seq.start(env.agent.sqr);
+        status_seq = apb_status_behavior_sequence::type_id::create("status_seq");   
+        status_seq.start(env.agent.sqr);
         phase.drop_objection(this);
     endtask
 
