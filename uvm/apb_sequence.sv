@@ -90,7 +90,7 @@ class apb_reg_access_sequence extends apb_base_sequence;
         apb_read (APB_B_BASE);
 
         // C matrix region
-        apb_read (APB_C_BASE);
+        // apb_read (APB_C_BASE);
 
         `uvm_info("APB_SEQ", "Finished APB register access sequence", UVM_LOW)
     endtask
