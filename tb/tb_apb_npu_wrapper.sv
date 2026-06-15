@@ -37,6 +37,17 @@ module tb_apb_npu_wrapper;
         .pslverr (apb_vif.pslverr)
     );
 
+    apb_protocol_sva apb_sva_i (
+        .pclk    (apb_vif.pclk),
+        .presetn (apb_vif.presetn),
+        .psel    (apb_vif.psel),
+        .penable (apb_vif.penable),
+        .pwrite  (apb_vif.pwrite),
+        .paddr   (apb_vif.paddr),
+        .pwdata  (apb_vif.pwdata),
+        .pready  (apb_vif.pready)
+    );
+
     initial begin
         uvm_config_db #(virtual apb_if)::set(
             null,
