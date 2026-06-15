@@ -17,8 +17,8 @@ class apb_coverage extends uvm_subscriber #(apb_sequence_item);
             bins control = {32'h0000_0000};
             bins status  = {32'h0000_0004};
             bins a_base  = {32'h0000_0010};
-            bins b_base  = {32'h0000_0040};
-            bins c_base  = {32'h0000_0080};
+            bins b_base  = {32'h0000_0110};
+            bins c_base  = {32'h0000_0210};
             bins other   = default;
         }
 
