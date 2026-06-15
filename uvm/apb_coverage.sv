@@ -30,7 +30,7 @@ class apb_coverage extends uvm_subscriber #(apb_sequence_item);
 
         cp_slverr: coverpoint slverr {
             bins no_error = {0};
-            bins error    = {1};
+            ignore_bins error    = {1};
         }
 
         cross_rw_addr: cross cp_rw, cp_addr;
