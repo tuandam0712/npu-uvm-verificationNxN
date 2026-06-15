@@ -237,6 +237,19 @@ Control/status registers should be verified as behavior, not only used as helper
 | Fix | Added counters for samples, start writes, status reads, C reads, busy seen, done seen, and slave errors seen. |
 | Result | APB coverage report became easier to interpret and correlate with scoreboard totals. |
 
+## APB Coverage Included Unsupported `pslverr=1` Bin
+
+| Item | Detail |
+|---|---|
+| Symptom | APB functional coverage was limited because the coverage model included an error bin for `pslverr=1`. |
+| Root Cause | The current APB wrapper ties `pslverr` to 0, so `pslverr=1` is not reachable in the implemented design. |
+| How It Was Found | Coverage report showed a missing error bin even though APB error response behavior is not implemented or claimed. |
+| Fix | Changed the coverage model to ignore the unsupported `pslverr=1` bin instead of counting it as a required coverage target. |
+| Result | APB functional coverage increased to 95.00% while keeping the limitation clearly documented. |
+
+### Lesson Learned
+
+Coverage should measure implemented and claimed behavior. Unsupported behavior should be documented and excluded from the coverage target, not silently counted as a missing bin.
 ### Lesson Learned
 
 Coverage is useful only when it explains what behavior was observed. A single percentage is not enough for debug or review.

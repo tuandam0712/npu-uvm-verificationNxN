@@ -100,6 +100,11 @@ busy_seen
 done_seen
 slverr_seen
 ```
+### Unsupported Error Response Bin
+
+The current APB wrapper does not implement active error response behavior and ties `pslverr` to 0. Because of this, the `pslverr=1` coverage bin is treated as unsupported and excluded from the APB functional coverage target.
+
+This avoids reporting an unreachable bin as a missing verification item.
 
 ## 7. APB Protocol SVA Plan
 
@@ -130,7 +135,7 @@ C matrix checks: 384 / 384 PASS
 UVM_WARNING: 0
 UVM_ERROR  : 0
 UVM_FATAL  : 0
-APB functional coverage: 82.50%
+APB functional coverage: 95.00%
 ```
 
 Coverage summary:

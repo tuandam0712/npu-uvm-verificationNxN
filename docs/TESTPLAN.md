@@ -264,7 +264,7 @@ Latest APB verification result:
 APB transactions: 1245 / 1245 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
-APB functional coverage: 82.50%
+APB functional coverage: 95.00%
 UVM_WARNING / UVM_ERROR / UVM_FATAL: 0 / 0 / 0
 ```
 

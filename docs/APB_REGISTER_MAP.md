@@ -118,7 +118,7 @@ C matrix checks: 384 / 384 PASS
 UVM_WARNING: 0
 UVM_ERROR  : 0
 UVM_FATAL  : 0
-APB functional coverage: 82.50%
+APB functional coverage: 95.00%
 ```
 
 Coverage summary:
@@ -136,6 +136,7 @@ slverr_seen  = 0
 ## Current Limitations
 
 - The APB wrapper currently uses zero-wait-state response.
-- APB error response behavior is not claimed because `pslverr` is not implemented as an active error mechanism.
-- Invalid address behavior is not claimed as verified.
+- The APB wrapper ties `pslverr` to 0, so active APB error response behavior is not implemented.
+- The APB coverage model excludes the unsupported `pslverr=1` bin instead of counting it as a missing coverage item.
+- Invalid address error behavior is not claimed as verified.
 - Full APB VIP-level constrained-random protocol verification is not claimed.

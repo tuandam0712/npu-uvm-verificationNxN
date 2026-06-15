@@ -81,7 +81,7 @@ Latest APB wrapper regression result:
 | UVM Warnings | 0 |
 | UVM Errors | 0 |
 | UVM Fatals | 0 |
-| APB Functional Coverage | 82.50% |
+| APB Functional Coverage | 95.00% |
 
 APB regression scenarios:
 
@@ -107,8 +107,6 @@ busy_seen    = 72
 done_seen    = 8
 slverr_seen  = 0
 ```
-
-> Note: These numbers refer to the UVM functional coverage and regression logs currently produced by the project. RTL code coverage closure such as statement, branch, condition, expression, and FSM transition coverage is not claimed unless a separate coverage report is generated and committed.
 
 ## Top Architecture
 
@@ -332,7 +330,9 @@ The APB coverage model tracks:
 - Busy and done status observations
 - Slave error observation count
 
-Current APB coverage is 82.50%. APB invalid-address and active `pslverr` behavior are not claimed because the current APB wrapper does not implement active error response behavior.
+Current APB functional coverage is 95.00%.
+
+The APB coverage model excludes the unsupported `pslverr=1` bin because the current APB wrapper ties `pslverr` to 0 and does not implement active error response behavior. Therefore, the reported APB functional coverage focuses on the supported APB behavior: read/write access, CONTROL/STATUS/A/B/C regions, start writes, status polling, busy/done observation, and C matrix readback.
 
 ## How to Run
 
@@ -434,7 +434,8 @@ APB wrapper UVM verification
 APB transactions: 1245 / 1245 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
-APB functional coverage: 82.50%
+APB functional coverage: 95.00%
+Unsupported pslverr error bin is excluded because current wrapper ties pslverr to 0
 UVM warnings/errors/fatals: 0 / 0 / 0
 
 Reset-during-compute: documented as future reset-aware enhancement
