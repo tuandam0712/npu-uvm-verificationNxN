@@ -22,7 +22,22 @@ Verification methods used:
 - SystemVerilog Assertions (SVA)
 - Functional coverage
 
-## 2. Features Under Verification
+## 2. Verification Layers
+
+This project contains two verification layers:
+
+| Layer | Purpose |
+|---|---|
+| NPU Core UVM | Verifies the systolic-array NPU core using direct matrix-level transactions |
+| APB Wrapper UVM | Verifies software-style APB access to the NPU wrapper |
+
+The NPU core UVM testplan is described in this file. The APB wrapper-specific testplan is documented separately in:
+
+```text
+docs/APB_TESTPLAN.md
+```
+
+## 3. Features Under Verification
 
 ### F1. Processing Element
 
@@ -59,7 +74,7 @@ The NPU shall produce output matrix values matching the scoreboard golden model.
 
 The NPU shall process multiple matrix multiplication transactions with zero idle gap between transactions in the test flow.
 
-## 3. Verification Matrix
+## 4. Verification Matrix
 
 | Feature | Directed | Random | Back-to-Back | SVA | Functional Coverage | Status |
 |---|---:|---:|---:|---:|---:|---|
@@ -72,7 +87,7 @@ The NPU shall process multiple matrix multiplication transactions with zero idle
 | Back-to-back transaction scenario | No | Yes | Yes | No | Yes | Verified in clean regression |
 | True reset during compute | No | No | No | No | No | Not claimed; future work |
 
-## 4. Risk Analysis
+## 5. Risk Analysis
 
 | ID | Risk Description | Detection Method | Current Status |
 |---|---|---|---|
@@ -86,9 +101,9 @@ The NPU shall process multiple matrix multiplication transactions with zero idle
 | R8 | Back-to-back transactions corrupt internal state. | Back-to-back random tests | Covered |
 | R9 | Reset during active compute aborts transaction and breaks UVM pairing. | Requires reset-aware UVM flow | Not claimed; future work |
 
-## 5. Test Scenarios
+## 6. Test Scenarios
 
-Current clean regression contains:
+Current clean NPU core regression contains:
 
 | Test Type | Count | Purpose |
 |---|---:|---|
@@ -111,7 +126,7 @@ Back-to-back tests:
 - Random matrix transactions executed with zero idle gap in the test flow.
 - Used to check whether the DUT and UVM environment can process consecutive operations without corrupting scoreboard pairing.
 
-## 6. Scoreboard Plan
+## 7. Scoreboard Plan
 
 The scoreboard compares actual DUT output against a software golden model.
 
@@ -128,7 +143,7 @@ Scoreboard pass criteria:
 - All output matrix elements must match the expected matrix.
 - One matrix transaction is reported as PASS only when every element matches.
 
-## 7. Functional Coverage Plan
+## 8. Functional Coverage Plan
 
 ### Input Coverage
 
@@ -173,9 +188,9 @@ Output matrix elements are categorized into magnitude-aware result classes:
 | `small_negative` | Output value is in `[-100:-1]`. |
 | `large_negative` | Output value is less than -100. |
 
-## 8. Closure Criteria
+## 9. Closure Criteria
 
-Verification is considered clean for the current scope when:
+Verification is considered clean for the current NPU core scope when:
 
 - All 6 directed tests pass.
 - All 20 back-to-back random tests pass.
@@ -186,7 +201,7 @@ Verification is considered clean for the current scope when:
 - No UVM errors are reported.
 - No UVM fatals are reported.
 
-## 9. Verification Traceability Matrix
+## 10. Verification Traceability Matrix
 
 | Feature | Test | Assertion | Coverage | Current Status |
 |---|---|---|---|---|
@@ -201,7 +216,7 @@ Verification is considered clean for the current scope when:
 | Back-to-back transactions | Back-to-back random tests | — | Scenario coverage | PASS in current regression |
 | End-to-end matrix multiply | Directed + random + back-to-back | — | Scoreboard comparison | PASS in current regression |
 
-## 10. Latest Clean Regression Result
+## 11. Latest Clean Regression Result
 
 | Metric | Result |
 |---|---:|
@@ -221,7 +236,7 @@ Verification is considered clean for the current scope when:
 | Scenario coverage | 100% |
 | Output data coverage | 100% |
 
-## 11. Known Limitation: Reset During Compute
+## 12. Known Limitation: Reset During Compute
 
 True reset-during-compute is not claimed as verified in the current clean regression.
 
@@ -235,14 +250,32 @@ Current decision:
 - Keep the clean regression stable.
 - List reset-aware UVM support as future work.
 
-## 12. Future Work
+## 13. APB Wrapper Verification
+
+The APB wrapper is verified as a separate layer. The detailed APB testplan is provided in:
+
+```text
+docs/APB_TESTPLAN.md
+```
+
+Latest APB verification result:
+
+```text
+APB transactions: 1245 / 1245 PASS
+C matrix checks: 384 / 384 PASS
+APB protocol SVA: PASS
+APB functional coverage: 82.50%
+UVM_WARNING / UVM_ERROR / UVM_FATAL: 0 / 0 / 0
+```
+
+## 14. Future Work
 
 Planned verification improvements:
 
 - Reset-aware UVM architecture for true reset-during-compute testing.
 - Start-while-busy corner-case test.
-- APB or AXI-Lite wrapper and protocol verification.
-- Protocol-level assertions.
+- AXI-Lite wrapper and protocol verification.
+- More advanced APB negative/error-response testing if active `pslverr` support is added.
 - RTL code coverage closure with committed coverage report.
 - Formal verification for selected PE/controller properties.
 - Regression automation and report generation.

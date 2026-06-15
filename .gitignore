@@ -1,13 +1,26 @@
 # Questa/ModelSim generated files
-/logs/
-logs/
 work/
-modelsim.ini
-modelsim.ini_lock
-modelsim.ini_new
 transcript
 *.wlf
 *.vcd
 *.ucdb
-*.mpf
-*.mti
+*.jou
+*.log
+*.tmp
+
+# Coverage database
+coverage.ucdb
+*.cov
+
+# Reports: ignore raw simulator logs/databases, keep human-readable summaries
+reports/*.log
+reports/*.wlf
+reports/*.ucdb
+!reports/*summary*.txt
+!reports/.gitkeep
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json

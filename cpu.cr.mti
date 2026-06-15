@@ -1,0 +1,111 @@
+D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_rtl_random.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_rtl_random.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module tb_rtl_random
+
+Top level modules:
+	tb_rtl_random
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv {2 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module apb_npu_wrapper
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv(116): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv(117): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv(120): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/apb_npu_wrapper.sv(121): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	apb_npu_wrapper
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_apb_npu_wrapper.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_apb_npu_wrapper.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module tb_apb_npu_wrapper
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package apb_pkg
+** Note: (vlog-2286) D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_apb_npu_wrapper.sv(6): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	tb_apb_npu_wrapper
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/apb_protocol_sva.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/apb_protocol_sva.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module apb_protocol_sva
+
+Top level modules:
+	apb_protocol_sva
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv {2 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module systolic_arr_NxN
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(10): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv(11): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	systolic_arr_NxN
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/apb_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/apb_pkg.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling package apb_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/apb_pkg.sv(4): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling package npu_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/npu_pkg.sv(3): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module sa_controller_NxN
+
+Top level modules:
+	sa_controller_NxN
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module pe
+
+Top level modules:
+	pe
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+** Note: (vlog-2286) D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/tb_npu_nxn.sv(5): Using implicit +incdir+D:/questa/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package tb_npu_nxn_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package npu_pkg
+-- Compiling module tb_npu_nxn
+
+Top level modules:
+	tb_npu_nxn
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/apb_if.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/uvm/apb_if.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling interface apb_if
+
+Top level modules:
+	--none--
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv {2 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module npu_top_NXN
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv(9): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/npu_top_NXN.sv(10): (vlog-13314) Defaulting port 'b_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	npu_top_NXN
+
+} {} {}} D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/apb_wrapper_smoke_tb.sv {1 {vlog -work work -vopt -sv -stats=none D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/tb/apb_wrapper_smoke_tb.sv
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module apb_wrapper_smoke_tb
+
+Top level modules:
+	apb_wrapper_smoke_tb
+
+} {} {}}
