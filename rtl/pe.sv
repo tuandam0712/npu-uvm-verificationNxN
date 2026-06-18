@@ -31,7 +31,7 @@ module pe #(
     //sva
     property p_pe_reset_clear_acc;
         @(posedge clk)
-        !rst_n |=> (acc_reg == '0);
+        !rst_n |-> (acc_reg == '0);
     endproperty
 
     A_PE_RESET_CLEAR_ACC:
