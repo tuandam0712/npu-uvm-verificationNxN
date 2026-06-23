@@ -4,39 +4,35 @@
 
 This project implements and verifies a parameterizable NxN systolic-array-based NPU for signed INT8 matrix multiplication.
 
-The RTL design is written in SystemVerilog and supports configurable array size through parameters. The current verified configuration is:
+Current verified configuration:
 
 ```text
 N     = 8
 width = 8
 ```
 
-The verification environment is built using UVM and focuses on functional correctness, systolic data propagation, controller sequencing, scoreboard checking, assertions, and functional coverage.
+The verification environment is built in SystemVerilog UVM and targets QuestaSim / Questa Intel FPGA Edition.
 
-Verification techniques used in the current project:
+Current verification techniques:
 
 - Directed testing
 - Constrained-random testing
+- Boundary-biased random testing
 - Back-to-back transaction testing
 - Self-checking scoreboard
 - SystemVerilog Assertions (SVA)
 - Functional coverage
-- Regression testing in QuestaSim/ModelSim
+
+Coverage closure is treated as a measure of meaningful verified behavior. Unsupported behavior and artificial bins are not chased only to report a 100% number. Known coverage gaps are documented and tracked separately.
 
 ## Verification Layers
-
-This project currently contains two verification layers:
 
 | Layer | Purpose |
 |---|---|
 | NPU Core UVM | Verifies the systolic-array NPU core through direct matrix-level transactions |
 | APB Wrapper UVM | Verifies software-style APB access to CONTROL, STATUS, Matrix A, Matrix B, and Matrix C regions |
 
-The NPU core UVM environment focuses on datapath, controller, systolic propagation, back-to-back operation, assertions, scoreboard checking, and functional coverage.
-
-The APB wrapper UVM environment focuses on register-mapped access, APB-controlled matrix computation, status polling, signed APB readback, APB protocol SVA, dynamic APB scoreboard checking, and APB functional coverage.
-
-APB wrapper documentation is provided in:
+The NPU core and APB wrapper are verified as separate layers. APB wrapper documentation is provided in:
 
 ```text
 docs/APB_REGISTER_MAP.md
@@ -47,28 +43,33 @@ docs/APB_TESTPLAN.md
 
 ### NPU Core UVM Regression
 
-The latest clean NPU core regression contains:
+Latest verified NPU core regression:
 
 | Metric | Result |
 |---|---:|
-| Total Tests | 126 |
-| Directed Tests | 6 |
-| Back-to-Back Random Tests | 20 |
-| Random Tests | 100 |
-| Passed | 126 |
-| Failed | 0 |
-| UVM Warnings | 0 |
-| UVM Errors | 0 |
-| UVM Fatals | 0 |
+| Total NPU core transactions | 142 |
+| Original directed tests | 6 |
+| Extended directed tests | 6 |
+| Full signed INT8 random tests | 5 |
+| Boundary-biased random tests | 5 |
+| Back-to-back random tests | 20 |
+| Safe random tests | 100 |
+| Scoreboard pass count | 142 |
+| Scoreboard fail count | 0 |
+| UVM warnings | 0 |
+| UVM errors | 0 |
+| UVM fatals | 0 |
 
-Latest NPU functional coverage result:
+Latest NPU functional coverage status:
 
 | Coverage Type | Result |
 |---|---:|
-| Input Data Coverage | 100% |
-| Matrix Pattern Coverage | 100% |
-| Scenario Coverage | 100% |
-| Output Data Coverage | 100% |
+| Matrix pattern coverage | 100% |
+| Scenario coverage | 100% |
+| Output data coverage | 100% |
+| Input data coverage | Latest coverage report must be regenerated |
+
+The input coverage model has been strengthened to track full signed INT8 boundary-aware bins. If the regenerated report shows input coverage below 100%, that is documented as an intentional known coverage gap for the current scope instead of adding artificial tests only to close a number.
 
 ### APB Wrapper UVM Regression
 
@@ -76,12 +77,12 @@ Latest APB wrapper regression result:
 
 | Metric | Result |
 |---|---:|
-| APB Transactions | 1245 / 1245 PASS |
-| C Matrix Checks | 384 / 384 PASS |
-| UVM Warnings | 0 |
-| UVM Errors | 0 |
-| UVM Fatals | 0 |
-| APB Functional Coverage | 95.00% |
+| APB transactions | 1245 / 1245 PASS |
+| C matrix checks | 384 / 384 PASS |
+| UVM warnings | 0 |
+| UVM errors | 0 |
+| UVM fatals | 0 |
+| APB functional coverage | 95.00% |
 
 APB regression scenarios:
 
@@ -108,74 +109,13 @@ done_seen    = 8
 slverr_seen  = 0
 ```
 
+The current APB wrapper does not claim write-to-STATUS or write-to-C behavior as supported software flow. Active APB error response behavior is also not claimed because `pslverr` is tied to 0.
+
 ## Top Architecture
 
 ![Top Architecture](images/dir1.png)
 
-The design consists of two major RTL blocks:
-
-### Controller FSM
-
-The controller manages the computation flow using the following states:
-
-- IDLE
-- CLEAR
-- COMPUTE
-- WAIT_DRAIN
-- DONE
-
-Main controller responsibilities:
-
-- Generate the `clear` signal before computation.
-- Generate the `valid_in` signal during input loading.
-- Control the compute and drain latency.
-- Assert `done` when the output matrix is ready.
-
-### NxN Systolic Array
-
-The systolic array is composed of NxN processing elements.
-
-Main behavior:
-
-- Matrix A operands propagate horizontally.
-- Matrix B operands propagate vertically.
-- Valid signals propagate as a wavefront to align data movement and MAC operations.
-- Output matrix elements are accumulated inside the PEs.
-
-## Processing Element (PE)
-
-Each PE is a signed multiply-accumulate cell.
-
-Inputs:
-
-- `a_in`
-- `b_in`
-- `valid`
-- `clear`
-
-Output:
-
-- Accumulated result
-
-Operation priority:
-
-1. Reset
-2. Clear
-3. MAC operation when `valid = 1`
-4. Hold accumulated value when not computing
-
-Operand forwarding is not implemented inside the PE. Operand skewing and propagation are handled at the systolic array level.
-
-## RTL Structure
-
-```text
-rtl/
-├── pe.sv
-├── systolic_arr_NxN.sv
-├── sa_controller_NxN.sv
-├── npu_top_NxN.sv
-└── apb_npu_wrapper.sv
-```
+The design consists of these major RTL blocks:
 
 | File | Description |
 |---|---|
@@ -189,150 +129,53 @@ rtl/
 
 ![Verification Architecture](images/dir2.png)
 
-The NPU core UVM environment includes:
+The NPU core UVM environment includes sequence items, sequences, driver, monitors, scoreboard, coverage collectors, agent, environment, and tests.
 
-- Sequence item
-- Sequences
-- Driver
-- Input monitor
-- Output monitor
-- Scoreboard
-- Functional coverage collectors
-- Agent
-- Environment
-- Test
-
-The APB wrapper UVM environment includes:
-
-- APB sequence item
-- APB sequences
-- APB sequencer
-- APB driver
-- APB monitor
-- APB agent
-- APB environment
-- APB scoreboard
-- APB functional coverage
-- APB protocol SVA checker
+The APB wrapper UVM environment includes APB sequence items, sequences, sequencer, driver, monitor, agent, environment, scoreboard, functional coverage, and APB protocol SVA checker.
 
 ## Scoreboard and Golden Model
 
-### NPU Core Scoreboard
-
-The NPU core scoreboard is self-checking.
-
-Input transactions captured by the input monitor are used to compute the expected matrix multiplication result:
+The NPU core scoreboard is self-checking. Input transactions captured by the input monitor are used to compute the expected matrix multiplication result:
 
 ```text
 C[i][j] = sum(A[i][k] * B[k][j]) for k = 0 to N-1
 ```
 
-The golden model computes the full-precision result using a 64-bit signed temporary value, then casts the expected result to the DUT accumulator width before comparison. This matches the fixed-width hardware accumulator behavior.
+The golden model computes the full-precision result using a 64-bit signed temporary value, then casts the expected result to the DUT accumulator width before comparison. A transaction is reported as PASS only when all matrix elements match.
 
-A transaction is reported as PASS only when all matrix elements match.
-
-### APB Wrapper Scoreboard
-
-The APB scoreboard dynamically captures APB writes to the Matrix A and Matrix B regions, stores them internally, and computes the expected Matrix C result.
-
-When Matrix C is read back through APB, the scoreboard compares each read data value against the dynamically computed golden result.
-
-This allows the same APB scoreboard to verify multiple scenarios without hard-coded expected C matrices.
+The APB scoreboard captures APB writes to the Matrix A and Matrix B regions, computes the expected Matrix C result, and compares Matrix C readback values against the dynamic golden result.
 
 ## SystemVerilog Assertions
 
-The project includes SVA checks for important RTL and APB behavior.
+The project includes SVA checks for:
 
-### Processing Element
-
-- Reset behavior
-- Clear behavior
-- Hold behavior
-- MAC operation behavior
-
-### Controller
-
-- FSM transition behavior
-- `done` behavior
-- Start-to-done sequencing/latency behavior
-
-### Systolic Array
-
-- Valid wavefront propagation
-- Operand alignment
-- No-X checking during valid operation
-
-### APB Protocol
-
-The APB protocol checker verifies basic APB protocol behavior, including:
-
-- `PENABLE` only asserted when `PSEL` is asserted
-- Access phase follows setup phase
-- Address stability during wait states
-- Write data stability during write wait states
-- `PWRITE` stability during wait states
+- PE reset, clear, hold, and MAC behavior
+- Controller FSM transition and done sequencing behavior
+- Systolic-array valid wavefront propagation and operand alignment
+- APB protocol setup/access behavior and signal stability during wait states
 
 ## Functional Coverage
 
 ### NPU Core Functional Coverage
 
-Functional coverage is used to measure input value classes, matrix patterns, scenario types, and output value ranges.
+Functional coverage measures input value classes, matrix patterns, scenario types, and output value ranges.
 
-#### Input Data Coverage
+The strengthened input coverage model tracks full signed INT8 boundary-aware operand classes and cross coverage. The current committed NPU coverage report artifact is stale relative to the 142-transaction regression and must be regenerated before a final input coverage percentage is claimed.
 
-Input operands A and B are categorized into boundary-aware value classes:
+Current documented NPU coverage status:
 
-- Zero value
-- Minimum negative boundary value: `-64`
-- Maximum positive boundary value: `63`
-- Positive range: `[1:62]`
-- Negative range: `[-63:-1]`
-- Cross coverage between A and B value classes
-
-#### Matrix Pattern Coverage
-
-Directed matrix patterns include:
-
-- Zero matrix
-- Identity matrix
-- Min/max boundary matrix
-- All-positive matrix
-- All-negative matrix
-- Sparse matrix
-- Random matrix
-
-#### Scenario Coverage
-
-Current scenario coverage includes:
-
-- Normal transaction spacing
-- Back-to-back transactions with zero idle gap
-
-#### Output Data Coverage
-
-Output matrix elements are categorized into magnitude-aware classes:
-
-- Zero result
-- Small positive result
-- Large positive result
-- Small negative result
-- Large negative result
+| Coverage Type | Result |
+|---|---:|
+| Matrix pattern coverage | 100% |
+| Scenario coverage | 100% |
+| Output data coverage | 100% |
+| Input data coverage | Latest coverage report must be regenerated |
 
 ### APB Functional Coverage
 
-The APB coverage model tracks:
+The APB coverage model tracks read/write accesses, CONTROL/STATUS/A/B/C address regions, CONTROL.start writes, STATUS reads, Matrix C readback count, busy/done observations, and slave-error observations.
 
-- APB read/write accesses
-- CONTROL, STATUS, A, B, and C address regions
-- CONTROL.start writes
-- STATUS reads
-- Matrix C readback count
-- Busy and done status observations
-- Slave error observation count
-
-Current APB functional coverage is 95.00%.
-
-The APB coverage model excludes the unsupported `pslverr=1` bin because the current APB wrapper ties `pslverr` to 0 and does not implement active error response behavior. Therefore, the reported APB functional coverage focuses on the supported APB behavior: read/write access, CONTROL/STATUS/A/B/C regions, start writes, status polling, busy/done observation, and C matrix readback.
+Current APB functional coverage is 95.00%. The uncovered bins are accepted for the current wrapper scope because write-to-STATUS and write-to-C are not claimed as supported software flow, and active `pslverr` behavior is not implemented.
 
 ## How to Run
 
@@ -345,8 +188,9 @@ do scripts/run_uvm.do
 Expected clean result:
 
 ```text
-tests=126 directed=6 btb=20 random=100
-SCB_PASS trans=126
+original_directed=6 extended_directed=6 full_int8_random=5 boundary_random=5 btb_random=20 safe_random=100
+SCB_PASS trans=142
+SCB_FAIL trans=0
 UVM_WARNING : 0
 UVM_ERROR   : 0
 UVM_FATAL   : 0
@@ -374,30 +218,30 @@ UVM_FATAL   : 0
 do scripts/run_cov.do
 ```
 
-Expected functional coverage result:
+Expected coverage review:
 
 ```text
-input data coverage   = 100%
-matrix pattern cov    = 100%
-scenario cov          = 100%
-output data coverage  = 100%
+matrix pattern coverage = 100%
+scenario coverage       = 100%
+output data coverage    = 100%
+input data coverage     = use regenerated report value
 ```
+
+Do not claim complete NPU functional coverage unless every current coverage group in the regenerated report is actually fully covered.
 
 ## Current Limitations
 
+### NPU Input Coverage Gap
+
+The input coverage model was strengthened to track full signed INT8 boundary-aware bins. If the regenerated input coverage is below 100%, the gap is accepted for the current verified scope and tracked as future closure work.
+
 ### Reset During Compute
 
-True reset-during-compute is not claimed as a supported verified feature in the current UVM environment.
+True reset-during-compute is not claimed as a supported verified feature in the current UVM environment. Supporting this correctly requires reset-aware driver, monitor, and scoreboard synchronization.
 
-The current UVM environment is transaction-based and assumes that a started transaction eventually produces a valid `done` response. A reset asserted in the middle of computation aborts the active transaction and may legally produce no output. Supporting this correctly requires reset-aware driver, monitor, and scoreboard synchronization.
+### APB Wrapper Coverage
 
-This was analyzed during development, but it is not included in the clean regression to avoid false scoreboard mismatches or unstable transaction pairing.
-
-### APB Error Response
-
-The current APB wrapper uses a zero-wait-state response and does not claim active `pslverr` error behavior.
-
-Invalid address behavior and APB error-response verification are not claimed in the current APB regression.
+The APB wrapper does not claim write-to-STATUS or write-to-C behavior as supported software flow. Active APB error response behavior is not claimed because `pslverr` is tied to 0.
 
 ### Code Coverage
 
@@ -411,33 +255,35 @@ Planned improvements:
 - Start-while-busy corner-case testing
 - AXI-Lite wrapper verification
 - More advanced APB negative/error-response testing if active `pslverr` support is added
-- More detailed latency and performance counters
-- Formal checks for PE/controller properties
 - RTL code coverage closure with committed coverage report
-- Regression automation and report generation
+- Formal checks for selected PE/controller properties
+- CI/CD or automated regression publication
 
 ## Project Summary
-
-Current verified status:
 
 ```text
 NPU NxN UVM verification
 Configuration: N=8, width=8
-Directed tests: 6
+Original directed tests: 6
+Extended directed tests: 6
+Full signed INT8 random tests: 5
+Boundary-biased random tests: 5
 Back-to-back random tests: 20
-Random tests: 100
-Total clean NPU regression: 126 tests
-NPU scoreboard: width-accurate golden model
-NPU functional coverage: input/matrix/scenario/output coverage all 100%
+Safe random tests: 100
+Total clean NPU regression: 142 transactions
+NPU scoreboard pass/fail: 142 / 0
+NPU UVM warnings/errors/fatals: 0 / 0 / 0
+NPU coverage: matrix pattern 100%, scenario 100%, output 100%, input report must be regenerated
 
 APB wrapper UVM verification
 APB transactions: 1245 / 1245 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
 APB functional coverage: 95.00%
-Unsupported pslverr error bin is excluded because current wrapper ties pslverr to 0
-UVM warnings/errors/fatals: 0 / 0 / 0
+APB UVM warnings/errors/fatals: 0 / 0 / 0
 
-Reset-during-compute: documented as future reset-aware enhancement
-APB error-response behavior: not claimed in current wrapper
+Known limitations:
+Reset-during-compute is future reset-aware work.
+NPU input coverage gap is documented if regenerated input coverage is below 100%.
+APB write-to-STATUS/write-to-C and active pslverr behavior are not claimed.
 ```

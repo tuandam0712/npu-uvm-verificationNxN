@@ -10,6 +10,8 @@ transcript
 *.ini
 *.mpf
 *.cr.mti
+*.ini_lock
+*.ini_new
 # Coverage database
 coverage.ucdb
 *.cov
