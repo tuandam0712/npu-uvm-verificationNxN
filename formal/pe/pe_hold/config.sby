@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal -sv -DPE_FORMAL_SBY -DPROVE_HOLD  pe.sv pe_formal.sv
+
+prep -top pe_formal
+
+[files]
+rtl/pe.sv
+formal/pe/pe_formal.sv

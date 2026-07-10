@@ -1,0 +1,24 @@
+[tasks]
+hold
+reset
+clear
+mac
+
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+hold:  read -formal -sv -DPE_FORMAL_SBY -DPROVE_HOLD  pe.sv pe_formal.sv
+reset: read -formal -sv -DPE_FORMAL_SBY -DPROVE_RESET pe.sv pe_formal.sv
+clear: read -formal -sv -DPE_FORMAL_SBY -DPROVE_CLEAR pe.sv pe_formal.sv
+mac:   read -formal -sv -DPE_FORMAL_SBY -DPROVE_MAC   pe.sv pe_formal.sv
+
+prep -top pe_formal
+
+[files]
+rtl/pe.sv
+formal/pe/pe_formal.sv

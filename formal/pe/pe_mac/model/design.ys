@@ -1,0 +1,9 @@
+# running in formal/pe/pe_mac/src/
+read -formal -sv -DPE_FORMAL_SBY -DPROVE_MAC   pe.sv pe_formal.sv
+
+prep -top pe_formal
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

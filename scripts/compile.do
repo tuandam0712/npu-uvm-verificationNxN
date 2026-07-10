@@ -16,6 +16,8 @@ if {[info exists ::env(UVM_HOME)]} {
 }
 
 vlog -sv +cover=sbcfe rtl/pe.sv
+vlog -sv sva/pe_sva.sv
+vlog -sv sva/pe_bind.sv
 vlog -sv +cover=sbcfe rtl/sa_controller_NxN.sv
 vlog -sv +cover=sbcfe rtl/systolic_arr_NxN.sv
 vlog -sv +cover=sbcfe rtl/npu_top_NXN.sv

@@ -4,7 +4,7 @@ module tb_rtl_random;
     parameter int N = 8;
     parameter int width = 8;
     parameter int NUM_TESTS = 10;
-    parameter bit RESET_COV_ONLY = 1;
+    parameter bit RESET_COV_ONLY = 0;
     localparam int ACC_WIDTH = 2*width + ((N > 1) ? $clog2(N) : 1);
     logic clk;
     logic rst_n;
