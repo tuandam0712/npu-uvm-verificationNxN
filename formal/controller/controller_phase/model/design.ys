@@ -1,0 +1,9 @@
+# running in formal/controller/controller_phase/src/
+read -formal -sv -noautowire -DSA_CTRL_FORMAL_SBY -DPROVE_PHASE sa_controller_NxN.sv controller_formal.sv
+
+prep -top controller_formal
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

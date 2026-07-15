@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-07-14T16:15:30" hostname="LAPTOP-CAC0UHVC" package="controller" id="0" name="output" tests="5" errors="0" failures="0" time="1" skipped="0">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="output" name="build execution" time="0">
+</testcase>
+<testcase classname="output" name="Property ASSERT in controller_formal at controller_formal.sv:212.17-213.56" time="0" type="ASSERT" location="controller_formal.sv:212.17-213.56" id="A_CTRL_CLR_002">
+</testcase>
+<testcase classname="output" name="Property ASSERT in controller_formal at controller_formal.sv:217.17-218.56" time="0" type="ASSERT" location="controller_formal.sv:217.17-218.56" id="A_CTRL_COMP_001">
+</testcase>
+<testcase classname="output" name="Property ASSERT in controller_formal at controller_formal.sv:227.17-228.56" time="0" type="ASSERT" location="controller_formal.sv:227.17-228.56" id="A_CTRL_DONE_001">
+</testcase>
+<testcase classname="output" name="Property ASSERT in controller_formal at controller_formal.sv:222.17-223.57" time="0" type="ASSERT" location="controller_formal.sv:222.17-223.57" id="A_CTRL_DRAIN_001">
+</testcase>
+<testcase classname="output" name="Property ASSERT in controller_formal at controller_formal.sv:207.17-208.57" time="0" type="ASSERT" location="controller_formal.sv:207.17-208.57" id="A_CTRL_IDLE_001">
+</testcase>
+<system-out>SBY 16:15:29 [formal/controller/controller_reset] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_reset'.
+SBY 16:15:29 [formal/controller/controller_start] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_start'.
+SBY 16:15:29 [formal/controller/controller_phase] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_phase'.
+SBY 16:15:29 [formal/controller/controller_start_busy] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_start_busy'.
+SBY 16:15:29 [formal/controller/controller_output] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_output'.
+SBY 16:15:29 [formal/controller/controller_output] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_output/src/sa_controller_NxN.sv'.
+SBY 16:15:29 [formal/controller/controller_output] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_formal.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/controller/controller_output/src/controller_formal.sv'.
+SBY 16:15:29 [formal/controller/controller_output] engine_0: smtbmc z3
+SBY 16:15:29 [formal/controller/controller_output] base: starting process &quot;cd formal/controller/controller_output/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 16:15:29 [formal/controller/controller_output] base: Warning: Wire controller_formal.\start is used but has no driver.
+SBY 16:15:29 [formal/controller/controller_output] base: Warning: Wire controller_formal.\rst_n is used but has no driver.
+SBY 16:15:29 [formal/controller/controller_output] base: Warning: Wire controller_formal.\clk is used but has no driver.
+SBY 16:15:29 [formal/controller/controller_output] base: finished (returncode=0)
+SBY 16:15:29 [formal/controller/controller_output] prep: starting process &quot;cd formal/controller/controller_output/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 16:15:29 [formal/controller/controller_output] prep: Warning: Wire controller_formal.\start is used but has no driver.
+SBY 16:15:29 [formal/controller/controller_output] prep: Warning: Wire controller_formal.\clk is used but has no driver.
+SBY 16:15:29 [formal/controller/controller_output] prep: Warning: Wire controller_formal.\rst_n is used but has no driver.
+SBY 16:15:29 [formal/controller/controller_output] prep: finished (returncode=0)
+SBY 16:15:29 [formal/controller/controller_output] smt2: starting process &quot;cd formal/controller/controller_output/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 16:15:30 [formal/controller/controller_output] smt2: finished (returncode=0)
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: starting process &quot;cd formal/controller/controller_output; yosys-smtbmc -s z3 --presat --noprogress -t 20  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: starting process &quot;cd formal/controller/controller_output; yosys-smtbmc -s z3 --presat -i --noprogress -t 20  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: ##   0:00:00  Solver: z3
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: ##   0:00:00  Trying induction in step 20..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: ##   0:00:00  Trying induction in step 19..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: ##   0:00:00  Status: passed
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: finished (returncode=0)
+SBY 16:15:30 [formal/controller/controller_output] engine_0.induction: Status returned by engine for induction: pass
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 3..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 4..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 5..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 6..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 6..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 7..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 7..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 8..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 8..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 9..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 9..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 10..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 10..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 11..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 11..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 12..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 12..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 13..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 13..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 14..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 14..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 15..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 15..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 16..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 16..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 17..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 17..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 18..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 18..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assumptions in step 19..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Checking assertions in step 19..
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: ##   0:00:00  Status: passed
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: finished (returncode=0)
+SBY 16:15:30 [formal/controller/controller_output] engine_0.basecase: Status returned by engine for basecase: pass
+SBY 16:15:30 [formal/controller/controller_output] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 16:15:30 [formal/controller/controller_output] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 16:15:30 [formal/controller/controller_output] summary: engine_0 (smtbmc z3) returned pass for basecase
+SBY 16:15:30 [formal/controller/controller_output] summary: engine_0 (smtbmc z3) returned pass for induction
+SBY 16:15:30 [formal/controller/controller_output] summary: engine_0 did not produce any traces
+SBY 16:15:30 [formal/controller/controller_output] summary: successful proof by k-induction.
+SBY 16:15:30 [formal/controller/controller_output] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

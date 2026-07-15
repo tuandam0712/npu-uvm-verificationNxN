@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal -sv -noautowire -DSA_CTRL_FORMAL_SBY -DPROVE_RESET sa_controller_NxN.sv controller_formal.sv
+
+prep -top controller_formal
+
+[files]
+rtl/sa_controller_NxN.sv
+formal/controller/controller_formal.sv

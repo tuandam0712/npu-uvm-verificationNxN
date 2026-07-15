@@ -28,3 +28,4 @@ reports/*.ucdb
 Thumbs.db
 .vscode/*
 !.vscode/settings.json
+.sv.bak

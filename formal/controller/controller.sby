@@ -1,0 +1,26 @@
+[tasks]
+reset
+start
+phase
+start_busy
+output
+
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+reset: read -formal -sv -noautowire -DSA_CTRL_FORMAL_SBY -DPROVE_RESET sa_controller_NxN.sv controller_formal.sv
+start: read -formal -sv -noautowire -DSA_CTRL_FORMAL_SBY -DPROVE_START sa_controller_NxN.sv controller_formal.sv
+phase: read -formal -sv -noautowire -DSA_CTRL_FORMAL_SBY -DPROVE_PHASE sa_controller_NxN.sv controller_formal.sv
+start_busy: read -formal -sv -DSA_CTRL_FORMAL_SBY -DPROVE_START_BUSY sa_controller_NxN.sv controller_formal.sv
+output: read -formal -sv -DSA_CTRL_FORMAL_SBY -DPROVE_OUTPUT sa_controller_NxN.sv controller_formal.sv
+
+prep -top controller_formal
+
+[files]
+rtl/sa_controller_NxN.sv
+formal/controller/controller_formal.sv

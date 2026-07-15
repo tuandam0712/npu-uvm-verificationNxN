@@ -1,20 +1,21 @@
 # NPU Functional Specification
 
-Version: 0.2  
+Version: 0.4
 Status: Draft
 
 ---
 
 # 1. Scope
 
-This revision specifies the functional behavior of the Processing Element (PE)
-implemented in `rtl/pe.sv`.
+This revision specifies the functional behavior of the following blocks:
+
+- Processing Element (PE), implemented in `rtl/pe.sv`.
+- Systolic Array Controller, implemented in `rtl/sa_controller_NxN.sv`.
 
 The following RTL blocks exist but are outside the scope of this specification
 revision and will be documented later:
 
 - Systolic Array
-- Controller
 - NPU Top
 - APB Wrapper
 
@@ -192,3 +193,258 @@ committed formal artifacts report `PASS` for `reset`, `clear`, `mac`, and
 These statuses describe the current evidence only. They are not a claim of
 complete verification across every legal parameter configuration.
 
+# 3. Systolic Array Controller
+
+## 3.1 Overview
+
+`sa_controller_NxN` controls one systolic-array matrix multiplication operation.
+
+For each accepted start request, the controller shall perform the following phases in order:
+
+```text
+IDLE
+→ CLEAR
+→ COMPUTE
+→ WAIT_DRAIN
+→ DONE
+→ IDLE
+```
+
+The controller does not process matrix data directly. It generates the control outputs:
+
+* `clear`
+* `valid_in`
+* `done`
+
+---
+
+## 3.2 Parameters
+
+| Parameter      | Default              | Description                                                     |
+| -------------- | -------------------- | --------------------------------------------------------------- |
+| `N`            | `8`                  | Matrix dimension and number of valid input cycles per operation |
+| `DRAIN_MARGIN` | `10`                 | Additional drain latency in clock cycles                        |
+| `DRAIN_CYCLES` | `2*N + DRAIN_MARGIN` | Total drain duration in clock cycles                            |
+
+This specification requires:
+
+```text
+N >= 1
+DRAIN_MARGIN >= 0
+```
+
+`CNT_W` is an implementation-sizing parameter and does not alter externally visible controller behavior.
+
+---
+
+## 3.3 Interface
+
+| Signal     | Direction | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `clk`      | input     | Controller clock. State transitions occur on rising edges. |
+| `rst_n`    | input     | Active-low asynchronous reset.                             |
+| `start`    | input     | Request to start one matrix multiplication operation.      |
+| `clear`    | output    | Active-high processing-element clear command.              |
+| `valid_in` | output    | Active-high indication that one input data cycle is valid. |
+| `done`     | output    | Active-high completion indication.                         |
+
+---
+
+## 3.4 Reset Behavior
+
+### CTRL_RST_001
+
+`rst_n` shall be active-low and asynchronously asserted.
+
+### CTRL_RST_002
+
+When `rst_n` is asserted low, the controller shall immediately return to the `IDLE` phase.
+
+### CTRL_RST_003
+
+While reset is asserted:
+
+```text
+clear    = 0
+valid_in = 0
+done     = 0
+```
+
+### CTRL_RST_004
+
+Reset shall have priority over all controller behavior.
+
+A start request shall not be accepted while reset is asserted.
+
+---
+
+## 3.5 Start Acceptance
+
+### CTRL_START_001
+
+A start request shall be accepted only while the controller is in `IDLE`.
+
+### CTRL_START_002
+
+If `start` is sampled high at a rising edge while the controller is in `IDLE`, the controller shall enter `CLEAR` immediately after that edge.
+
+### CTRL_START_003
+
+A start request sampled while the controller is not in `IDLE` shall not alter the operation currently in progress.
+
+### CTRL_START_004
+
+`start` is level-sensitive while the controller is in `IDLE`.
+
+If `start` remains high until the controller returns to `IDLE`, it shall be accepted again as a new request.
+
+---
+
+## 3.6 Clear Phase
+
+### CTRL_CLR_001
+
+After a start request is accepted, the controller shall enter `CLEAR`.
+
+### CTRL_CLR_002
+
+During `CLEAR`:
+
+```text
+clear    = 1
+valid_in = 0
+done     = 0
+```
+
+### CTRL_CLR_003
+
+The clear phase shall last exactly one clock cycle.
+
+### CTRL_CLR_004
+
+After the clear phase completes, the controller shall enter `COMPUTE`.
+
+---
+
+## 3.7 Compute Phase
+
+### CTRL_COMP_001
+
+During `COMPUTE`:
+
+```text
+clear    = 0
+valid_in = 1
+done     = 0
+```
+
+### CTRL_COMP_002
+
+The compute phase shall last exactly `N` consecutive clock cycles.
+
+### CTRL_COMP_003
+
+Immediately after the `N`th valid input cycle completes, the controller shall enter `WAIT_DRAIN`.
+
+---
+
+## 3.8 Wait Drain Phase
+
+### CTRL_DRAIN_001
+
+During `WAIT_DRAIN`:
+
+```text
+clear    = 0
+valid_in = 0
+done     = 0
+```
+
+### CTRL_DRAIN_002
+
+The wait-drain phase shall last exactly `DRAIN_CYCLES` clock cycles.
+
+### CTRL_DRAIN_003
+
+After the wait-drain phase completes, the controller shall enter `DONE`.
+
+---
+
+## 3.9 Done Phase
+
+### CTRL_DONE_001
+
+During `DONE`:
+
+```text
+clear    = 0
+valid_in = 0
+done     = 1
+```
+
+### CTRL_DONE_002
+
+The done phase shall last exactly one clock cycle.
+
+### CTRL_DONE_003
+
+After the done phase completes, the controller shall return to `IDLE`.
+
+---
+
+## 3.10 Idle Phase
+
+### CTRL_IDLE_001
+
+During `IDLE`:
+
+```text
+clear    = 0
+valid_in = 0
+done     = 0
+```
+
+### CTRL_IDLE_002
+
+The controller shall remain in `IDLE` until a start request is accepted.
+
+---
+
+## 3.11 Operation Latency
+
+Let `DRAIN_CYCLES = 2*N + DRAIN_MARGIN`. If a start request is accepted on
+edge `E0`, the externally visible phases sampled after subsequent rising edges
+are:
+
+```text
+E0                    CLEAR
+E0 + 1                first COMPUTE cycle
+E0 + N                final COMPUTE cycle
+E0 + N + 1            first WAIT_DRAIN cycle
+E0 + N + DRAIN_CYCLES final WAIT_DRAIN cycle
+E0 + N + DRAIN_CYCLES + 1  DONE (`done=1`)
+E0 + N + DRAIN_CYCLES + 2  IDLE
+```
+
+Equivalently, the pre-edge observation of `IDLE && start` and the observation
+of `DONE && done` are separated by `N + DRAIN_CYCLES + 2` rising-edge samples,
+which is the convention used by the embedded SVA latency property.
+
+The implementation enum name `DONE_STATE` denotes the specified `DONE` phase;
+it is not a separate externally visible phase.
+
+---
+
+## 3.12 Interface Limitation and Unspecified Behavior
+
+The controller does not contain a request queue or pending-request register. A
+`start` pulse that is asserted and then deasserted entirely while the
+controller is busy is not retained. In contrast, a `start` level that remains
+high when the controller is in `IDLE` is a current request and is accepted as
+specified by `CTRL_START_004`.
+
+The following behavior is intentionally unspecified:
+
+* Invalid parameter values.
+* X/Z behavior on inputs.
+* Simultaneous reset deassertion and start assertion timing races.
