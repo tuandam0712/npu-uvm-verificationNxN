@@ -1,0 +1,44 @@
+
+DIRECTIVE COVERAGE:
+---------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Count Status    
+                                         Unit   UnitType                                      
+---------------------------------------------------------------------------------------------
+/tb_pe_directed/dut/C_PE_HOLD_001        pe     Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(118)
+                                                                                  7 Covered   
+/tb_pe_directed/dut/C_PE_RST_002_003     pe     Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(124)
+                                                                                 16 Covered   
+/tb_pe_directed/dut/C_PE_RST_004         pe     Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(130)
+                                                                                  1 Covered   
+/tb_pe_directed/dut/C_PE_CLR_002_003     pe     Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(137)
+                                                                                  1 Covered   
+/tb_pe_directed/dut/C_PE_CLR_004         pe     Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(144)
+                                                                                  1 Covered   
+/tb_pe_directed/dut/C_PE_MAC_001_002_003 pe     Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(151)
+                                                                                 28 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 6
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/tb_pe_directed/dut/A_PE_HOLD_001
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(38)
+                                                        0          1
+/tb_pe_directed/dut/A_PE_RST_002_003
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(53)
+                                                        0          1
+/tb_pe_directed/dut/A_PE_RST_004
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(64)
+                                                        0          1
+/tb_pe_directed/dut/A_PE_CLR_002_003
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(78)
+                                                        0          0
+/tb_pe_directed/dut/A_PE_CLR_004
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(91)
+                                                        0          0
+/tb_pe_directed/dut/A_PE_MAC_001_002_003
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv(104)
+                                                        0          1

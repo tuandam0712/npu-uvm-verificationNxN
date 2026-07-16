@@ -1,0 +1,170 @@
+
+DIRECTIVE COVERAGE:
+---------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Count Status    
+                                         Unit   UnitType                                      
+---------------------------------------------------------------------------------------------
+/tb_controller_directed/dut/C_CTRL_RST_002 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(99)
+                                                                                 26 Covered   
+/tb_controller_directed/dut/C_CTRL_RST_003 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(117)
+                                                                                 26 Covered   
+/tb_controller_directed/dut/C_CTRL_RST_004 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(136)
+                                                                                  2 Covered   
+/tb_controller_directed/dut/C_CTRL_START_002 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(154)
+                                                                                 14 Covered   
+/tb_controller_directed/dut/C_CTRL_START_003_CLEAR_IGNORED 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(172)
+                                                                                  1 Covered   
+/tb_controller_directed/dut/C_CTRL_START_003_COMPUTE_CONTINUE 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(191)
+                                                                                  2 Covered   
+/tb_controller_directed/dut/C_CTRL_START_003_COMPUTE_EXIT 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(210)
+                                                                                  0 ZERO      
+/tb_controller_directed/dut/C_CTRL_START_003_DRAIN_CONTINUE 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(229)
+                                                                                 11 Covered   
+/tb_controller_directed/dut/C_CTRL_START_003_DRAIN_EXIT 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(248)
+                                                                                  1 Covered   
+/tb_controller_directed/dut/C_CTRL_START_003_DONE_IGNORED 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(266)
+                                                                                  3 Covered   
+/tb_controller_directed/dut/C_CTRL_START_004_REACCEPT_HELD_START 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(284)
+                                                                                  2 Covered   
+/tb_controller_directed/dut/C_CTRL_START_004_NO_PENDING_REQ 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(302)
+                                                                                  5 Covered   
+/tb_controller_directed/dut/C_CTRL_CLR_002_OUTPUT 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(322)
+                                                                                 13 Covered   
+/tb_controller_directed/dut/C_CTRL_CLR_003 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(340)
+                                                                                 13 Covered   
+/tb_controller_directed/dut/C_CTRL_COMP_001 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(360)
+                                                                                 40 Covered   
+/tb_controller_directed/dut/C_CTRL_COMP_002_ENTRY_CNT_0 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(379)
+                                                                                 13 Covered   
+/tb_controller_directed/dut/C_CTRL_COMP_002_CONTINUE 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(398)
+                                                                                 30 Covered   
+/tb_controller_directed/dut/C_CTRL_COMP_002_EXIT 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(417)
+                                                                                 10 Covered   
+/tb_controller_directed/dut/C_CTRL_DRAIN_001 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(437)
+                                                                                 99 Covered   
+/tb_controller_directed/dut/C_CTRL_DRAIN_002_CONTINUE 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(456)
+                                                                                 90 Covered   
+/tb_controller_directed/dut/C_CTRL_DRAIN_002_EXIT 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(475)
+                                                                                  9 Covered   
+/tb_controller_directed/dut/C_CTRL_DONE_001 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(495)
+                                                                                  8 Covered   
+/tb_controller_directed/dut/C_CTRL_DONE_002 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(515)
+                                                                                  8 Covered   
+/tb_controller_directed/dut/C_CTRL_IDLE_001 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(535)
+                                                                                 34 Covered   
+/tb_controller_directed/dut/C_CTRL_IDLE_002 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(553)
+                                                                                 20 Covered   
+/tb_controller_directed/dut/C_CTRL_LATENCY 
+                                         sa_controller_NxN Verilog  SVA  D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(572)
+                                                                                 14 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 96.15%  COVERS: 26
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/tb_controller_directed/dut/A_CTRL_RST_002
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(90)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_RST_003
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(105)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_RST_004
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(123)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_002
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(143)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_003_CLEAR_IGNORED
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(161)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_003_COMPUTE_CONTINUE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(179)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_003_COMPUTE_EXIT
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(198)
+                                                        0          0
+/tb_controller_directed/dut/A_CTRL_START_003_DRAIN_CONTINUE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(217)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_003_DRAIN_EXIT
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(236)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_003_DONE_IGNORED
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(255)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_004_REACCEPT_HELD_START
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(273)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_START_004_NO_PENDING_REQ
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(291)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_CLR_002_OUTPUT
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(309)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_CLR_003
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(329)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_COMP_001
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(347)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_COMP_002_ENTRY_CNT_0
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(367)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_COMP_002_CONTINUE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(386)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_COMP_002_EXIT
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(405)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_DRAIN_001
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(424)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_DRAIN_002_CONTINUE
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(444)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_DRAIN_002_EXIT
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(463)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_DONE_001
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(482)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_DONE_002
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(502)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_IDLE_001
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(522)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_IDLE_002
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(542)
+                                                        0          1
+/tb_controller_directed/dut/A_CTRL_LATENCY
+                     D:/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/sa_controller_NxN.sv(561)
+                                                        0          1
