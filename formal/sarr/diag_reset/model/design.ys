@@ -1,0 +1,9 @@
+# running in formal/sarr/diag_reset/src/
+read -formal -sv -noautowire -DSARR_FORMAL_SBY -DPE_FORMAL_SBY -DPROVE_RESET pe.sv systolic_arr_NxN.sv sarr_formal.sv
+
+prep -top sarr_formal
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

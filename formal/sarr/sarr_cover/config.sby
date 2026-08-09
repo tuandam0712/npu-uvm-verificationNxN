@@ -1,0 +1,17 @@
+[options]
+mode prove
+mode cover
+depth 8
+
+[engines]
+smtbmc --nopresat --unroll z3 -- --noincr
+
+[script]
+read -formal -sv -noautowire -DSARR_FORMAL_SBY -DPE_FORMAL_SBY -DFORMAL_N=2 -DFORMAL_WIDTH=4 -DCOVER_SARR pe.sv systolic_arr_NxN.sv sarr_formal.sv
+
+prep -top sarr_formal
+
+[files]
+rtl/pe.sv
+rtl/systolic_arr_NxN.sv
+formal/sarr/sarr_formal.sv

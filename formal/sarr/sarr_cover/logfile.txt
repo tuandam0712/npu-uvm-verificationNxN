@@ -1,0 +1,68 @@
+SBY  2:29:21 [formal/sarr/sarr_cover] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_cover'.
+SBY  2:29:21 [formal/sarr/sarr_cover] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_cover/src/pe.sv'.
+SBY  2:29:21 [formal/sarr/sarr_cover] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_cover/src/systolic_arr_NxN.sv'.
+SBY  2:29:21 [formal/sarr/sarr_cover] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_formal.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_cover/src/sarr_formal.sv'.
+SBY  2:29:21 [formal/sarr/sarr_cover] engine_0: smtbmc --nopresat --unroll z3 -- --noincr
+SBY  2:29:21 [formal/sarr/sarr_cover] base: starting process "cd formal/sarr/sarr_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \c with list of registers. See sarr_formal.sv:72
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \formal_pe_valid with list of registers. See sarr_formal.sv:71
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \formal_b_delay with list of registers. See sarr_formal.sv:70
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \formal_a_delay with list of registers. See sarr_formal.sv:69
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \formal_b_wire with list of registers. See sarr_formal.sv:68
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \formal_a_wire with list of registers. See sarr_formal.sv:67
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \pe_valid with list of registers. See systolic_arr_NxN.sv:139
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \b_wire with list of registers. See systolic_arr_NxN.sv:99
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \b_delay with list of registers. See systolic_arr_NxN.sv:86
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \a_wire with list of registers. See systolic_arr_NxN.sv:70
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \a_delay with list of registers. See systolic_arr_NxN.sv:57
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \b_in with list of registers. See systolic_arr_NxN.sv:40
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \a_in with list of registers. See systolic_arr_NxN.sv:39
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Replacing memory \c with list of registers. See systolic_arr_NxN.sv:0
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:29:21 [formal/sarr/sarr_cover] base: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:29:21 [formal/sarr/sarr_cover] base: finished (returncode=0)
+SBY  2:29:21 [formal/sarr/sarr_cover] prep: starting process "cd formal/sarr/sarr_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY  2:29:22 [formal/sarr/sarr_cover] prep: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:29:22 [formal/sarr/sarr_cover] prep: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:29:22 [formal/sarr/sarr_cover] prep: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:29:22 [formal/sarr/sarr_cover] prep: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:29:22 [formal/sarr/sarr_cover] prep: finished (returncode=0)
+SBY  2:29:22 [formal/sarr/sarr_cover] smt2: starting process "cd formal/sarr/sarr_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  2:29:22 [formal/sarr/sarr_cover] smt2: finished (returncode=0)
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: starting process "cd formal/sarr/sarr_cover; yosys-smtbmc -s z3 --noincr --unroll -c --noprogress -t 8  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Reached cover statement at C_SARR_TIME_003_IN_FLIGHT in step 2.
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Reached cover statement at C_SARR_MAC_001_NONZERO_RESULT in step 2.
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Reached cover statement at C_SARR_ALIGN_001_002_003_LAST_PE in step 2.
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Reached cover statement at C_SARR_VAL_001_WAVEFRONT in step 2.
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Reached cover statement at C_SARR_CLR_006 in step 2.
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Reached cover statement at C_SARR_RST_006 in step 2.
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace2.vcd
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace2.smtc
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: ##   0:00:00  Status: passed
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: finished (returncode=0)
+SBY  2:29:22 [formal/sarr/sarr_cover] engine_0: Status returned by engine: pass
+SBY  2:29:22 [formal/sarr/sarr_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  2:29:22 [formal/sarr/sarr_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  2:29:22 [formal/sarr/sarr_cover] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass
+SBY  2:29:22 [formal/sarr/sarr_cover] summary: trace: formal/sarr/sarr_cover/engine_0/trace0.vcd
+SBY  2:29:22 [formal/sarr/sarr_cover] summary: trace: formal/sarr/sarr_cover/engine_0/trace1.vcd
+SBY  2:29:22 [formal/sarr/sarr_cover] summary: trace: formal/sarr/sarr_cover/engine_0/trace2.vcd
+SBY  2:29:22 [formal/sarr/sarr_cover] DONE (PASS, rc=0)

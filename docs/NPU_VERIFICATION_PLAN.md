@@ -1,15 +1,15 @@
 # NPU Verification Plan
 
-Version: 0.4
+Version: 0.7
 Status: Draft
 
 ---
 
 # 1. Scope
 
-This plan covers the PE and Systolic Array Controller requirements defined in
-`NPU_SPEC.md`. Verification of the systolic-array datapath, NPU top, APB
-wrapper, and their UVM environments is outside this revision.
+This plan covers the PE, Systolic Array Controller, and Systolic Array
+requirements defined in `NPU_SPEC.md`. Verification of NPU top, APB wrapper,
+and their UVM environments is outside this revision.
 
 The plan distinguishes between:
 
@@ -286,3 +286,287 @@ The controller verification scope may be declared complete only when:
   executable evidence.
 
 Formal `PASS` results alone do not satisfy controller closure requirements.
+
+# 6. Systolic Array
+## 6.1 Scope
+
+This plan defines unit-level verification of `rtl/systolic_arr_NxN.sv`.
+The scope includes reset and clear behavior, operand skew and propagation, valid propagation, operand-valid-alignment, PE accumulation, output stability, drain behavior, operation isolation, and parameter-dependent positional latency.
+Controller sequencing, NPU Top integration, APB behavior and overlapping matrix operations are outside this unit-level scope.
+
+## 6.2 Verification Methods
+### 6.2.1 Simulation
+
+Directed and constrained-random simulation shall verify reset and clear
+behavior, operand-valid alignment, matrix computation, drain behavior, output
+stability, and back-to-back operations.
+
+An independent reference model shall compute the expected matrix result from
+the input matrices using the specified signed, fixed-width arithmetic. The
+scoreboard shall compare each actual array output against the corresponding
+expected result after the operation has completed.
+
+Directed simulation shall target timing-sensitive and control-sensitive
+scenarios that are not adequately demonstrated by broad arithmetic
+randomization. These scenarios shall include asynchronous reset during an
+active operation, clear during active MAC processing, pipeline drain behavior,
+first-to-last PE completion ordering, and back-to-back operations using the
+specified clear protocol.
+
+Constrained-random simulation shall exercise a broader range of operand values,
+matrix patterns, and legal operation sequences. It shall complement, but not
+replace, directed testing of exact timing behavior.
+
+Detailed test scenarios and test-case identifiers shall be maintained in
+`NPU_TEST_PLAN.md`.
+
+### 6.2.2 Assertions
+
+SystemVerilog Assertions shall verify cycle-accurate local and positional
+behavior within the systolic array.
+
+Assertion checks shall include:
+
+* reset and clear effects and priority;
+* one-cycle horizontal propagation of operand A;
+* one-cycle vertical propagation of operand B;
+* local-valid propagation through the array;
+* positional latency of A, B, and valid at selected or generated PE locations;
+* alignment of corresponding A and B operands during each local-valid cycle;
+* one MAC update per local-valid cycle;
+* accumulator hold when local valid is low;
+* output stability after completion;
+* continued propagation of in-flight valid state after `valid_in` is
+  deasserted.
+
+Where practical, properties shall be generated across legal PE coordinates
+rather than written only for a single PE location.
+
+Cover properties shall demonstrate that relevant antecedents and positional
+scenarios are exercised. Assertion pass results without corresponding
+reachability evidence shall not be treated as sufficient evidence of
+non-vacuous verification.
+
+End-to-end matrix arithmetic correctness shall remain primarily checked by the
+reference model and scoreboard rather than by a single large assertion.
+
+### 6.2.3 Formal
+
+Formal verification shall target local, structural, and bounded temporal
+properties that can be proven without enumerating complete matrix operations
+through simulation.
+
+The formal scope shall include:
+
+* reset and clear behavior;
+* reset and clear priority;
+* one-hop A and B propagation;
+* one-hop local-valid propagation;
+* accumulator hold when local valid is low;
+* local MAC state-update behavior;
+* selected positional-latency and operand-valid-alignment properties;
+* absence of stale local-valid state after reset or clear.
+
+Formal proofs may use reduced array configurations, such as `N=2` or `N=4`,
+when the property is structurally representative and the reduction is
+documented.
+
+Formal PASS results shall apply only to the parameter configurations and
+assumptions used by the corresponding harness. Full matrix arithmetic
+correctness across broad operand and parameter spaces shall remain covered by
+simulation and regression.
+
+The executable SymbiYosys harness in `formal/sarr` uses Z3 at depth 20. The
+`reset`, `clear`, `operand`, `valid`, and `cover` tasks run at `N=2`,
+`width=8`, and `ACC_WIDTH=17`. The multiplier-heavy `mac_hold` task runs at
+`N=2`, `width=4`, and `ACC_WIDTH=9`. All six tasks have current `PASS`
+artifacts. These reduced configurations prove the generated local structure
+present in those models; they do not prove every legal parameter combination
+or end-to-end matrix multiplication at `N=8`.
+
+### 6.2.4 Functional Coverage
+
+Functional coverage shall measure whether the planned control, data, timing,
+matrix-pattern, and parameter scenarios have been exercised.
+
+Coverage goals shall include:
+
+* reset during idle, operand propagation, active valid propagation, active MAC
+  processing, and drain;
+* clear during idle and active processing;
+* reset overlapping clear and valid activity;
+* clear overlapping valid activity;
+* local-valid activity at representative PE positions;
+* first, middle, and last PE completion;
+* positive, negative, zero, minimum, and maximum operand values;
+* positive, negative, and zero products;
+* zero, identity, sparse, dense, and mixed-sign matrix patterns;
+* positive and negative accumulator wraparound;
+* single-operation and back-to-back-operation scenarios;
+* selected `N`, `width`, and `ACC_WIDTH` configurations;
+* meaningful crosses between operand classes, matrix patterns, PE positions,
+  and control scenarios.
+
+Coverage exclusions and unreachable bins shall be reviewed and documented
+rather than silently ignored.
+
+No SARR functional-coverage percentage shall be claimed until coverage has
+been collected from executable regressions and the remaining gaps have been
+reviewed.
+
+### 6.2.5 Configuration and Regression
+
+Regression shall exercise the systolic array across selected legal parameter
+configurations rather than relying only on the primary `N=8`, `width=8`
+configuration.
+
+The planned configuration set shall include, at minimum:
+
+* `N=1`, `width=8`;
+* `N=2`, `width=8`;
+* `N=4`, `width=8`;
+* `N=8`, `width=8`;
+* at least one additional operand-width configuration.
+
+Each configuration shall run the applicable directed tests,
+constrained-random tests, assertions, scoreboard checking, and functional
+coverage.
+
+Regression results shall record:
+
+* test name;
+* parameter configuration;
+* random seed;
+* pass or fail status;
+* assertion failures;
+* scoreboard mismatches;
+* functional-coverage summary.
+
+A configuration shall not be classified as verified solely because it
+successfully compiles or completes simulation without a fatal error.
+## 6.3 Requirement Traceability
+
+The following table maps each SARR requirement group to its planned simulation,
+assertion, formal, and regression evidence.
+
+The current classification reflects the reviewed directed testbench and the
+current reduced-configuration formal results. The directed testbench is
+implemented but no passing simulation transcript is recorded by this
+revision, so implementation is not reported as executed evidence.
+
+| Requirement group | Planned simulation evidence                                                                                           | Planned assertion/formal evidence                                                                           | Current classification |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `SARR_RST_*`      | Directed reset scenarios during operand propagation, active valid propagation, MAC processing, drain, and output hold | Reset-state, reset-retention, and reset-priority checks; formal task `reset` is `PASS` at `N=2`, `width=8` | Partial: reduced formal proof plus implemented directed checks |
+| `SARR_CLR_*`      | Directed clear scenarios during idle and active processing, including clear overlapping valid activity                | Clear-state, clear-retention, pipeline-flush, and clear-priority checks; task `clear` is `PASS` at `N=2`, `width=8` | Partial: reduced formal proof plus implemented directed checks |
+| `SARR_A_*`        | Tagged operand-A patterns checked at representative and boundary PE locations                                         | Entry/skew and horizontal one-hop checks; task `operand` is `PASS` at `N=2`, `width=8` | Partial: reduced formal proof; dedicated directed checks remain planned |
+| `SARR_B_*`        | Tagged operand-B patterns checked at representative and boundary PE locations                                         | Entry/skew and vertical one-hop checks; task `operand` is `PASS` at `N=2`, `width=8` | Partial: reduced formal proof; dedicated directed checks remain planned |
+| `SARR_VAL_*`      | Directed valid pulses, contiguous valid streams, reset/clear interruption, and drain scenarios                        | Valid-entry and one-hop checks; task `valid` is `PASS` at `N=2`, `width=8`; reachability task `cover` is `PASS` | Partial: reduced formal proof plus implemented burst/drain checks |
+| `SARR_ALIGN_*`    | Tagged A/B input samples checked during local-valid activity at selected PE locations                                 | Local structural propagation and MAC/hold proofs support alignment; exact positional alignment remains planned in the formal harness | Partial |
+| `SARR_MAC_001`    | Directed local-valid MAC scenarios and matrix tests                                                                   | Local signed MAC state-update check; task `mac_hold` is `PASS` at `N=2`, `width=4` | Directly proven in the reduced arithmetic model; directed implementation present |
+| `SARR_MAC_002`    | Operations containing exactly `N` consecutive valid input samples                                                     | Local-valid count properties and generated completion checks                                                | Planned                |
+| `SARR_MAC_003`    | Directed partial-accumulation tests using known operand sequences                                                     | Partial-sum reference properties at selected PE locations                                                   | Planned                |
+| `SARR_MAC_004`    | Directed and constrained-random matrix tests using an independent reference model and scoreboard                      | Local arithmetic properties support the result; end-to-end correctness remains primarily simulation-based   | Planned                |
+| `SARR_MAC_005`    | Invalid-cycle and post-operation hold scenarios                                                                       | Accumulator-hold and output-stability checks; task `mac_hold` is `PASS` at `N=2`, `width=4` | Directly proven in the reduced model; directed implementation present |
+| `SARR_TIME_*`     | First-to-last completion ordering, valid drain, and final-result timing scenarios                                     | First-PE, last-PE, in-flight-valid, and positional-completion properties                                    | Planned                |
+| `SARR_OUT_*`      | Output reset, clear, hold, and post-operation stability scenarios                                                     | Reset/clear and output-hold checks in tasks `reset`, `clear`, and `mac_hold` | Partial: reduced formal proof plus implemented directed checks |
+| `SARR_PARAM_*`    | Multi-configuration regression across selected `N`, `width`, and `ACC_WIDTH` values                                   | Generated structural and positional properties compiled and checked per configuration                       | Planned                |
+| `SARR_OP_*`       | Back-to-back operations using the required clear protocol                                                             | Clear-to-first-MAC, zero-initial-accumulator, and no-stale-valid properties                                 | Planned                |
+
+Detailed test-case identifiers shall be maintained in `NPU_TEST_PLAN.md`.
+Assertion and formal property identifiers shall be added to this table after
+the corresponding executable checks are implemented.
+
+---
+
+## 6.4 Additional Verification Properties
+
+The following properties are not direct restatements of individual SARR
+requirements but are included to improve verification completeness, debug
+quality, and confidence in array behavior.
+
+| Property                                                                                    | Classification         | Planned evidence                                          |
+| ------------------------------------------------------------------------------------------- | ---------------------- | --------------------------------------------------------- |
+| No unknown PE output after reset or clear under legal two-state stimulus                    | Sanity                 | Simulation assertion and regression check                 |
+| Every local-valid assertion eventually deasserts after `valid_in` is deasserted             | Drain/liveness         | Bounded SVA or formal property                            |
+| Local valid does not duplicate or extend beyond the input valid-stream width                | Consistency            | Pulse-width preservation property                         |
+| Operand A never propagates vertically between PE rows                                       | Structural consistency | Structural review or generated assertion where observable |
+| Operand B never propagates horizontally between PE columns                                  | Structural consistency | Structural review or generated assertion where observable |
+| Every PE receives the same number of local-valid cycles for a legal operation               | Operation consistency  | Generated counters or SVA                                 |
+| The final expected result is not compared before the last PE completes                      | Scoreboard timing      | Monitor/scoreboard protocol check                         |
+| Scoreboard transactions from consecutive operations cannot be mixed                         | Environment integrity  | Operation identifier and queue-consistency checks         |
+| Reference-model arithmetic matches signed `ACC_WIDTH` wraparound rules                      | Model integrity        | Directed boundary and overflow tests                      |
+| Every assertion antecedent is exercised in at least one simulation or formal cover scenario | Non-vacuity            | Cover properties and coverage review                      |
+| No scoreboard mismatch is suppressed, downgraded, or ignored during regression              | Environment integrity  | Regression log and error-count checks                     |
+
+These properties shall not be used to introduce new architectural requirements.
+They are verification controls derived from the specified behavior and the
+needs of the verification environment.
+
+---
+
+## 6.5 Pass and Completion Criteria
+
+The SARR verification scope may be declared complete only when all of the
+following conditions are satisfied:
+
+* all planned directed SARR tests required for the agreed scope are
+  implemented and pass;
+* all required constrained-random regressions complete without unresolved
+  scoreboard mismatches;
+* the independent reference model is reviewed against the signed,
+  fixed-width arithmetic defined in `NPU_SPEC.md`;
+* all in-scope assertions pass without being disabled, weakened, or made
+  vacuous by unintended assumptions;
+* all required formal tasks pass for the agreed formal configurations;
+* any use of reduced formal configurations is documented together with the
+  property scope and structural justification;
+* all required parameter configurations compile, run, and pass their
+  applicable checks;
+* functional coverage is collected from executable regressions;
+* uncovered bins, excluded bins, and unreachable bins are reviewed and
+  documented;
+* reset, clear, operand propagation, valid propagation, alignment, drain,
+  matrix computation, output stability, and operation isolation each have
+  traceable executable evidence;
+* regression logs record test name, configuration, random seed, assertion
+  failures, scoreboard mismatches, and final status;
+* no unresolved SARR bug remains within the agreed verification scope;
+* no test passes solely because checking was skipped, timed out, disabled, or
+  performed before the final array result became valid.
+
+Formal PASS results, assertion PASS results, or high functional coverage alone
+shall not be treated as sufficient verification closure. Closure requires
+consistent evidence from the applicable simulation, assertion, formal,
+coverage, and regression methods.
+
+---
+
+## 6.6 Known Gaps and Limitations
+
+Until executable SARR verification is completed, the following limitations
+shall be recorded:
+
+* no SARR functional-coverage percentage is currently claimed;
+* planned assertion and formal property names may change during
+  implementation;
+* proofs performed only at reduced `N` values shall not be claimed as complete
+  proof of all parameter configurations;
+* full matrix arithmetic correctness is not intended to be proven by a single
+  end-to-end assertion;
+* operation isolation is valid only when the specified clear protocol is
+  followed;
+* overlapping matrix operations and valid streams containing bubbles are
+  outside the current operation protocol;
+* NPU Top and controller-to-array integration timing are outside this
+  unit-level verification scope.
+
+---
+
+# 7. Revision History
+
+| Version | Date | Summary |
+| --- | --- | --- |
+| 0.4 | 2026-07-15 | Defined the PE and controller verification plan. |
+| 0.5 | 2026-07-18 | Added the Systolic Array unit-level verification plan. |
+| 0.6 | 2026-07-20 | Editorial normalization and version alignment; no verification intent changed. |
+| 0.7 | 2026-08-08 | Reviewed the SARR directed testbench, added executable reduced-configuration Z3 formal evidence, and corrected SARR scope and traceability status. |

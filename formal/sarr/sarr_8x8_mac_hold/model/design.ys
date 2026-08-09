@@ -1,0 +1,9 @@
+# running in formal/sarr/sarr_8x8_mac_hold/src/
+read -formal -sv -noautowire -DSARR_FORMAL_SBY -DPE_FORMAL_SBY -DFORMAL_N=8 -DFORMAL_WIDTH=8 -DPROVE_MAC_HOLD pe.sv systolic_arr_NxN.sv sarr_formal.sv
+
+prep -top sarr_formal
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

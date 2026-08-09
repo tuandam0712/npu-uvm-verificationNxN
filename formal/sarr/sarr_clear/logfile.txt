@@ -1,0 +1,62 @@
+SBY  2:29:17 [formal/sarr/sarr_clear] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_clear'.
+SBY  2:29:17 [formal/sarr/sarr_clear] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_clear/src/pe.sv'.
+SBY  2:29:17 [formal/sarr/sarr_clear] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_clear/src/systolic_arr_NxN.sv'.
+SBY  2:29:17 [formal/sarr/sarr_clear] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_formal.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_clear/src/sarr_formal.sv'.
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0: smtbmc --nopresat --unroll z3 -- --noincr
+SBY  2:29:17 [formal/sarr/sarr_clear] base: starting process "cd formal/sarr/sarr_clear/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \c with list of registers. See sarr_formal.sv:72
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \formal_pe_valid with list of registers. See sarr_formal.sv:71
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \formal_b_delay with list of registers. See sarr_formal.sv:70
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \formal_a_delay with list of registers. See sarr_formal.sv:69
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \formal_b_wire with list of registers. See sarr_formal.sv:68
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \formal_a_wire with list of registers. See sarr_formal.sv:67
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \pe_valid with list of registers. See systolic_arr_NxN.sv:139
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \b_wire with list of registers. See systolic_arr_NxN.sv:99
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \b_delay with list of registers. See systolic_arr_NxN.sv:86
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \a_wire with list of registers. See systolic_arr_NxN.sv:70
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \a_delay with list of registers. See systolic_arr_NxN.sv:57
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \b_in with list of registers. See systolic_arr_NxN.sv:40
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \a_in with list of registers. See systolic_arr_NxN.sv:39
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Replacing memory \c with list of registers. See systolic_arr_NxN.sv:0
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] base: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] base: finished (returncode=0)
+SBY  2:29:17 [formal/sarr/sarr_clear] prep: starting process "cd formal/sarr/sarr_clear/model; yosys -ql design_prep.log design_prep.ys"
+SBY  2:29:17 [formal/sarr/sarr_clear] prep: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] prep: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] prep: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] prep: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:29:17 [formal/sarr/sarr_clear] prep: finished (returncode=0)
+SBY  2:29:17 [formal/sarr/sarr_clear] smt2: starting process "cd formal/sarr/sarr_clear/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  2:29:17 [formal/sarr/sarr_clear] smt2: finished (returncode=0)
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.basecase: starting process "cd formal/sarr/sarr_clear; yosys-smtbmc -s z3 --noincr --unroll --noprogress -t 8  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.induction: starting process "cd formal/sarr/sarr_clear; yosys-smtbmc -s z3 --noincr --unroll -i --noprogress -t 8  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2"
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.induction: ##   0:00:00  Solver: z3
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.induction: ##   0:00:00  Trying induction in step 8..
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.induction: ##   0:00:00  Trying induction in step 7..
+SBY  2:29:17 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.induction: ##   0:00:00  Trying induction in step 6..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.induction: ##   0:00:00  Status: passed
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.induction: finished (returncode=0)
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.induction: Status returned by engine for induction: pass
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 6..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Checking assertions in step 7..
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: ##   0:00:00  Status: passed
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: finished (returncode=0)
+SBY  2:29:18 [formal/sarr/sarr_clear] engine_0.basecase: Status returned by engine for basecase: pass
+SBY  2:29:18 [formal/sarr/sarr_clear] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  2:29:18 [formal/sarr/sarr_clear] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  2:29:18 [formal/sarr/sarr_clear] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass for basecase
+SBY  2:29:18 [formal/sarr/sarr_clear] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass for induction
+SBY  2:29:18 [formal/sarr/sarr_clear] summary: engine_0 did not produce any traces
+SBY  2:29:18 [formal/sarr/sarr_clear] summary: successful proof by k-induction.
+SBY  2:29:18 [formal/sarr/sarr_clear] DONE (PASS, rc=0)

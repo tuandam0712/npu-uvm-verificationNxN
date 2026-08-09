@@ -1,7 +1,7 @@
-# PE and Controller Verification Closure Report
+# PE, Controller, and Systolic Array Verification Closure Report
 
-Version: 1.3
-Status: PE closed; controller closed with one documented directive-coverage gap
+Version: 1.4
+Status: PE closed; controller closed with one documented directive-coverage gap; SARR directed/assertion/local-formal milestone closed with full SARR scope still open
 
 ---
 
@@ -310,3 +310,170 @@ simulation and formal regression:
 * output decode;
 * phase counters or latency formulas;
 * `N`, `DRAIN_MARGIN`, or counter sizing.
+
+---
+
+## 16. Systolic Array Scope
+
+This section records unit-level verification evidence for the Systolic Array
+implemented in `rtl/systolic_arr_NxN.sv`. It is traced to the `SARR_*`
+requirements in `docs/NPU_SPEC.md`, the verification strategy in
+`docs/NPU_VERIFICATION_PLAN.md`, and the executable tests mapped in
+`docs/NPU_TEST_PLAN.md`.
+
+The closed milestone covers:
+
+* asynchronous reset, reset retention, and reset priority;
+* synchronous clear, clear retention, and clear priority;
+* local operand-A and operand-B routing;
+* local-valid routing;
+* operand/valid activity and alignment checks implemented by the embedded SVA;
+* signed local MAC recurrence and accumulator hold;
+* identity and deterministic signed matrix results;
+* output stability and one directed back-to-back operation pair.
+
+This is a directed/assertion/local-formal milestone closure. It is not a claim
+of exhaustive SARR verification or complete parameter-space closure.
+
+## 17. Systolic Array Verified Configurations
+
+| Method | `N` | `width` | `ACC_WIDTH` | Depth |
+| --- | ---: | ---: | ---: | ---: |
+| Directed simulation and embedded SVA | 8 | 8 | 19 | N/A |
+| Quick formal profile | 2 | 4 | 9 | proof 8, cover 8 |
+| Exact formal profile | 8 | 8 | 19 | proof 4, cover 20 |
+
+The quick profile is retained as a fast structural regression. The exact
+profile proves the implemented local properties on the primary 8x8 RTL
+configuration.
+
+## 18. Systolic Array Simulation and SVA Results
+
+Testbench: `tb/tb_sarr_directed.sv`
+
+| Item | Result |
+| --- | --- |
+| Directed regression | PASS |
+| Directed checks | 22 PASS, 0 FAIL |
+| Reset and reset priority/retention | PASS |
+| Clear and clear priority/retention | PASS |
+| Single-cycle and non-`N` valid bursts | PASS |
+| Identity matrix | PASS |
+| Deterministic signed matrix | PASS |
+| Output hold | PASS |
+| Back-to-back clear and operation isolation | PASS |
+
+Saved evidence:
+
+* `reports/sarr/sarr_directed.ucdb`;
+* `reports/sarr/sarr_coverage.txt`.
+
+The saved assertion/directive report records:
+
+* 1,348 evaluated assertion instances;
+* 1,348 assertion passes;
+* 0 assertion failures;
+* 1,585 covered SVA cover-directive instances;
+* total directive coverage of 100.00%.
+
+The 100% result is SVA directive coverage for this directed run. It is not a
+functional-covergroup percentage and is not used to claim full functional
+coverage closure.
+
+The testbench uses an independent signed, fixed-width scoreboard for the
+identity and deterministic signed matrix tests and compares every output after
+the array is allowed to drain.
+
+## 19. Systolic Array Formal Results
+
+Formal engine configuration:
+
+* SymbiYosys with Yosys, SMTBMC, and Z3;
+* SMT functions unrolled;
+* incremental Z3 solving disabled;
+* separate quick and exact 8x8 profiles.
+
+| Formal task | Quick profile | Exact 8x8 profile | Exact property count |
+| --- | --- | --- | ---: |
+| `reset` | PASS | PASS base case and induction | 256 assertions |
+| `clear` | PASS | PASS base case and induction | 256 assertions |
+| `operand` | PASS | PASS base case and induction | 256 assertions |
+| `valid` | PASS | PASS base case and induction | 64 assertions |
+| `mac_hold` | PASS | PASS base case and induction | 128 assertions |
+| `cover` | PASS, 6/6 reached | PASS, 6/6 reached | 6 covers |
+
+The exact profile directly proves the implemented local reset, clear,
+operand-routing, valid-routing, MAC-recurrence, and accumulator-hold
+properties for `N=8`, `width=8`. It does not prove complete matrix
+multiplication with a single end-to-end formal property.
+
+## 20. Systolic Array Requirement Disposition
+
+| Requirement area | Current result | Basis |
+| --- | --- | --- |
+| Reset | CLOSED | Directed asynchronous test, embedded SVA, and exact formal |
+| Clear | CLOSED | Directed synchronous/priority tests, embedded SVA, and exact formal |
+| Operand A/B local routing | CLOSED FOR IMPLEMENTED PROPERTIES | Generated SVA and exact `operand` proof |
+| Local-valid routing | CLOSED FOR IMPLEMENTED PROPERTIES | Generated SVA and exact `valid` proof |
+| Operand/valid alignment | COVERED WITH OPEN DIRECTED GAPS | Generated SVA is exercised; dedicated tagged alignment tests remain open |
+| Local signed MAC recurrence | CLOSED | Embedded SVA and exact `mac_hold` proof |
+| Accumulator/output hold | CLOSED | Directed hold check, embedded SVA, and exact formal |
+| Identity and deterministic signed matrix results | CLOSED FOR DIRECTED PATTERNS | Independent scoreboard reports PASS |
+| Back-to-back operation isolation | COVERED FOR IMPLEMENTED PAIR | Identity operation followed by signed operation with clear |
+| Completion timing and exact MAC counts | PARTIAL | Some SVA evidence exists; dedicated completion/count closure remains open |
+| Parameter space | PARTIAL | Exact primary 8x8 formal/simulation plus quick 2x2 formal only |
+| Constrained-random matrix correctness | OPEN | Not implemented in this standalone milestone |
+| Functional coverage closure | OPEN | No dedicated SARR functional covergroups/cross closure |
+
+## 21. Systolic Array Known Limitations and Open Items
+
+* Add constrained-random signed matrix regressions with saved seeds.
+* Add dedicated functional covergroups and review all uncovered, excluded, and
+  unreachable bins.
+* Run directed parameter regressions at `N=1`, `N=2`, and `N=4` and at an
+  additional legal operand width.
+* Exercise legal explicit `ACC_WIDTH` overrides.
+* Add minimum/maximum operand and positive/negative accumulator-wraparound
+  cases.
+* Add exact per-PE valid pulse-width and MAC-count checking.
+* Add dedicated first-PE, last-PE, in-flight, and complete-array completion
+  timing checks.
+* Add an end-to-end formal matrix-result proof only if required by the agreed
+  project scope; current end-to-end arithmetic evidence is simulation-based.
+* Add SARR checker mutation testing if required for sign-off.
+
+These items prevent a claim of full SARR verification closure but do not
+invalidate the closed directed/assertion/local-formal milestone.
+
+## 22. Systolic Array Closure Decision
+
+The available artifacts support closing the SARR
+directed/assertion/local-formal milestone and proceeding to verification
+environment study and the next verification phase.
+
+The milestone is supported by:
+
+* a 22-pass, zero-fail primary-configuration directed regression;
+* zero failures across 1,348 evaluated simulation assertion instances;
+* 100% coverage across 1,585 SVA cover-directive instances;
+* six of six quick formal tasks passing;
+* six of six exact 8x8 formal tasks passing, including base case and induction;
+* six of six formal cover statements reached in both profiles.
+
+Full SARR verification remains open until the Section 21 gaps are completed or
+formally waived with documented rationale.
+
+Any change to the following requires rerunning the applicable SARR simulation
+and formal regressions:
+
+* interface, reset, or clear behavior;
+* operand or valid routing;
+* PE connectivity;
+* signed multiplication or accumulator update behavior;
+* array dimensions, operand width, or accumulator width;
+* output stability or operation-isolation behavior.
+
+## 23. Report Revision
+
+Version 1.4 adds the SARR directed/assertion/local-formal milestone evidence and
+records the remaining SARR gaps without extending the full-closure claim.

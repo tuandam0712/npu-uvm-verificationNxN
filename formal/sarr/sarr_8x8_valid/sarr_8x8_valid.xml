@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-08-09T02:30:06" hostname="LAPTOP-CAC0UHVC" package="sarr_8x8" id="0" name="valid" tests="64" errors="0" failures="0" time="6" skipped="0">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="valid" name="build execution" time="0">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:261.52-265.34" time="0" type="ASSERT" location="sarr_formal.sv:261.52-265.34" id="$assert$sarr_formal.sv:261$985">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$1001">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$1009">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$1017">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$1025">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$1033">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$1041">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:266.51-271.34" time="0" type="ASSERT" location="sarr_formal.sv:266.51-271.34" id="$assert$sarr_formal.sv:266$993">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1000">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1002">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1003">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1004">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1005">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1006">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1007">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1008">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1010">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1011">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1012">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1013">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1014">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1015">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1016">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1018">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1019">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1020">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1021">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1022">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1023">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1024">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1026">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1027">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1028">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1029">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1030">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1031">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1032">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1034">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1035">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1036">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1037">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1038">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1039">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1040">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1042">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1043">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1044">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1045">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1046">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1047">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$1048">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$986">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$987">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$988">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$989">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$990">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$991">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$992">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$994">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$995">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$996">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$997">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$998">
+</testcase>
+<testcase classname="valid" name="Property ASSERT in sarr_formal at sarr_formal.sv:272.39-277.34" time="0" type="ASSERT" location="sarr_formal.sv:272.39-277.34" id="$assert$sarr_formal.sv:272$999">
+</testcase>
+<system-out>SBY  2:30:00 [formal/sarr/sarr_8x8_valid] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_8x8_valid'.
+SBY  2:30:00 [formal/sarr/sarr_8x8_valid] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_8x8_valid/src/pe.sv'.
+SBY  2:30:00 [formal/sarr/sarr_8x8_valid] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_8x8_valid/src/systolic_arr_NxN.sv'.
+SBY  2:30:00 [formal/sarr/sarr_8x8_valid] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_formal.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_8x8_valid/src/sarr_formal.sv'.
+SBY  2:30:00 [formal/sarr/sarr_8x8_valid] engine_0: smtbmc --nopresat --unroll z3 -- --noincr
+SBY  2:30:00 [formal/sarr/sarr_8x8_valid] base: starting process &quot;cd formal/sarr/sarr_8x8_valid/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \c with list of registers. See sarr_formal.sv:72
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \formal_pe_valid with list of registers. See sarr_formal.sv:71
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \formal_b_delay with list of registers. See sarr_formal.sv:70
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \formal_a_delay with list of registers. See sarr_formal.sv:69
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \formal_b_wire with list of registers. See sarr_formal.sv:68
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \formal_a_wire with list of registers. See sarr_formal.sv:67
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \pe_valid with list of registers. See systolic_arr_NxN.sv:139
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \b_wire with list of registers. See systolic_arr_NxN.sv:99
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \b_delay with list of registers. See systolic_arr_NxN.sv:86
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \a_wire with list of registers. See systolic_arr_NxN.sv:70
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \a_delay with list of registers. See systolic_arr_NxN.sv:57
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \b_in with list of registers. See systolic_arr_NxN.sv:40
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \a_in with list of registers. See systolic_arr_NxN.sv:39
+SBY  2:30:01 [formal/sarr/sarr_8x8_valid] base: Warning: Replacing memory \c with list of registers. See systolic_arr_NxN.sv:0
+SBY  2:30:02 [formal/sarr/sarr_8x8_valid] base: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:30:02 [formal/sarr/sarr_8x8_valid] base: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:30:02 [formal/sarr/sarr_8x8_valid] base: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:30:02 [formal/sarr/sarr_8x8_valid] base: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] base: finished (returncode=0)
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] prep: starting process &quot;cd formal/sarr/sarr_8x8_valid/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] prep: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] prep: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] prep: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] prep: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] prep: finished (returncode=0)
+SBY  2:30:03 [formal/sarr/sarr_8x8_valid] smt2: starting process &quot;cd formal/sarr/sarr_8x8_valid/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] smt2: finished (returncode=0)
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.basecase: starting process &quot;cd formal/sarr/sarr_8x8_valid; yosys-smtbmc -s z3 --noincr --unroll --noprogress -t 4  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.induction: starting process &quot;cd formal/sarr/sarr_8x8_valid; yosys-smtbmc -s z3 --noincr --unroll -i --noprogress -t 4  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.induction: ##   0:00:00  Solver: z3
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.induction: ##   0:00:00  Trying induction in step 4..
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.induction: ##   0:00:00  Trying induction in step 3..
+SBY  2:30:04 [formal/sarr/sarr_8x8_valid] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.induction: ##   0:00:00  Trying induction in step 2..
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.induction: ##   0:00:01  Temporal induction successful.
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.induction: ##   0:00:01  Status: passed
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.induction: finished (returncode=0)
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.induction: Status returned by engine for induction: pass
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.basecase: ##   0:00:01  Checking assertions in step 3..
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.basecase: ##   0:00:01  Status: passed
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.basecase: finished (returncode=0)
+SBY  2:30:05 [formal/sarr/sarr_8x8_valid] engine_0.basecase: Status returned by engine for basecase: pass
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:05 (5)
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:06 (6)
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass for basecase
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass for induction
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] summary: engine_0 did not produce any traces
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] summary: successful proof by k-induction.
+SBY  2:30:06 [formal/sarr/sarr_8x8_valid] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

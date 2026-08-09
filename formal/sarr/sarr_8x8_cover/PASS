@@ -1,0 +1,11 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:06 (6)
+Elapsed process time [H:MM:SS (secs)]: 0:00:06 (6)
+engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass
+trace: engine_0/trace0.vcd
+trace: engine_0/trace0.yw
+trace: engine_0/trace1.vcd
+trace: engine_0/trace1.yw
+trace: engine_0/trace2.vcd
+trace: engine_0/trace2.yw
+trace: engine_0/trace3.vcd
+trace: engine_0/trace3.yw

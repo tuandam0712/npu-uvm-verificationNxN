@@ -1,0 +1,2026 @@
+{
+  "$schema": "https://raw.githubusercontent.com/YosysHQ/yosys/master/misc/jny.schema.json",
+  "generator": "Yosys 0.33 (git sha1 2584903a060)",
+  "version": "0.0.1",
+  "invocation": "write_jny -no-connections ../model/design.json ",
+  "features": ["attributes", "properties"],
+  "modules": [
+      {
+        "name": "$paramod$98a6bd2d50cddb9c00e317c4ec3f90fba9f17575\\pe",
+        "cell_sorts": [
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$259",
+                  "attributes": {
+                    "src": "pe.sv:26.22-26.27|pe.sv:26.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                },
+                {
+                  "name": "$procmux$262",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "pe.sv:24.22-24.27|pe.sv:24.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$304",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "pe.sv:21.5-29.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mul",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$mul$pe.sv:19$124",
+                  "attributes": {
+                    "src": "pe.sv:19.26-19.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000001000"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$add",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$add$pe.sv:27$127",
+                  "attributes": {
+                    "src": "pe.sv:27.24-27.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000001001",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000001000",
+                    "Y_WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "\\pe",
+            "src": "pe.sv:1.1-153.10"
+        }
+      },
+      {
+        "name": "$paramod$df5e8e0614deaec7d28db1034b2e401037f16ce7\\pe",
+        "cell_sorts": [
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$264",
+                  "attributes": {
+                    "src": "pe.sv:26.22-26.27|pe.sv:26.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                },
+                {
+                  "name": "$procmux$267",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "pe.sv:24.22-24.27|pe.sv:24.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$305",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "pe.sv:21.5-29.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mul",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$mul$pe.sv:19$120",
+                  "attributes": {
+                    "src": "pe.sv:19.26-19.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000001000"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$add",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$add$pe.sv:27$123",
+                  "attributes": {
+                    "src": "pe.sv:27.24-27.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000001001",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000001000",
+                    "Y_WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "\\pe",
+            "src": "pe.sv:1.1-153.10"
+        }
+      },
+      {
+        "name": "$paramod$e37c9dcc50b5cb0240a95d467a0384b2b5807155\\pe",
+        "cell_sorts": [
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$189",
+                  "attributes": {
+                    "src": "pe.sv:26.22-26.27|pe.sv:26.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                },
+                {
+                  "name": "$procmux$192",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "pe.sv:24.22-24.27|pe.sv:24.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$269",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "pe.sv:21.5-29.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mul",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$mul$pe.sv:19$116",
+                  "attributes": {
+                    "src": "pe.sv:19.26-19.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000001000"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$add",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$add$pe.sv:27$119",
+                  "attributes": {
+                    "src": "pe.sv:27.24-27.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000001001",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000001000",
+                    "Y_WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "\\pe",
+            "src": "pe.sv:1.1-153.10"
+        }
+      },
+      {
+        "name": "$paramod$eb56b71b6ab35fe1793c0b34aa553a0f2c5b1023\\pe",
+        "cell_sorts": [
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$194",
+                  "attributes": {
+                    "src": "pe.sv:26.22-26.27|pe.sv:26.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                },
+                {
+                  "name": "$procmux$197",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "pe.sv:24.22-24.27|pe.sv:24.18-28.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$270",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "pe.sv:21.5-29.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mul",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$mul$pe.sv:19$128",
+                  "attributes": {
+                    "src": "pe.sv:19.26-19.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000001000"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$add",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [9, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$add$pe.sv:27$131",
+                  "attributes": {
+                    "src": "pe.sv:27.24-27.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000001001",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000001000",
+                    "Y_WIDTH": "00000000000000000000000000001001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "\\pe",
+            "src": "pe.sv:1.1-153.10"
+        }
+      },
+      {
+        "name": "$paramod$ee11575ce3a770a6bcdc4a619877cf6d79cfcf83\\systolic_arr_NxN",
+        "cell_sorts": [
+          {
+            "type": "$paramod$df5e8e0614deaec7d28db1034b2e401037f16ce7\\pe",
+            "ports": [
+                {
+                  "name": "a_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "acc",
+                  "direction": "",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "b_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "clear",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "valid",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "pe_rows[1].pe_cols[0].u_pe",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:168.19-176.18"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$paramod$98a6bd2d50cddb9c00e317c4ec3f90fba9f17575\\pe",
+            "ports": [
+                {
+                  "name": "a_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "acc",
+                  "direction": "",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "b_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "clear",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "valid",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "pe_rows[0].pe_cols[1].u_pe",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:168.19-176.18"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$paramod$e37c9dcc50b5cb0240a95d467a0384b2b5807155\\pe",
+            "ports": [
+                {
+                  "name": "a_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "acc",
+                  "direction": "",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "b_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "clear",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "valid",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "pe_rows[1].pe_cols[1].u_pe",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:168.19-176.18"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$paramod$eb56b71b6ab35fe1793c0b34aa553a0f2c5b1023\\pe",
+            "ports": [
+                {
+                  "name": "a_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "acc",
+                  "direction": "",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "b_in",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "clear",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "valid",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "pe_rows[0].pe_cols[0].u_pe",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:168.19-176.18"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$200",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:152.34-152.39|systolic_arr_NxN.sv:152.30-153.76"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$203",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:146.34-146.39|systolic_arr_NxN.sv:146.30-147.76"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$209",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:140.34-140.39|systolic_arr_NxN.sv:140.30-141.68"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$212",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:128.30-128.35|systolic_arr_NxN.sv:128.26-129.68"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$215",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:128.30-128.35|systolic_arr_NxN.sv:128.26-129.68"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$218",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:117.30-117.35|systolic_arr_NxN.sv:117.26-118.68"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$221",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:117.30-117.35|systolic_arr_NxN.sv:117.26-118.68"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$224",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:106.30-106.35|systolic_arr_NxN.sv:106.26-107.69"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$230",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:87.26-87.31|systolic_arr_NxN.sv:87.22-88.58"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$233",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:100.30-100.35|systolic_arr_NxN.sv:100.26-101.61"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$236",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:93.30-93.35|systolic_arr_NxN.sv:93.26-94.70"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$242",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:77.30-77.35|systolic_arr_NxN.sv:77.26-78.69"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$248",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:58.26-58.31|systolic_arr_NxN.sv:58.22-59.58"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$251",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:71.30-71.35|systolic_arr_NxN.sv:71.26-72.61"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$254",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:64.30-64.35|systolic_arr_NxN.sv:64.26-65.70"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$284",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:150.21-154.24"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$285",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:144.21-148.24"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$286",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:150.21-154.24"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$287",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:138.21-142.24"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$288",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:126.17-130.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$289",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:126.17-130.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$290",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:115.17-119.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$291",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:115.17-119.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$292",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:104.17-108.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$293",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:91.17-95.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$294",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:85.13-89.16"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$295",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:98.17-102.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$296",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:91.17-95.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$297",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:85.13-89.16"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$298",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:75.17-79.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$299",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:62.17-66.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$300",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:56.13-60.16"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$301",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:69.17-73.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$302",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:62.17-66.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$303",
+                  "attributes": {
+                    "always_ff": "00000000000000000000000000000001",
+                    "src": "systolic_arr_NxN.sv:56.13-60.16"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "0",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "\\systolic_arr_NxN",
+            "src": "systolic_arr_NxN.sv:1.1-574.10"
+        }
+      },
+      {
+        "name": "sarr_formal",
+        "cell_sorts": [
+          {
+            "type": "$cover",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "EN",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "C_SARR_ALIGN_001_002_003_LAST_PE",
+                  "attributes": {
+                    "src": "sarr_formal.sv:355.13-361.14"
+                  },
+                  "parameters": {
+
+                  }
+                },
+                {
+                  "name": "C_SARR_CLR_006",
+                  "attributes": {
+                    "src": "sarr_formal.sv:337.13-339.14"
+                  },
+                  "parameters": {
+
+                  }
+                },
+                {
+                  "name": "C_SARR_MAC_001_NONZERO_RESULT",
+                  "attributes": {
+                    "src": "sarr_formal.sv:363.13-367.14"
+                  },
+                  "parameters": {
+
+                  }
+                },
+                {
+                  "name": "C_SARR_RST_006",
+                  "attributes": {
+                    "src": "sarr_formal.sv:333.13-335.14"
+                  },
+                  "parameters": {
+
+                  }
+                },
+                {
+                  "name": "C_SARR_TIME_003_IN_FLIGHT",
+                  "attributes": {
+                    "src": "sarr_formal.sv:348.13-353.14"
+                  },
+                  "parameters": {
+
+                  }
+                },
+                {
+                  "name": "C_SARR_VAL_001_WAVEFRONT",
+                  "attributes": {
+                    "src": "sarr_formal.sv:341.13-346.14"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$dff",
+            "ports": [
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$271",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$272",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$273",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$275",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$277",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$279",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$281",
+                  "attributes": {
+                    "src": "sarr_formal.sv:332.5-368.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mem_v2",
+            "ports": [
+                {
+                  "name": "RD_ADDR",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "RD_ARST",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "RD_CLK",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "RD_DATA",
+                  "direction": "",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "RD_EN",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "RD_SRST",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "WR_ADDR",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "WR_CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "WR_DATA",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "WR_EN",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "a_in",
+                  "attributes": {
+                    "src": "sarr_formal.sv:23.30-23.34"
+                  },
+                  "parameters": {
+                    "ABITS": "00000000000000000000000000000001",
+                    "INIT": "xxxxxxxx",
+                    "MEMID": "\\a_in",
+                    "OFFSET": "00000000000000000000000000000000",
+                    "RD_ARST_VALUE": "xxxxxxxx",
+                    "RD_CE_OVER_SRST": "00",
+                    "RD_CLK_ENABLE": "00",
+                    "RD_CLK_POLARITY": "00",
+                    "RD_COLLISION_X_MASK": "0",
+                    "RD_INIT_VALUE": "xxxxxxxx",
+                    "RD_PORTS": "00000000000000000000000000000010",
+                    "RD_SRST_VALUE": "xxxxxxxx",
+                    "RD_TRANSPARENCY_MASK": "0",
+                    "RD_WIDE_CONTINUATION": "00",
+                    "SIZE": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000000000100",
+                    "WR_CLK_ENABLE": "0",
+                    "WR_CLK_POLARITY": "0",
+                    "WR_PORTS": "00000000000000000000000000000000",
+                    "WR_PRIORITY_MASK": "0",
+                    "WR_WIDE_CONTINUATION": "0"
+                  }
+                },
+                {
+                  "name": "b_in",
+                  "attributes": {
+                    "src": "sarr_formal.sv:24.30-24.34"
+                  },
+                  "parameters": {
+                    "ABITS": "00000000000000000000000000000001",
+                    "INIT": "xxxxxxxx",
+                    "MEMID": "\\b_in",
+                    "OFFSET": "00000000000000000000000000000000",
+                    "RD_ARST_VALUE": "xxxxxxxx",
+                    "RD_CE_OVER_SRST": "00",
+                    "RD_CLK_ENABLE": "00",
+                    "RD_CLK_POLARITY": "00",
+                    "RD_COLLISION_X_MASK": "0",
+                    "RD_INIT_VALUE": "xxxxxxxx",
+                    "RD_PORTS": "00000000000000000000000000000010",
+                    "RD_SRST_VALUE": "xxxxxxxx",
+                    "RD_TRANSPARENCY_MASK": "0",
+                    "RD_WIDE_CONTINUATION": "00",
+                    "SIZE": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000000000100",
+                    "WR_CLK_ENABLE": "0",
+                    "WR_CLK_POLARITY": "0",
+                    "WR_PORTS": "00000000000000000000000000000000",
+                    "WR_PRIORITY_MASK": "0",
+                    "WR_WIDE_CONTINUATION": "0"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$reduce_bool",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ne$sarr_formal.sv:359$42",
+                  "attributes": {
+                    "src": "sarr_formal.sv:359.17-359.46"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$ne$sarr_formal.sv:360$44",
+                  "attributes": {
+                    "src": "sarr_formal.sv:360.17-360.46"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$ne$sarr_formal.sv:366$47",
+                  "attributes": {
+                    "src": "sarr_formal.sv:366.17-366.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_not$sarr_formal.sv:334$25",
+                  "attributes": {
+                    "src": "sarr_formal.sv:334.31-334.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$sarr_formal.sv:345$34",
+                  "attributes": {
+                    "src": "sarr_formal.sv:345.17-345.43"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$sarr_formal.sv:351$37",
+                  "attributes": {
+                    "src": "sarr_formal.sv:351.17-351.26"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$paramod$ee11575ce3a770a6bcdc4a619877cf6d79cfcf83\\systolic_arr_NxN",
+            "ports": [
+                {
+                  "name": "clear",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "formal_a_delay_flat",
+                  "direction": "",
+                  "range": [16, 0]
+                },
+                {
+                  "name": "formal_a_in_flat",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "formal_a_wire_flat",
+                  "direction": "",
+                  "range": [16, 0]
+                },
+                {
+                  "name": "formal_b_delay_flat",
+                  "direction": "",
+                  "range": [16, 0]
+                },
+                {
+                  "name": "formal_b_in_flat",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "formal_b_wire_flat",
+                  "direction": "",
+                  "range": [16, 0]
+                },
+                {
+                  "name": "formal_c_flat",
+                  "direction": "",
+                  "range": [36, 0]
+                },
+                {
+                  "name": "formal_pe_valid_flat",
+                  "direction": "",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "valid_in",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "dut",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "sarr_formal.sv:46.7-59.6"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_and",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_and$sarr_formal.sv:334$26",
+                  "attributes": {
+                    "src": "sarr_formal.sv:334.17-334.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:334$27",
+                  "attributes": {
+                    "src": "sarr_formal.sv:334.17-334.46"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:334$28",
+                  "attributes": {
+                    "src": "sarr_formal.sv:334.17-334.58"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:338$29",
+                  "attributes": {
+                    "src": "sarr_formal.sv:338.17-338.36"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:338$30",
+                  "attributes": {
+                    "src": "sarr_formal.sv:338.17-338.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:338$31",
+                  "attributes": {
+                    "src": "sarr_formal.sv:338.17-338.57"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:342$33",
+                  "attributes": {
+                    "src": "sarr_formal.sv:342.17-344.38"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:342$35",
+                  "attributes": {
+                    "src": "sarr_formal.sv:342.17-345.43"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:349$38",
+                  "attributes": {
+                    "src": "sarr_formal.sv:349.17-351.26"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:349$39",
+                  "attributes": {
+                    "src": "sarr_formal.sv:349.17-352.42"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:356$41",
+                  "attributes": {
+                    "src": "sarr_formal.sv:356.17-358.42"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:356$43",
+                  "attributes": {
+                    "src": "sarr_formal.sv:356.17-359.46"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:356$45",
+                  "attributes": {
+                    "src": "sarr_formal.sv:356.17-360.46"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$sarr_formal.sv:364$48",
+                  "attributes": {
+                    "src": "sarr_formal.sv:364.17-366.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "keep": "00000000000000000000000000000001",
+            "hdlname": "\\sarr_formal",
+            "dynports": "00000000000000000000000000000001",
+            "top": "00000000000000000000000000000001",
+            "src": "sarr_formal.sv:2.1-370.10"
+        }
+      }
+  ]
+}

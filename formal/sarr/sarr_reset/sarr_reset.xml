@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-08-09T02:32:20" hostname="LAPTOP-CAC0UHVC" package="sarr" id="0" name="reset" tests="16" errors="0" failures="0" time="0" skipped="0">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="reset" name="build execution" time="0">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:101.61-110.30" time="0" type="ASSERT" location="sarr_formal.sv:101.61-110.30" id="$assert$sarr_formal.sv:101$164">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:101.61-110.30" time="0" type="ASSERT" location="sarr_formal.sv:101.61-110.30" id="$assert$sarr_formal.sv:101$168">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:101.61-110.30" time="0" type="ASSERT" location="sarr_formal.sv:101.61-110.30" id="$assert$sarr_formal.sv:101$172">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:101.61-110.30" time="0" type="ASSERT" location="sarr_formal.sv:101.61-110.30" id="$assert$sarr_formal.sv:101$176">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:87.38-94.30" time="0" type="ASSERT" location="sarr_formal.sv:87.38-94.30" id="$assert$sarr_formal.sv:87$161">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:87.38-94.30" time="0" type="ASSERT" location="sarr_formal.sv:87.38-94.30" id="$assert$sarr_formal.sv:87$165">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:87.38-94.30" time="0" type="ASSERT" location="sarr_formal.sv:87.38-94.30" id="$assert$sarr_formal.sv:87$169">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:87.38-94.30" time="0" type="ASSERT" location="sarr_formal.sv:87.38-94.30" id="$assert$sarr_formal.sv:87$173">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:94.31-96.67" time="0" type="ASSERT" location="sarr_formal.sv:94.31-96.67" id="$assert$sarr_formal.sv:94$162">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:94.31-96.67" time="0" type="ASSERT" location="sarr_formal.sv:94.31-96.67" id="$assert$sarr_formal.sv:94$166">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:94.31-96.67" time="0" type="ASSERT" location="sarr_formal.sv:94.31-96.67" id="$assert$sarr_formal.sv:94$170">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:94.31-96.67" time="0" type="ASSERT" location="sarr_formal.sv:94.31-96.67" id="$assert$sarr_formal.sv:94$174">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:96.68-98.51" time="0" type="ASSERT" location="sarr_formal.sv:96.68-98.51" id="$assert$sarr_formal.sv:96$163">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:96.68-98.51" time="0" type="ASSERT" location="sarr_formal.sv:96.68-98.51" id="$assert$sarr_formal.sv:96$167">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:96.68-98.51" time="0" type="ASSERT" location="sarr_formal.sv:96.68-98.51" id="$assert$sarr_formal.sv:96$171">
+</testcase>
+<testcase classname="reset" name="Property ASSERT in sarr_formal at sarr_formal.sv:96.68-98.51" time="0" type="ASSERT" location="sarr_formal.sv:96.68-98.51" id="$assert$sarr_formal.sv:96$175">
+</testcase>
+<system-out>SBY  2:32:19 [formal/sarr/sarr_reset] Removing directory '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_reset'.
+SBY  2:32:19 [formal/sarr/sarr_reset] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/pe.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_reset/src/pe.sv'.
+SBY  2:32:19 [formal/sarr/sarr_reset] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/rtl/systolic_arr_NxN.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_reset/src/systolic_arr_NxN.sv'.
+SBY  2:32:19 [formal/sarr/sarr_reset] Copy '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_formal.sv' to '/mnt/d/DoAn/DoAn_NPU8x8/npu_NXN_uvm/formal/sarr/sarr_reset/src/sarr_formal.sv'.
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0: smtbmc --nopresat --unroll z3 -- --noincr
+SBY  2:32:19 [formal/sarr/sarr_reset] base: starting process &quot;cd formal/sarr/sarr_reset/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \c with list of registers. See sarr_formal.sv:72
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \formal_pe_valid with list of registers. See sarr_formal.sv:71
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \formal_b_delay with list of registers. See sarr_formal.sv:70
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \formal_a_delay with list of registers. See sarr_formal.sv:69
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \formal_b_wire with list of registers. See sarr_formal.sv:68
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \formal_a_wire with list of registers. See sarr_formal.sv:67
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \pe_valid with list of registers. See systolic_arr_NxN.sv:139
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \b_wire with list of registers. See systolic_arr_NxN.sv:99
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \b_delay with list of registers. See systolic_arr_NxN.sv:86
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \a_wire with list of registers. See systolic_arr_NxN.sv:70
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \a_delay with list of registers. See systolic_arr_NxN.sv:57
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \b_in with list of registers. See systolic_arr_NxN.sv:40
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \a_in with list of registers. See systolic_arr_NxN.sv:39
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Replacing memory \c with list of registers. See systolic_arr_NxN.sv:0
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] base: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] base: finished (returncode=0)
+SBY  2:32:19 [formal/sarr/sarr_reset] prep: starting process &quot;cd formal/sarr/sarr_reset/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY  2:32:19 [formal/sarr/sarr_reset] prep: Warning: Wire sarr_formal.\clk is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] prep: Warning: Wire sarr_formal.\valid_in is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] prep: Warning: Wire sarr_formal.\clear is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] prep: Warning: Wire sarr_formal.\rst_n is used but has no driver.
+SBY  2:32:19 [formal/sarr/sarr_reset] prep: finished (returncode=0)
+SBY  2:32:19 [formal/sarr/sarr_reset] smt2: starting process &quot;cd formal/sarr/sarr_reset/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY  2:32:19 [formal/sarr/sarr_reset] smt2: finished (returncode=0)
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: starting process &quot;cd formal/sarr/sarr_reset; yosys-smtbmc -s z3 --noincr --unroll --noprogress -t 8  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: starting process &quot;cd formal/sarr/sarr_reset; yosys-smtbmc -s z3 --noincr --unroll -i --noprogress -t 8  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: ##   0:00:00  Solver: z3
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: ##   0:00:00  Trying induction in step 8..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: ##   0:00:00  Trying induction in step 7..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: ##   0:00:00  Status: passed
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: finished (returncode=0)
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.induction: Status returned by engine for induction: pass
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 6..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Checking assertions in step 7..
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: ##   0:00:00  Status: passed
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: finished (returncode=0)
+SBY  2:32:19 [formal/sarr/sarr_reset] engine_0.basecase: Status returned by engine for basecase: pass
+SBY  2:32:20 [formal/sarr/sarr_reset] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  2:32:20 [formal/sarr/sarr_reset] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  2:32:20 [formal/sarr/sarr_reset] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass for basecase
+SBY  2:32:20 [formal/sarr/sarr_reset] summary: engine_0 (smtbmc --nopresat --unroll z3 -- --noincr) returned pass for induction
+SBY  2:32:20 [formal/sarr/sarr_reset] summary: engine_0 did not produce any traces
+SBY  2:32:20 [formal/sarr/sarr_reset] summary: successful proof by k-induction.
+SBY  2:32:20 [formal/sarr/sarr_reset] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>
