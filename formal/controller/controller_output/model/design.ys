@@ -1,9 +1,0 @@
-# running in formal/controller/controller_output/src/
-read -formal -sv -DSA_CTRL_FORMAL_SBY -DPROVE_OUTPUT sa_controller_NxN.sv controller_formal.sv
-
-prep -top controller_formal
-
-hierarchy -smtcheck
-rename -witness
-write_jny -no-connections ../model/design.json
-write_rtlil ../model/design.il

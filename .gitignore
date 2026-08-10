@@ -29,3 +29,22 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 .sv.bak
+
+# SBY generated task directories
+formal/pe/pe_*/
+formal/controller/controller_*/
+formal/sarr/sarr_*/
+formal/sarr/diag_*/
+
+# Common formal-generated files
+status
+status.*
+PASS
+FAIL
+UNKNOWN
+
+*.smt2
+*.il
+*.yw
+*.smtc
+*.sqlite
