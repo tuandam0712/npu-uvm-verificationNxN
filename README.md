@@ -1,4 +1,4 @@
-# NxN Systolic Array NPU Verification using UVM
+# NxN Systolic Array NPU: RTL, UVM, SVA, and Formal Verification
 
 ## Overview
 
@@ -11,7 +11,7 @@ N     = 8
 width = 8
 ```
 
-The verification environment is built in SystemVerilog UVM and targets QuestaSim / Questa Intel FPGA Edition.
+The project combines parameterized RTL design with layered verification. UVM simulation targets QuestaSim / Questa Intel FPGA Edition, while unit-level formal verification uses SymbiYosys, Yosys, SMTBMC, and Z3.
 
 Current verification techniques:
 
@@ -22,13 +22,18 @@ Current verification techniques:
 - Self-checking scoreboard
 - SystemVerilog Assertions (SVA)
 - Functional coverage
+- Formal proof and cover
+- Requirement traceability and closure reporting
 
 Coverage closure is treated as a measure of meaningful verified behavior. Unsupported behavior and artificial bins are not chased only to report a 100% number. Known coverage gaps are documented and tracked separately.
 
-## Verification Layers
+## Design and Verification Scope
 
 | Layer | Purpose |
 |---|---|
+| PE unit verification | Verifies signed MAC, reset/clear priority, accumulator hold, and fixed-width behavior using directed tests, SVA, and formal proofs |
+| Controller unit verification | Verifies FSM sequencing, phase timing, start handling, output decode, and reachability using directed tests, SVA, and formal proofs |
+| Systolic-array unit verification | Verifies operand/valid routing, alignment, local MAC recurrence, matrix patterns, and output hold using directed tests, SVA, and quick/exact formal profiles |
 | NPU Core UVM | Verifies the systolic-array NPU core through direct matrix-level transactions |
 | APB Wrapper UVM | Verifies software-style APB access to CONTROL, STATUS, Matrix A, Matrix B, and Matrix C regions |
 
@@ -111,6 +116,45 @@ slverr_seen  = 0
 
 The current APB wrapper does not claim write-to-STATUS or write-to-C behavior as supported software flow. Active APB error response behavior is also not claimed because `pslverr` is tied to 0.
 
+## Unit-Level Verification and Closure
+
+Unit-level verification complements the end-to-end UVM regressions. Detailed evidence and accepted gaps are recorded in [`reports/CLOSURE_REPORT.md`](reports/CLOSURE_REPORT.md).
+
+### Processing Element (PE)
+
+Primary configuration: `width=8`, `N=8`, `ACC_WIDTH=19`.
+
+| Metric | Result |
+|---|---:|
+| Directed checks | 39 PASS, 0 FAIL |
+| Formal tasks (`reset`, `clear`, `mac`, `hold`) | 4 / 4 PASS |
+| Mutation test of clear priority | Injected bug detected by directed and formal checks |
+
+The PE milestone covers asynchronous reset, reset/clear priority, signed multiply-accumulate behavior, product sign extension, accumulator hold, and fixed-width wraparound for the stated configuration.
+
+### Systolic-Array Controller
+
+| Method | Configuration | Result |
+|---|---|---:|
+| Formal proof/cover | `N=8`, `DRAIN_MARGIN=10` | 6 / 6 committed artifacts PASS |
+| Directed simulation and embedded SVA | `N=4`, `DRAIN_MARGIN=3` | 0 failures across 26 assertions |
+| SVA directive coverage | Saved controller run | 96.15% (25 / 26 covers reached) |
+
+The controller milestone covers reset in every phase, start acceptance in IDLE, busy-start handling, exact phase progression, output decode, drain/done sequencing, held-start reacceptance, and back-to-back operations. The one uncovered directive is documented and accepted in the closure report.
+
+### NxN Systolic Array (SARR)
+
+| Metric | Result |
+|---|---:|
+| Directed regression at `N=8`, `width=8` | 22 PASS, 0 FAIL |
+| Simulation assertion instances | 1,348 PASS, 0 FAIL |
+| SVA cover-directive instances | 1,585 reached; 100.00% directive coverage |
+| Quick formal profile (`N=2`, `width=4`) | 6 / 6 tasks PASS |
+| Exact formal profile (`N=8`, `width=8`) | 6 / 6 tasks PASS |
+| Formal cover statements | 6 / 6 reached in both profiles |
+
+The exact profile proves the implemented local reset, clear, operand-routing, valid-routing, MAC-recurrence, and accumulator-hold properties on the primary 8x8 RTL configuration. The 100% SARR number is SVA directive coverage for the saved directed run, not functional-covergroup or RTL code coverage.
+
 ## Top Architecture
 
 ![Top Architecture](images/dir1.png)
@@ -122,7 +166,7 @@ The design consists of these major RTL blocks:
 | `pe.sv` | Signed multiply-accumulate processing element. |
 | `systolic_arr_NxN.sv` | NxN PE interconnection, operand propagation, and valid wavefront. |
 | `sa_controller_NxN.sv` | FSM controller for clear, compute, drain, and done sequencing. |
-| `npu_top_NxN.sv` | Top-level integration of controller and systolic array. |
+| `npu_top_NXN.sv` | Top-level integration of controller and systolic array. |
 | `apb_npu_wrapper.sv` | APB register-mapped wrapper around the NPU top. |
 
 ## Verification Architecture
@@ -150,9 +194,24 @@ The APB scoreboard captures APB writes to the Matrix A and Matrix B regions, com
 The project includes SVA checks for:
 
 - PE reset, clear, hold, and MAC behavior
-- Controller FSM transition and done sequencing behavior
-- Systolic-array valid wavefront propagation and operand alignment
+- Controller FSM transitions, phase outputs, counter progression, start handling, exact latency, and done sequencing
+- Systolic-array reset/clear priority, operand and valid routing, alignment, local MAC recurrence, and output hold
 - APB protocol setup/access behavior and signal stability during wait states
+
+Simulation SVA is complemented by cover directives to expose vacuous or unexercised scenarios. Assertion/directive percentages are reported separately from functional coverage.
+
+## Formal Verification
+
+Formal verification is maintained for the PE, controller, and systolic array:
+
+| Scope | Engine | Current result |
+|---|---|---:|
+| PE | SymbiYosys + Yosys + SMTBMC + Z3 | 4 / 4 tasks PASS |
+| Controller | SymbiYosys + Yosys + SMTBMC + Z3 | 5 / 5 prove tasks and cover run PASS |
+| SARR quick profile | SymbiYosys + Yosys + SMTBMC + Z3 | 6 / 6 tasks PASS |
+| SARR exact 8x8 profile | SymbiYosys + Yosys + SMTBMC + Z3 | 6 / 6 tasks PASS |
+
+The formal harnesses use named assertions aligned with the RTL requirements. Current SARR proofs are local/block-level properties; a single end-to-end formal proof of complete matrix multiplication is not claimed.
 
 ## Functional Coverage
 
@@ -229,6 +288,20 @@ input data coverage     = use regenerated report value
 
 Do not claim complete NPU functional coverage unless every current coverage group in the regenerated report is actually fully covered.
 
+### Run unit formal regressions
+
+Run SymbiYosys from WSL or another Linux environment that provides `sby`, Yosys, SMTBMC, and Z3.
+
+```bash
+sby -f formal/pe/pe.sby
+sby -f formal/controller/controller.sby
+sby -f formal/controller/controller_cover.sby
+bash formal/sarr/run_sarr_formal.sh quick
+bash formal/sarr/run_sarr_formal.sh 8x8
+```
+
+The SARR wrapper runs tasks sequentially to avoid starting every Z3 process at once. The quick profile is intended for fast structural regression; the 8x8 profile uses the primary RTL parameters and task-specific proof/cover depths.
+
 ## Current Limitations
 
 ### NPU Input Coverage Gap
@@ -247,16 +320,23 @@ The APB wrapper does not claim write-to-STATUS or write-to-C behavior as support
 
 Functional coverage is reported by the UVM coverage models. Full RTL code coverage closure is not claimed unless the corresponding Questa coverage report is generated and reviewed.
 
+### Unit-Level Closure Scope
+
+PE, controller, and SARR closure statements apply only to the configurations documented in `reports/CLOSURE_REPORT.md`. Exhaustive parameter-space closure and a single end-to-end formal proof of complete matrix multiplication are not claimed.
+
 ## Future Work
 
 Planned improvements:
 
 - Reset-aware UVM flow for true reset-during-compute testing
-- Start-while-busy corner-case testing
+- Integrated NPU/APB start-while-busy corner-case testing
+- Regenerate and review the strengthened NPU input functional coverage report
+- Directed parameter regressions at additional legal `N`, operand-width, and accumulator-width configurations
+- Dedicated SARR functional covergroups and additional signed boundary/wraparound tests
+- End-to-end formal matrix-result proof if required by the agreed project scope
 - AXI-Lite wrapper verification
 - More advanced APB negative/error-response testing if active `pslverr` support is added
 - RTL code coverage closure with committed coverage report
-- Formal checks for selected PE/controller properties
 - CI/CD or automated regression publication
 
 ## Project Summary
@@ -282,8 +362,19 @@ APB protocol SVA: PASS
 APB functional coverage: 95.00%
 APB UVM warnings/errors/fatals: 0 / 0 / 0
 
+Unit-level directed / SVA / formal verification
+PE directed checks: 39 PASS, 0 FAIL
+PE formal: 4 / 4 tasks PASS
+Controller formal: 5 / 5 prove tasks PASS; cover PASS
+Controller simulation SVA: 0 failures across 26 assertions; 96.15% directive coverage
+SARR directed checks: 22 PASS, 0 FAIL
+SARR simulation SVA: 1,348 assertion passes, 0 failures; 1,585 cover hits; 100% directive coverage
+SARR formal: 6 / 6 quick tasks PASS; 6 / 6 exact 8x8 tasks PASS
+
 Known limitations:
 Reset-during-compute is future reset-aware work.
 NPU input coverage gap is documented if regenerated input coverage is below 100%.
 APB write-to-STATUS/write-to-C and active pslverr behavior are not claimed.
+Full RTL code coverage and exhaustive parameter-space closure are not claimed.
+End-to-end formal proof of complete matrix multiplication is not claimed.
 ```
