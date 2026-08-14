@@ -363,7 +363,12 @@ module sarr_formal;
             C_SARR_MAC_001_NONZERO_RESULT: cover (
                 past_valid &&
                 rst_n &&
-                c[N-1][N-1] != '0
+                $past(rst_n)&&
+                !$past(clear)&&
+                $past(pe_valid[N-1][N-1])&&
+                $past(a_wire[N-1][N-1])&&
+                $past(b_wire[N-1][N-1])&&
+                c[N-1][N-1] != $past(c[N-1][N-1])
             );
     end
 `endif
