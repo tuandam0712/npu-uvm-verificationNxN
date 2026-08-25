@@ -213,27 +213,28 @@ The APB wrapper is verified as a separate layer. APB claims are not mixed into N
 Latest APB verification result:
 
 ```text
-APB transactions: 1245 / 1245 PASS
+APB transactions: 1249 / 1249 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
-APB functional coverage: 95.00%
+APB error responses observed: 9
+APB functional coverage: 100.00%
 UVM_WARNING / UVM_ERROR / UVM_FATAL: 0 / 0 / 0
 ```
 
-Current APB wrapper limitations:
+Current APB wrapper protocol scope:
 
-- Write-to-STATUS is not claimed as supported software flow.
-- Write-to-C is not claimed as supported software flow.
-- Active APB error response behavior is not claimed because `pslverr` is tied to 0.
+- Unsupported read/write directions, invalid addresses, misaligned addresses, Matrix A/B writes while busy, and repeated start commands while busy are rejected and verified.
+- The wrapper uses a zero-wait-state response.
+- Wait-state and `psel`-held back-to-back transfer verification are not yet claimed.
 
 ## 14. Future Work
 
 Planned verification improvements:
 
 - Reset-aware UVM architecture for true reset-during-compute testing.
-- Start-while-busy corner-case test.
 - AXI-Lite wrapper and protocol verification.
-- More advanced APB negative/error-response testing if active `pslverr` support is added.
+- APB wait-state and `psel`-held back-to-back transfer verification.
+- Parameter-aware APB address-map generation and overlap checks for non-default `N`.
 - RTL code coverage closure with committed coverage report.
 - Formal verification for selected PE/controller properties.
 - CI/CD or automated regression publication.

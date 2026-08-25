@@ -33,7 +33,7 @@ APB_DATA_WIDTH = 32
 | APB_F7 | Matrix C readback | Verified |
 | APB_F8 | Signed data handling | Verified |
 | APB_F9 | APB protocol SVA | Verified |
-| APB_F10 | APB error response | Not claimed |
+| APB_F10 | APB error response | Verified |
 
 ## 3. APB UVM Environment
 
@@ -62,6 +62,7 @@ The APB UVM environment includes:
 | APB_TC_006 | Signed Matrix Test | Verify negative input and negative output readback | PASS |
 | APB_TC_007 | Status Behavior Test | Verify busy/done status behavior | PASS |
 | APB_TC_008 | APB Protocol SVA | Verify setup/access phase and signal stability | PASS |
+| APB_TC_009 | Negative Access Test | Verify unsupported-direction, invalid, misaligned, and busy-state error responses | PASS |
 
 ## 5. Scoreboard Plan
 
@@ -100,11 +101,11 @@ busy_seen
 done_seen
 slverr_seen
 ```
-### Unsupported Error Response Bin
+### Error Response Coverage
 
-The current APB wrapper does not implement active error response behavior and ties `pslverr` to 0. Because of this, the `pslverr=1` coverage bin is treated as unsupported and excluded from the APB functional coverage target.
+The coverage model contains active normal-response and slave-error bins. Negative sequences exercise unsupported read/write directions, invalid and misaligned addresses, Matrix A writes while busy, and repeated start commands while busy.
 
-This avoids reporting an unreachable bin as a missing verification item.
+Expected error responses are checked in the sequence. The scoreboard discards rejected transfers before updating its A/B model or comparing Matrix C.
 
 ## 7. APB Protocol SVA Plan
 
@@ -125,35 +126,35 @@ The APB regression is considered passing when:
 - No UVM errors or fatals are reported
 - APB protocol SVA reports no assertion failures
 - Functional coverage is collected and reported
-- Unsupported APB error behavior is not claimed as verified
+- Every expected and unexpected APB error response is checked by the sequence
 
 ## 9. Latest Result
 
 ```text
-APB transactions: 1245 / 1245 PASS
+APB transactions: 1249 / 1249 PASS
 C matrix checks: 384 / 384 PASS
 UVM_WARNING: 0
 UVM_ERROR  : 0
 UVM_FATAL  : 0
-APB functional coverage: 95.00%
+APB functional coverage: 100.00%
 ```
 
 Coverage summary:
 
 ```text
-samples      = 1245
-start_writes = 6
-status_reads = 81
+samples      = 1249
+start_writes = 7
+status_reads = 79
 c_reads      = 384
-busy_seen    = 72
+busy_seen    = 70
 done_seen    = 8
-slverr_seen  = 0
+slverr_seen  = 9
 ```
 
 ## 10. Current Limitations
 
 - APB zero-wait-state response is used.
-- Active `pslverr` error response is not implemented and not claimed as verified.
-- Invalid address behavior is not claimed.
+- Wait-state insertion and wait-state response timing are not implemented.
+- The current driver returns to IDLE after each transfer and does not generate `psel`-held back-to-back accesses.
 - Full APB VIP-level random protocol verification is not claimed.
 - AXI-Lite wrapper verification is not included in the current APB verification scope.

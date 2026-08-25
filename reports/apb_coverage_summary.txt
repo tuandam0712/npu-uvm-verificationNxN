@@ -1,10 +1,34 @@
+Coverage Report Totals BY FILES: Number of Files 16
+
+    Enabled Coverage            Active      Hits    Misses    Weight % Covered
+    ----------------            ------      ----    ------    ------ ---------
+    Stmts                          649       493       156         1     75.96
+    Branches                       363       170       193         1     46.83
+    FEC Condition Terms             79        37        42         1     46.83
+    FEC Expression Terms            36        35         1         1     97.22
+    FSMs                                                           1     81.25
+        States                       5         5         0         1    100.00
+        Transitions                  8         5         3         1     62.50
+    Toggle Bins                    980       613       367         1     62.55
+
+Total coverage (Code Coverage Only, filtered view): 68.44%
+
 Coverage Report Totals BY INSTANCES: Number of Instances 74
 
     Enabled Coverage            Active      Hits    Misses    Weight % Covered
     ----------------            ------      ----    ------    ------ ---------
-    Cover Group Types                1        na        na         1     95.00
+    Stmts                         2416      2260       156         1     93.54
+    Branches                      1550      1357       193         1     87.54
+    FEC Condition Terms             93        44        49         1     47.31
+    FEC Expression Terms            36        35         1         1     97.22
+    FSMs                                                           1     81.25
+        States                       5         5         0         1    100.00
+        Transitions                  8         5         3         1     62.50
+    Toggle Bins                  16708     15719       989         1     94.08
+    Cover Group Types                1        na        na         1    100.00
     Coverpoints/Crosses              4        na        na         1        na
-        Covergroup Bins             18        16         2         1     88.88
-    Assertions                     526       523         3         1     99.42
-Total coverage (filtered view): 97.21%
+        Covergroup Bins             19        19         0         1    100.00
+    Cover Directives              1611      1333       278         1     82.74
+    Assertions                    1379      1112       267         1     80.63
+Total coverage (filtered view): 84.92%
 

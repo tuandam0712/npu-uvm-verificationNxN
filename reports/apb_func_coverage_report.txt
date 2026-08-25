@@ -3,45 +3,45 @@ COVERGROUP COVERAGE:
 Covergroup                                             Metric       Goal    Status               
                                                                                               
 -----------------------------------------------------------------------------------------------
- TYPE /apb_pkg/apb_coverage/cg_apb                     95.00%        100    Uncovered            
-    covered/total bins:                                    16         18                      
-    missing/total bins:                                     2         18                      
-    % Hit:                                             88.88%        100                      
+ TYPE /apb_pkg/apb_coverage/cg_apb                    100.00%        100    Covered              
+    covered/total bins:                                    19         19                      
+    missing/total bins:                                     0         19                      
+    % Hit:                                            100.00%        100                      
     Coverpoint cg_apb::cp_rw                          100.00%        100    Covered              
         covered/total bins:                                 2          2                      
         missing/total bins:                                 0          2                      
         % Hit:                                        100.00%        100                      
-        bin read                                          468          1    Covered              
-        bin write                                         777          1    Covered              
+        bin read                                          467          1    Covered              
+        bin write                                         782          1    Covered              
     Coverpoint cg_apb::cp_addr                        100.00%        100    Covered              
         covered/total bins:                                 5          5                      
         missing/total bins:                                 0          5                      
         % Hit:                                        100.00%        100                      
-        bin control                                         8          1    Covered              
-        bin status                                         81          1    Covered              
-        bin a_region                                      386          1    Covered              
+        bin control                                         9          1    Covered              
+        bin status                                         80          1    Covered              
+        bin a_region                                      388          1    Covered              
         bin b_region                                      386          1    Covered              
-        bin c_region                                      384          1    Covered              
-        default bin other                                   0               ZERO                 
+        bin c_region                                      385          1    Covered              
+        default bin other                                   1               Occurred             
     Coverpoint cg_apb::cp_slverr                      100.00%        100    Covered              
-        covered/total bins:                                 1          1                      
-        missing/total bins:                                 0          1                      
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
         % Hit:                                        100.00%        100                      
-        ignore_bin error                                    0               ZERO                 
-        bin no_error                                     1245          1    Covered              
-    Cross cg_apb::cross_rw_addr                        80.00%        100    Uncovered            
-        covered/total bins:                                 8         10                      
-        missing/total bins:                                 2         10                      
-        % Hit:                                         80.00%        100                      
+        bin no_error                                     1240          1    Covered              
+        bin error                                           9          1    Covered              
+    Cross cg_apb::cross_rw_addr                       100.00%        100    Covered              
+        covered/total bins:                                10         10                      
+        missing/total bins:                                 0         10                      
+        % Hit:                                        100.00%        100                      
         bin <read,control>                                  1          1    Covered              
-        bin <write,control>                                 7          1    Covered              
-        bin <read,status>                                  81          1    Covered              
+        bin <write,control>                                 8          1    Covered              
+        bin <read,status>                                  79          1    Covered              
+        bin <write,status>                                  1          1    Covered              
         bin <read,a_region>                                 1          1    Covered              
-        bin <write,a_region>                              385          1    Covered              
+        bin <write,a_region>                              387          1    Covered              
         bin <read,b_region>                                 1          1    Covered              
         bin <write,b_region>                              385          1    Covered              
         bin <read,c_region>                               384          1    Covered              
-        bin <write,status>                                  0          1    ZERO                 
-        bin <write,c_region>                                0          1    ZERO                 
+        bin <write,c_region>                                1          1    Covered              
 
-TOTAL COVERGROUP COVERAGE: 95.00%  COVERGROUP TYPES: 1
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1

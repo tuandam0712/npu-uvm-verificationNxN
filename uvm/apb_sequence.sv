@@ -6,7 +6,11 @@ class apb_base_sequence extends uvm_sequence #(apb_sequence_item);
         super.new(name);
     endfunction
 
-    task apb_write(bit [31:0] addr, bit [31:0] data);
+    task apb_write(
+        input bit [31:0] addr,
+        input bit [31:0] data,
+        input bit        exp_slverr = 1'b0
+    );
         apb_sequence_item item;
 
         item = apb_sequence_item::type_id::create("item");
@@ -16,9 +20,16 @@ class apb_base_sequence extends uvm_sequence #(apb_sequence_item);
         item.addr  = addr;
         item.wdata = data;
         finish_item(item);
+
+        if(item.slverr !== exp_slverr) begin
+            `uvm_error("APB_SEQ", $sformatf("WRITE SLVERR mismatch addr=0x%08h expected=%0b actual=%0b", addr, exp_slverr, item.slverr))
+        end
     endtask
 
-    task apb_read(bit [31:0] addr);
+    task apb_read(
+        input bit [31:0] addr,
+        input bit        exp_slverr = 1'b0
+    );
         apb_sequence_item item;
 
         item = apb_sequence_item::type_id::create("item");
@@ -28,9 +39,17 @@ class apb_base_sequence extends uvm_sequence #(apb_sequence_item);
         item.addr  = addr;
         item.wdata = 32'h0;
         finish_item(item);
+
+        if(item.slverr !== exp_slverr) begin
+            `uvm_error("APB_SEQ", $sformatf("READ SLVERR mismatch addr=0x%08h expected=%0b actual=%0b", addr, exp_slverr, item.slverr))
+        end
     endtask
 
-    task apb_read_data(bit [31:0] addr, output bit [31:0] data);
+    task apb_read_data(
+        input  bit [31:0] addr,
+        output bit [31:0] data,
+        input  bit        exp_slverr = 1'b0
+    );
         apb_sequence_item item;
 
         item = apb_sequence_item::type_id::create("item");
@@ -42,6 +61,10 @@ class apb_base_sequence extends uvm_sequence #(apb_sequence_item);
         finish_item(item);
 
         data = item.rdata;
+
+        if(item.slverr !== exp_slverr) begin
+            `uvm_error("APB_SEQ", $sformatf("READ_DATA SLVERR mismatch addr=0x%08h expected=%0b actual=%0b", addr, exp_slverr, item.slverr))
+        end
 endtask
 
 endclass
@@ -76,21 +99,33 @@ class apb_reg_access_sequence extends apb_base_sequence;
 
         // CONTROL register
         apb_write(APB_CONTROL_ADDR, 32'h0000_0000);
-        apb_read (APB_CONTROL_ADDR);
+        apb_read (APB_CONTROL_ADDR, 1'b1);
 
         // STATUS register
         apb_read (APB_STATUS_ADDR);
 
         // A matrix region
         apb_write(APB_A_BASE, 32'h0000_0001);
-        apb_read (APB_A_BASE);
+        apb_read (APB_A_BASE, 1'b1);
 
         // B matrix region
         apb_write(APB_B_BASE, 32'h0000_0002);
-        apb_read (APB_B_BASE);
+        apb_read (APB_B_BASE, 1'b1);
 
         // C matrix region
         // apb_read (APB_C_BASE);
+
+        // Unsp wr dir
+        apb_write(APB_STATUS_ADDR, 32'h0000_0001, 1'b1);
+        apb_write(APB_C_BASE, 32'h0000_0001, 1'b1);
+
+        // Invalid addr
+        apb_read(32'h0000_0008, 1'b1);
+
+        // Misaligned A addr
+        apb_write(
+            APB_A_BASE + 32'h1, 32'h0000_0055, 1'b1
+        );
 
         `uvm_info("APB_SEQ", "Finished APB register access sequence", UVM_LOW)
     endtask
@@ -455,6 +490,9 @@ class apb_status_behavior_sequence extends apb_base_sequence;
 
         // 4. Start NPU
         apb_write(APB_CONTROL_ADDR, 32'h0000_0001);
+
+        apb_write(APB_A_BASE, 32'h0000_0007, 1'b1);
+        apb_write(APB_CONTROL_ADDR, 32'h0000_0001, 1'b1);
 
         // 5. Read STATUS immediately after start a few times
         for (int k = 0; k < 3; k++) begin

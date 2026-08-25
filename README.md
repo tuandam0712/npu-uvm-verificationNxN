@@ -82,12 +82,12 @@ Latest APB wrapper regression result:
 
 | Metric | Result |
 |---|---:|
-| APB transactions | 1245 / 1245 PASS |
+| APB transactions | 1249 / 1249 PASS |
 | C matrix checks | 384 / 384 PASS |
 | UVM warnings | 0 |
 | UVM errors | 0 |
 | UVM fatals | 0 |
-| APB functional coverage | 95.00% |
+| APB functional coverage | 100.00% |
 
 APB regression scenarios:
 
@@ -100,21 +100,23 @@ APB regression scenarios:
 | Bounded random-like matrix compute | PASS |
 | Signed matrix compute | PASS |
 | Status behavior test | PASS |
+| Invalid, misaligned, and unsupported-direction access | PASS |
+| Matrix A write and repeated start while busy | PASS |
 | APB protocol SVA | PASS |
 
 APB coverage summary:
 
 ```text
-samples      = 1245
-start_writes = 6
-status_reads = 81
+samples      = 1249
+start_writes = 7
+status_reads = 79
 c_reads      = 384
-busy_seen    = 72
+busy_seen    = 70
 done_seen    = 8
-slverr_seen  = 0
+slverr_seen  = 9
 ```
 
-The current APB wrapper does not claim write-to-STATUS or write-to-C behavior as supported software flow. Active APB error response behavior is also not claimed because `pslverr` is tied to 0.
+Write-to-STATUS, write-to-C, read-from-CONTROL/A/B, invalid addresses, misaligned addresses, Matrix A writes while busy, and repeated start commands while busy are rejected with `pslverr`. The negative-access sequences check the expected response, and the scoreboard excludes rejected transfers from its A/B golden model.
 
 ## Unit-Level Verification and Closure
 
@@ -234,7 +236,7 @@ Current documented NPU coverage status:
 
 The APB coverage model tracks read/write accesses, CONTROL/STATUS/A/B/C address regions, CONTROL.start writes, STATUS reads, Matrix C readback count, busy/done observations, and slave-error observations.
 
-Current APB functional coverage is 95.00%. The uncovered bins are accepted for the current wrapper scope because write-to-STATUS and write-to-C are not claimed as supported software flow, and active `pslverr` behavior is not implemented.
+Current APB functional coverage is 100.00%. Both normal and slave-error response bins are covered. The regression observes nine error responses across unsupported-direction, invalid, misaligned, and busy-state accesses.
 
 ## How to Run
 
@@ -264,8 +266,10 @@ do scripts/run_apb_uvm.do
 Expected clean result:
 
 ```text
-APB transactions: 1245 / 1245 PASS
+APB transactions: 1249 / 1249 PASS
 C matrix checks: 384 / 384 PASS
+PSLVERR observations: 9
+APB functional coverage: 100.00%
 UVM_WARNING : 0
 UVM_ERROR   : 0
 UVM_FATAL   : 0
@@ -312,9 +316,9 @@ The input coverage model was strengthened to track full signed INT8 boundary-awa
 
 True reset-during-compute is not claimed as a supported verified feature in the current UVM environment. Supporting this correctly requires reset-aware driver, monitor, and scoreboard synchronization.
 
-### APB Wrapper Coverage
+### APB Wrapper Protocol Scope
 
-The APB wrapper does not claim write-to-STATUS or write-to-C behavior as supported software flow. Active APB error response behavior is not claimed because `pslverr` is tied to 0.
+The implemented APB wrapper uses a zero-wait-state response. Active error responses are verified for unsupported read/write directions, invalid and misaligned addresses, Matrix A/B writes while busy, and repeated start commands while busy. Full wait-state and APB VIP-level constrained-random protocol closure are not claimed.
 
 ### Code Coverage
 
@@ -329,13 +333,13 @@ PE, controller, and SARR closure statements apply only to the configurations doc
 Planned improvements:
 
 - Reset-aware UVM flow for true reset-during-compute testing
-- Integrated NPU/APB start-while-busy corner-case testing
 - Regenerate and review the strengthened NPU input functional coverage report
 - Directed parameter regressions at additional legal `N`, operand-width, and accumulator-width configurations
 - Dedicated SARR functional covergroups and additional signed boundary/wraparound tests
 - End-to-end formal matrix-result proof if required by the agreed project scope
 - AXI-Lite wrapper verification
-- More advanced APB negative/error-response testing if active `pslverr` support is added
+- APB wait-state and back-to-back-transfer verification with stronger protocol assertions
+- Parameter-aware APB address-map generation and overlap checks for non-default `N`
 - RTL code coverage closure with committed coverage report
 - CI/CD or automated regression publication
 
@@ -356,10 +360,11 @@ NPU UVM warnings/errors/fatals: 0 / 0 / 0
 NPU coverage: matrix pattern 100%, scenario 100%, output 100%, input report must be regenerated
 
 APB wrapper UVM verification
-APB transactions: 1245 / 1245 PASS
+APB transactions: 1249 / 1249 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
-APB functional coverage: 95.00%
+APB error responses observed: 9
+APB functional coverage: 100.00%
 APB UVM warnings/errors/fatals: 0 / 0 / 0
 
 Unit-level directed / SVA / formal verification
@@ -374,7 +379,7 @@ SARR formal: 6 / 6 quick tasks PASS; 6 / 6 exact 8x8 tasks PASS
 Known limitations:
 Reset-during-compute is future reset-aware work.
 NPU input coverage gap is documented if regenerated input coverage is below 100%.
-APB write-to-STATUS/write-to-C and active pslverr behavior are not claimed.
+APB error responses for unsupported, invalid, misaligned, and busy-state accesses are verified; wait-state and full VIP-level protocol closure are not claimed.
 Full RTL code coverage and exhaustive parameter-space closure are not claimed.
 End-to-end formal proof of complete matrix multiplication is not claimed.
 ```

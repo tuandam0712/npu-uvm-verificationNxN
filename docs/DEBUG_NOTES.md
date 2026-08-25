@@ -237,20 +237,19 @@ Control/status registers should be verified as behavior, not only used as helper
 | Fix | Added counters for samples, start writes, status reads, C reads, busy seen, done seen, and slave errors seen. |
 | Result | APB coverage report became easier to interpret and correlate with scoreboard totals. |
 
-## APB Coverage Included Unsupported `pslverr=1` Bin
+## APB Error-Response Coverage Closure
 
 | Item | Detail |
 |---|---|
-| Symptom | APB functional coverage was limited because the coverage model included an error bin for `pslverr=1`. |
-| Root Cause | The current APB wrapper ties `pslverr` to 0, so `pslverr=1` is not reachable in the implemented design. |
-| How It Was Found | Coverage report showed a missing error bin even though APB error response behavior is not implemented or claimed. |
-| Fix | Changed the coverage model to ignore the unsupported `pslverr=1` bin instead of counting it as a required coverage target. |
-| Result | APB functional coverage increased to 95.00% while keeping the limitation clearly documented. |
+| Symptom | The earlier APB regression could not verify invalid or unsupported accesses and excluded the slave-error bin. |
+| Root Cause | Address legality, access-direction permissions, alignment checks, and busy-state write protection were not decoded into an active error response. |
+| How It Was Found | Review of the wrapper and coverage model showed that invalid accesses completed without an error and that rejected-transfer side effects were not modeled. |
+| Fix | Added aligned address-hit decoding, legal read/write classification, active error responses, write-side-effect gating, sequence-level expected-error checking, scoreboard rejection filtering, and negative-access stimulus. |
+| Result | The APB regression passed 1249/1249 transactions and 384/384 Matrix C checks with nine slave-error observations, 100.00% APB functional coverage, and zero UVM warnings/errors/fatals. |
 
 ### Lesson Learned
 
-Coverage should measure implemented and claimed behavior. Unsupported behavior should be documented and excluded from the coverage target, not silently counted as a missing bin.
-### Lesson Learned
+Error coverage should be enabled only when the RTL, stimulus, response checking, and scoreboard side-effect model agree on the access policy.
 
 Coverage is useful only when it explains what behavior was observed. A single percentage is not enough for debug or review.
 

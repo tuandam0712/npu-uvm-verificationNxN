@@ -38,8 +38,24 @@ module apb_npu_wrapper #(
     assign apb_write = psel && penable &&  pwrite;
     assign apb_read  = psel && penable && !pwrite;
     assign pready  = 1'b1;
-    assign pslverr = 1'b0;
-    assign start_cmd = apb_write && (paddr == ADDR_CONTROL) && pwdata[0];
+    logic word_aligned;
+    logic addr_a_hit;
+    logic addr_b_hit;
+    logic addr_c_hit;
+    logic legal_wr;
+    logic legal_rd;
+    assign word_aligned = (paddr[1:0] == 2'b00);
+    assign addr_a_hit = word_aligned && (paddr >= ADDR_A_BASE) && (paddr < ADDR_A_BASE + NUM_ELEMS*4);
+    assign addr_b_hit =word_aligned && (paddr >= ADDR_B_BASE) && (paddr < ADDR_B_BASE + NUM_ELEMS*4);
+    assign addr_c_hit =word_aligned && (paddr >= ADDR_C_BASE) && (paddr < ADDR_C_BASE + NUM_ELEMS*4);
+    assign legal_wr = word_aligned && (
+        ((paddr == ADDR_CONTROL) && (!pwdata[0] || !busy)) || ((addr_a_hit || addr_b_hit) && !busy)
+    );
+    assign legal_rd = word_aligned && (
+        (paddr == ADDR_STATUS) || addr_c_hit
+    );
+    assign pslverr = (apb_write && !legal_wr) || (apb_read && !legal_rd);
+    assign start_cmd = apb_write && legal_wr && (paddr == ADDR_CONTROL) && pwdata[0];
     always_ff @(posedge pclk or negedge presetn) begin
         if (!presetn) begin
             start_pulse <= 1'b0;
@@ -59,11 +75,13 @@ module apb_npu_wrapper #(
                 busy        <= 1'b1;
                 done        <= 1'b0;
             end
-            if (apb_write) begin
-                if((paddr >= ADDR_A_BASE) && (paddr < ADDR_A_BASE + NUM_ELEMS*4)) begin
-                    a_regs[(paddr - ADDR_A_BASE) >> 2] <= pwdata[DATA_WIDTH-1:0];
-                end else if((paddr >= ADDR_B_BASE) && (paddr < ADDR_B_BASE + NUM_ELEMS*4)) begin
-                    b_regs[(paddr - ADDR_B_BASE) >> 2] <= pwdata[DATA_WIDTH-1:0];
+            if (apb_write && legal_wr) begin
+                if (addr_a_hit) begin
+                    a_regs[(paddr - ADDR_A_BASE) >> 2]
+                        <= pwdata[DATA_WIDTH-1:0];
+                end else if (addr_b_hit) begin
+                    b_regs[(paddr - ADDR_B_BASE) >> 2]
+                        <= pwdata[DATA_WIDTH-1:0];
                 end
             end
             if (start_cmd && !busy) begin
@@ -94,19 +112,15 @@ module apb_npu_wrapper #(
     end
     always_comb begin
         prdata = 32'h0;
-        if (apb_read) begin
-            case (paddr)
-                ADDR_STATUS: begin
-                    prdata[0] = done;
-                    prdata[1] = busy;
-                end
-                default: begin
-                    prdata = 32'h0;
-                    if((paddr >= ADDR_C_BASE) && (paddr < ADDR_C_BASE + NUM_ELEMS*4)) begin
-                        prdata = 32'($signed(c_regs[(paddr - ADDR_C_BASE) >> 2]));
-                    end
-                end
-            endcase
+        if (apb_read && legal_rd) begin
+            if (paddr == ADDR_STATUS) begin
+                prdata[0] = done;
+                prdata[1] = busy;
+            end else if (addr_c_hit) begin
+                prdata = 32'($signed(
+                    c_regs[(paddr - ADDR_C_BASE) >> 2]
+                ));
+            end
         end
     end
     genvar gi;

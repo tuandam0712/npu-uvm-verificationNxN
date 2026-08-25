@@ -94,11 +94,30 @@ class apb_scoreboard extends uvm_scoreboard;
 
         total_cnt++;
 
+        if (item.slverr === 1'b1) begin
+            pass_cnt++;
+
+            `uvm_info("APB_SCB",
+                $sformatf(
+                    "SLVERR transaction excluded from model addr=0x%08h write=%0b",
+                    item.addr, item.write
+                ),
+                UVM_HIGH
+            )
+
+            return;
+        end
+
         if (item.slverr !== 1'b0) begin
             fail_cnt++;
+
             `uvm_error("APB_SCB",
-                $sformatf("Unexpected SLVERR addr=0x%08h write=%0b",
-                          item.addr, item.write))
+                $sformatf(
+                    "PSLVERR is X/Z addr=0x%08h write=%0b slverr=%0b",
+                    item.addr, item.write, item.slverr
+                )
+            )
+
             return;
         end
 
