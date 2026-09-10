@@ -1,5 +1,12 @@
 # NPU Verification Plan
 
+Integration update (2026-09-11): the core UVM driver/monitors cancel active
+tasks on reset; the scoreboard cancels its pending comparison before flushing
+FIFO contents. Directed COMPUTE and WAIT_DRAIN reset recovery now pass at
+N=8/width=8. See [TESTPLAN.md](TESTPLAN.md#12-directed-reset-recovery) and
+[NPU_RESET_REPORT.md](../reports/NPU_RESET_REPORT.md). Unit-level proof scope
+and remaining parameter/coverage gaps below are unchanged.
+
 Version: 0.7
 Status: Draft
 

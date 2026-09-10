@@ -1,5 +1,6 @@
 # Questa/ModelSim generated files
 work/
+npu_reset_work/
 transcript
 *.wlf
 *.vcd

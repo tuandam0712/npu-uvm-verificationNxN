@@ -30,7 +30,7 @@ docs/APB_TESTPLAN.md
 | F5 | Controller clear, compute, drain, and done sequencing | NPU core |
 | F6 | End-to-end signed INT8 matrix multiplication | NPU core |
 | F7 | Back-to-back transaction handling | NPU core |
-| F8 | True reset during active compute | Not claimed; future reset-aware work |
+| F8 | Reset during COMPUTE and WAIT_DRAIN | Directed N=8 recovery verified; exhaustive timing remains open |
 
 ## 3. Verification Matrix
 
@@ -43,7 +43,7 @@ docs/APB_TESTPLAN.md
 | Controller sequencing | Yes | Yes | Yes | Yes | Yes | Verified in clean regression |
 | End-to-end matrix multiplication | Yes | Yes | Yes | No | Yes | Verified by scoreboard |
 | Back-to-back transaction scenario | No | Yes | Yes | No | Yes | Verified in clean regression |
-| True reset during compute | No | No | No | No | No | Not claimed; future work |
+| Reset during COMPUTE / DRAIN | Yes | No | No | Embedded checks plus TB reset-state checks | No dedicated reset cross | PASS at two directed points |
 
 ## 4. Risk Analysis
 
@@ -54,10 +54,10 @@ docs/APB_TESTPLAN.md
 | R3 | Valid propagation is misaligned. | Array SVA + scoreboard | Covered |
 | R4 | Controller latency is incorrect. | Controller SVA + directed tests | Covered |
 | R5 | Operand skew is mismatched. | Directed tests + scoreboard | Covered |
-| R6 | Boundary signed values are not handled correctly. | Directed boundary tests + input coverage | Covered by tests; coverage value requires regenerated report |
+| R6 | Boundary signed values are not handled correctly. | Directed boundary tests + input coverage | Covered by tests; seed-1 input coverage 89.53% |
 | R7 | Sparse or signed matrix patterns are not covered. | Directed pattern tests + matrix coverage | Covered |
 | R8 | Back-to-back transactions corrupt internal state. | Back-to-back random tests | Covered |
-| R9 | Reset during active compute aborts transaction and breaks UVM pairing. | Requires reset-aware UVM flow | Not claimed; future work |
+| R9 | Reset aborts an operation and corrupts UVM pairing. | Task cancellation, FIFO flush, exact abort/completion counts, recovery scoreboard | Directed COMPUTE/DRAIN PASS |
 
 ## 5. Test Scenarios
 
@@ -108,7 +108,7 @@ The expected result is calculated using a 64-bit signed temporary value, then ca
 
 ### Input Coverage
 
-Input operands A and B are categorized into strengthened full signed INT8 boundary-aware value classes. The current input coverage value must come from the regenerated coverage report.
+Input operands A and B are categorized into signed INT8 boundary-aware value classes. The fixed-seed-1 runtime summary reports 89.53%; detailed UCDB/bin-level analysis remains separate work.
 
 Known coverage decision:
 
@@ -142,13 +142,15 @@ Output matrix elements are categorized into zero, positive, negative, and magnit
 
 Verification is considered clean for the current NPU core scope when:
 
-- Scoreboard reports 142 passing transactions.
+- Baseline: scoreboard reports 142 PASS and driver reports 0 aborts.
+- Each reset case: scoreboard reports 141 PASS and driver reports exactly 1 abort, independently required by the scenario.
+- Both scoreboard FIFOs are empty at end of test; no simulation assertion error is present.
 - Scoreboard reports 0 failing transactions.
 - UVM warning count is 0.
 - UVM error count is 0.
 - UVM fatal count is 0.
 - Coverage report is generated and reviewed.
-- Matrix pattern coverage is 100%.
+- Baseline matrix pattern coverage is 100%; reset runs replace the zero victim with nonzero operands and report 92.31%, so they are not substitutes for baseline coverage.
 - Scenario coverage is 100%.
 - Output data coverage is 100%.
 - Input coverage gap is documented if input coverage is below 100%.
@@ -164,7 +166,7 @@ Blanket 100% NPU functional coverage is not claimed unless every current coverag
 | B propagation | Directed + random | Array SVA | Input/matrix coverage | PASS in current regression |
 | Valid wavefront | Directed + random | Array SVA | Matrix/scenario coverage | PASS in current regression |
 | Controller sequencing | Directed + random | Controller SVA | Scenario coverage | PASS in current regression |
-| Boundary signed values | `MIN_MAX_TEST`, `FULL_INT8_BOUNDARY_TEST`, random tests | None | Input value coverage | PASS in current regression; coverage report must be regenerated |
+| Boundary signed values | `MIN_MAX_TEST`, `FULL_INT8_BOUNDARY_TEST`, random tests | None | Input value coverage | PASS in baseline; input bins remain open (89.53% at seed 1) |
 | Matrix patterns | Directed pattern tests | None | Matrix pattern coverage | PASS in current regression |
 | Output result ranges | Directed + random | None | Output data coverage | PASS in current regression |
 | Back-to-back transactions | Back-to-back random tests | None | Scenario coverage | PASS in current regression |
@@ -192,19 +194,23 @@ Blanket 100% NPU functional coverage is not claimed unless every current coverag
 | Matrix pattern coverage | 100% |
 | Scenario coverage | 100% |
 | Output data coverage | 100% |
-| Input data coverage | Latest coverage report must be regenerated |
+| Input data coverage | 89.53% (seed-1 runtime summary) |
 
 ## 11. Known Coverage Gap
 
-Input coverage may be below 100% because the coverage model was strengthened to track full signed INT8 boundary-aware bins. This is accepted for the current scope and tracked as future closure work.
+Input coverage is 89.53% at seed 1. Remaining signed INT8 boundary-aware bins are tracked as a current gap; no complete functional-coverage claim is made.
 
 The project intentionally does not chase unsupported or artificial bins only to report a 100% number.
 
-## 12. Known Limitation: Reset During Compute
+## 12. Directed Reset Recovery
 
-True reset-during-compute is not claimed as verified in the current clean regression.
+Run `do scripts/run_npu_reset.do all` from the repository root. The script uses Questa 10.7c, seed 1, and N=8/width=8. Baseline completes 142 operations; each of COMPUTE and WAIT_DRAIN runs aborts one nonzero victim and completes 141 operations with zero mismatches and UVM errors/fatals.
 
-The current UVM environment is transaction-based. The driver, input monitor, output monitor, and scoreboard are designed around normal transactions where a started operation eventually reaches `done` and produces one output transaction. A reset in the middle of computation aborts the active transaction and may legally produce no valid output. Handling that correctly requires reset-aware cancellation and synchronization across the driver, monitors, and scoreboard.
+COMPUTE reset interrupts after 4/8 slices, testing partial input cancellation. DRAIN reset follows the complete feed, testing cancellation of expected data already received by the scoreboard. Reset is asserted on a falling clock edge and held for three clocks; C, done and valid_in must be zero. The next identity operation and remaining regression results are compared against the golden model.
+
+Driver returns item_done once after completion or abort; the test timeout wraps seq.start. Monitor collection tasks restart after reset. Scoreboard cancellation precedes FIFO flush, discarding the local expected handle as well as queued data. See [the evidence report](../reports/NPU_RESET_REPORT.md).
+
+Limits: no repeated/random reset sweep, near-done race sweep, APB reset recovery, parameter sweep, reset functional cross, or end-to-end formal reset proof is claimed.
 
 ## 13. APB Wrapper Verification
 
@@ -213,7 +219,7 @@ The APB wrapper is verified as a separate layer. APB claims are not mixed into N
 Latest APB verification result:
 
 ```text
-APB transactions: 1249 / 1249 PASS
+APB transactions: 1251 / 1251 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
 APB error responses observed: 9
@@ -225,16 +231,16 @@ Current APB wrapper protocol scope:
 
 - Unsupported read/write directions, invalid addresses, misaligned addresses, Matrix A/B writes while busy, and repeated start commands while busy are rejected and verified.
 - The wrapper uses a zero-wait-state response.
-- Wait-state and `psel`-held back-to-back transfer verification are not yet claimed.
+- A two-write, no-wait `psel`-held back-to-back case is verified (one cover hit); wait states and broader direction/length combinations remain open.
 
 ## 14. Future Work
 
 Planned verification improvements:
 
-- Reset-aware UVM architecture for true reset-during-compute testing.
+- Extend the passing directed reset recovery to repeated/randomized timings and parameter configurations.
 - AXI-Lite wrapper and protocol verification.
-- APB wait-state and `psel`-held back-to-back transfer verification.
+- APB wait states and broader back-to-back direction/length combinations.
 - Parameter-aware APB address-map generation and overlap checks for non-default `N`.
 - RTL code coverage closure with committed coverage report.
-- Formal verification for selected PE/controller properties.
+- Extend formal verification beyond the existing PE/controller/SARR local proofs as required.
 - CI/CD or automated regression publication.

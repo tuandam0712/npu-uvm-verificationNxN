@@ -3,6 +3,14 @@
 Version: 0.6
 Status: Draft
 
+Integration verification update (2026-09-11): directed NPU-core reset recovery
+is specified/tested as cancellation, not completion of the interrupted matrix.
+Reset clears the controller/datapath; a fresh post-reset start begins a new
+operation. Core-UVM COMPUTE and WAIT_DRAIN evidence is recorded in
+[TESTPLAN.md](TESTPLAN.md#12-directed-reset-recovery) and
+[NPU_RESET_REPORT.md](../reports/NPU_RESET_REPORT.md). No RTL behavior or
+unit-level requirement below was changed by the testbench update.
+
 ---
 
 # 1. Scope

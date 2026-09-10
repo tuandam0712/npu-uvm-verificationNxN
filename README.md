@@ -48,7 +48,7 @@ docs/APB_TESTPLAN.md
 
 ### NPU Core UVM Regression
 
-Latest verified NPU core regression:
+Verified baseline on 2026-09-11 (Questa 10.7c, seed 1):
 
 | Metric | Result |
 |---|---:|
@@ -72,9 +72,9 @@ Latest NPU functional coverage status:
 | Matrix pattern coverage | 100% |
 | Scenario coverage | 100% |
 | Output data coverage | 100% |
-| Input data coverage | Latest coverage report must be regenerated |
+| Input data coverage | 89.53% (seed 1; runtime covergroup summary) |
 
-The input coverage model has been strengthened to track full signed INT8 boundary-aware bins. If the regenerated report shows input coverage below 100%, that is documented as an intentional known coverage gap for the current scope instead of adding artificial tests only to close a number.
+The fixed-seed baseline reports input coverage of 89.53%; the remaining bins are open. See [the reset regression report](reports/NPU_RESET_REPORT.md) for per-case results. Runtime covergroup percentages are not RTL code coverage or exhaustive verification.
 
 ### APB Wrapper UVM Regression
 
@@ -82,7 +82,7 @@ Latest APB wrapper regression result:
 
 | Metric | Result |
 |---|---:|
-| APB transactions | 1249 / 1249 PASS |
+| APB transactions | 1251 / 1251 PASS |
 | C matrix checks | 384 / 384 PASS |
 | UVM warnings | 0 |
 | UVM errors | 0 |
@@ -103,11 +103,12 @@ APB regression scenarios:
 | Invalid, misaligned, and unsupported-direction access | PASS |
 | Matrix A write and repeated start while busy | PASS |
 | APB protocol SVA | PASS |
+| Two-write no-wait back-to-back (`PSEL` held) | PASS; one cover hit |
 
 APB coverage summary:
 
 ```text
-samples      = 1249
+samples      = 1251
 start_writes = 7
 status_reads = 79
 c_reads      = 384
@@ -221,7 +222,7 @@ The formal harnesses use named assertions aligned with the RTL requirements. Cur
 
 Functional coverage measures input value classes, matrix patterns, scenario types, and output value ranges.
 
-The strengthened input coverage model tracks full signed INT8 boundary-aware operand classes and cross coverage. The current committed NPU coverage report artifact is stale relative to the 142-transaction regression and must be regenerated before a final input coverage percentage is claimed.
+The strengthened input model tracks signed INT8 boundary-aware classes and crosses. The current seed-1 runtime summaries are recorded in `reports/coverage_summary.txt`; detailed UCDB/bin-level and RTL code coverage closure remain separate work.
 
 Current documented NPU coverage status:
 
@@ -230,7 +231,7 @@ Current documented NPU coverage status:
 | Matrix pattern coverage | 100% |
 | Scenario coverage | 100% |
 | Output data coverage | 100% |
-| Input data coverage | Latest coverage report must be regenerated |
+| Input data coverage | 89.53% (seed 1; runtime covergroup summary) |
 
 ### APB Functional Coverage
 
@@ -243,7 +244,7 @@ Current APB functional coverage is 100.00%. Both normal and slave-error response
 ### Run NPU Core UVM regression
 
 ```tcl
-do scripts/run_uvm.do
+do scripts/run_npu_reset.do baseline
 ```
 
 Expected clean result:
@@ -266,7 +267,7 @@ do scripts/run_apb_uvm.do
 Expected clean result:
 
 ```text
-APB transactions: 1249 / 1249 PASS
+APB transactions: 1251 / 1251 PASS
 C matrix checks: 384 / 384 PASS
 PSLVERR observations: 9
 APB functional coverage: 100.00%
@@ -275,10 +276,19 @@ UVM_ERROR   : 0
 UVM_FATAL   : 0
 ```
 
+### Run reset recovery regressions
+
+```tcl
+do scripts/run_npu_reset.do all
+# Or select one: baseline, compute, drain
+```
+
+Each reset run requests 142 transactions, aborts exactly one nonzero operation, and compares 141 subsequent results. COMPUTE reset occurs after 4/8 input slices; DRAIN reset occurs after the full feed. Both check zero C/done/valid_in during three reset clocks. Repeated resets, all possible reset timings, APB reset recovery, and parameter sweeps remain open.
+
 ### Run NPU coverage
 
 ```tcl
-do scripts/run_cov.do
+do scripts/run_npu_reset.do baseline
 ```
 
 Expected coverage review:
@@ -287,10 +297,10 @@ Expected coverage review:
 matrix pattern coverage = 100%
 scenario coverage       = 100%
 output data coverage    = 100%
-input data coverage     = use regenerated report value
+input data coverage     = 89.53% (seed 1)
 ```
 
-Do not claim complete NPU functional coverage unless every current coverage group in the regenerated report is actually fully covered.
+This command prints runtime functional coverage; it does not save a new RTL code-coverage database. Legacy `scripts/run_cov.do` is not the supported reset regression entrypoint.
 
 ### Run unit formal regressions
 
@@ -310,11 +320,11 @@ The SARR wrapper runs tasks sequentially to avoid starting every Z3 process at o
 
 ### NPU Input Coverage Gap
 
-The input coverage model was strengthened to track full signed INT8 boundary-aware bins. If the regenerated input coverage is below 100%, the gap is accepted for the current verified scope and tracked as future closure work.
+The fixed-seed baseline reports 89.53% input coverage. The remaining signed INT8 boundary-aware bins are open; detailed bin-level review remains future work.
 
 ### Reset During Compute
 
-True reset-during-compute is not claimed as a supported verified feature in the current UVM environment. Supporting this correctly requires reset-aware driver, monitor, and scoreboard synchronization.
+Directed COMPUTE and WAIT_DRAIN reset recovery pass at N=8, width=8. Driver and monitors cancel active tasks; the scoreboard cancels the pending comparison and flushes queued items. This is two directed reset points, not exhaustive reset closure.
 
 ### APB Wrapper Protocol Scope
 
@@ -332,13 +342,13 @@ PE, controller, and SARR closure statements apply only to the configurations doc
 
 Planned improvements:
 
-- Reset-aware UVM flow for true reset-during-compute testing
-- Regenerate and review the strengthened NPU input functional coverage report
+- Extend reset recovery to repeated/randomized timings, near-done races, and other legal parameters
+- Review remaining input bins (seed-1 input coverage: 89.53%) and generate detailed UCDB reports
 - Directed parameter regressions at additional legal `N`, operand-width, and accumulator-width configurations
 - Dedicated SARR functional covergroups and additional signed boundary/wraparound tests
 - End-to-end formal matrix-result proof if required by the agreed project scope
 - AXI-Lite wrapper verification
-- APB wait-state and back-to-back-transfer verification with stronger protocol assertions
+- APB wait-state verification and additional back-to-back directions/lengths beyond the verified two-write no-wait case
 - Parameter-aware APB address-map generation and overlap checks for non-default `N`
 - RTL code coverage closure with committed coverage report
 - CI/CD or automated regression publication
@@ -357,10 +367,11 @@ Safe random tests: 100
 Total clean NPU regression: 142 transactions
 NPU scoreboard pass/fail: 142 / 0
 NPU UVM warnings/errors/fatals: 0 / 0 / 0
-NPU coverage: matrix pattern 100%, scenario 100%, output 100%, input report must be regenerated
+NPU baseline coverage (seed 1): matrix pattern 100%, scenario 100%, output 100%, input 89.53%
+NPU reset COMPUTE / DRAIN: each 141 PASS, 1 expected abort, 0 mismatches
 
 APB wrapper UVM verification
-APB transactions: 1249 / 1249 PASS
+APB transactions: 1251 / 1251 PASS
 C matrix checks: 384 / 384 PASS
 APB protocol SVA: PASS
 APB error responses observed: 9
@@ -377,8 +388,8 @@ SARR simulation SVA: 1,348 assertion passes, 0 failures; 1,585 cover hits; 100% 
 SARR formal: 6 / 6 quick tasks PASS; 6 / 6 exact 8x8 tasks PASS
 
 Known limitations:
-Reset-during-compute is future reset-aware work.
-NPU input coverage gap is documented if regenerated input coverage is below 100%.
+Directed COMPUTE/DRAIN reset recovery passes; exhaustive reset timing and parameter coverage remain open.
+NPU input coverage is 89.53% at seed 1; remaining input bins are open.
 APB error responses for unsupported, invalid, misaligned, and busy-state accesses are verified; wait-state and full VIP-level protocol closure are not claimed.
 Full RTL code coverage and exhaustive parameter-space closure are not claimed.
 End-to-end formal proof of complete matrix multiplication is not claimed.

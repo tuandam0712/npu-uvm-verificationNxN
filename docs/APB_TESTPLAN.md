@@ -63,6 +63,7 @@ The APB UVM environment includes:
 | APB_TC_007 | Status Behavior Test | Verify busy/done status behavior | PASS |
 | APB_TC_008 | APB Protocol SVA | Verify setup/access phase and signal stability | PASS |
 | APB_TC_009 | Negative Access Test | Verify unsupported-direction, invalid, misaligned, and busy-state error responses | PASS |
+| APB_TC_010 | Two-write back-to-back | Keep PSEL high, drop PENABLE for the next SETUP, complete both no-wait writes | PASS; cover hits=1 |
 
 ## 5. Scoreboard Plan
 
@@ -75,6 +76,11 @@ C[i][j] = sum(A[i][k] * B[k][j])
 ```
 
 The expected value is compared against the APB readback data.
+
+The test configures exp_cnt=1251; missing configuration is fatal and observed
+transfer count must match. This detects count discrepancies, not arbitrary
+missing/duplicate pairs that cancel numerically. Update the expectation when
+stimulus or deterministic polling count changes.
 
 The APB scoreboard is intentionally dynamic and does not use hard-coded expected Matrix C values. This allows the same scoreboard to verify identity, zero, sparse, bounded random-like, signed, and status-driven compute scenarios.
 
@@ -116,12 +122,14 @@ The APB protocol SVA checker verifies basic APB protocol behavior:
 - Address should stay stable during wait states
 - Write data should stay stable during write wait states
 - `PWRITE` should stay stable during wait states
+- `PENABLE` must drop on the next cycle after transfer completion
+- A cover property observes the two-write no-wait back-to-back sequence (hits=1)
 
 ## 8. Pass Criteria
 
 The APB regression is considered passing when:
 
-- All APB transactions complete successfully
+- All 1251 expected APB transfers are observed; expected error responses are legal negative-test outcomes
 - All Matrix C readback values match the dynamic golden model
 - No UVM errors or fatals are reported
 - APB protocol SVA reports no assertion failures
@@ -131,7 +139,7 @@ The APB regression is considered passing when:
 ## 9. Latest Result
 
 ```text
-APB transactions: 1249 / 1249 PASS
+APB transactions: 1251 / 1251 PASS
 C matrix checks: 384 / 384 PASS
 UVM_WARNING: 0
 UVM_ERROR  : 0
@@ -142,7 +150,7 @@ APB functional coverage: 100.00%
 Coverage summary:
 
 ```text
-samples      = 1249
+samples      = 1251
 start_writes = 7
 status_reads = 79
 c_reads      = 384
@@ -155,6 +163,6 @@ slverr_seen  = 9
 
 - APB zero-wait-state response is used.
 - Wait-state insertion and wait-state response timing are not implemented.
-- The current driver returns to IDLE after each transfer and does not generate `psel`-held back-to-back accesses.
+- The driver supports `keep_psel`; one two-write no-wait back-to-back case is verified. Read/write combinations, longer chains, and wait states remain open.
 - Full APB VIP-level random protocol verification is not claimed.
 - AXI-Lite wrapper verification is not included in the current APB verification scope.

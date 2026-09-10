@@ -1,5 +1,11 @@
 # NPU Unit Test Plan
 
+Integration update (2026-09-11): core-UVM baseline and two directed reset
+recovery points are PASS at N=8/width=8. This document remains the unit-level
+plan; see [TESTPLAN.md](TESTPLAN.md#12-directed-reset-recovery) for integration
+stimulus/accounting and [NPU_RESET_REPORT.md](../reports/NPU_RESET_REPORT.md)
+for evidence. This does not close the additional unit cases listed below.
+
 Version: 0.8
 Status: Draft; recorded passing evidence exists for the PE, controller, and Systolic Array, with the remaining planned and partial cases identified below
 

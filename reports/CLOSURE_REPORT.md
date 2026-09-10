@@ -477,3 +477,20 @@ and formal regressions:
 
 Version 1.4 adds the SARR directed/assertion/local-formal milestone evidence and
 records the remaining SARR gaps without extending the full-closure claim.
+
+## 24. NPU core directed reset recovery — 2026-09-11
+
+Version 1.5 adds a bounded core-UVM milestone; unit-level evidence above is
+unchanged. Implementation commit: `3543bd5`. At N=8/width=8, fixed seed 1,
+`do scripts/run_npu_reset.do all` passes baseline (142 complete, 0 aborted),
+COMPUTE reset after 4/8 slices (141 complete, exactly 1 aborted), and WAIT_DRAIN
+reset after the full feed (141 complete, exactly 1 aborted). All have zero
+mismatches, pending FIFO items, UVM errors/fatals, and simulator errors.
+Checks verify C/done/valid_in zero during three held-reset clocks.
+
+Driver/monitor cancellation and scoreboard comparison cancellation before
+FIFO flush prevent stale pairing. Expected aborts are scenario-defined.
+See [NPU_RESET_REPORT.md](NPU_RESET_REPORT.md) for evidence and coverage.
+Input coverage is 89.53% at seed 1. Reset timing crosses, repeated/random resets,
+near-done races, parameter sweeps and APB reset recovery remain open.
+Two directed points do not constitute exhaustive reset closure.

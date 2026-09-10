@@ -1,28 +1,22 @@
-NPU CORE COVERAGE REPORT
-========================
+NPU CORE RUNTIME FUNCTIONAL COVERAGE REPORT
+Updated: 2026-09-11; Questa 10.7c / UVM 1.1d; N=8, width=8; fixed seed=1.
+Source: scripts/run_npu_reset.do all; logs/npu_reset_{baseline,compute,drain}.log
 
-Status: latest coverage report must be regenerated.
+Case       Requested Completed Aborted Mismatches UVM_ERROR UVM_FATAL
+baseline   142       142       0       0          0         0
+compute    142       141       1       0          0         0
+drain      142       141       1       0          0         0
 
-The previous committed NPU coverage report artifact was removed because it no
-longer matched the current verified NPU core result:
+Case       Input data Matrix pattern Scenario Output data
+baseline   89.53%     100.00%        100.00%  100.00%
+compute    89.53%      92.31%        100.00%  100.00%
+drain      89.53%      92.31%        100.00%  100.00%
 
-total NPU core transactions = 142
-scoreboard pass/fail        = 142 / 0
-UVM_WARNING                 = 0
-UVM_ERROR                   = 0
-UVM_FATAL                   = 0
-
-Do not claim complete NPU functional coverage until the coverage database is
-regenerated and every current coverage group is reviewed.
-
-Current documented coverage status:
-
-matrix pattern coverage = 100%
-scenario coverage       = 100%
-output data coverage    = 100%
-input data coverage     = latest coverage report must be regenerated
-
-Known coverage decision:
-The input coverage model now tracks full signed INT8 boundary-aware bins. Any
-regenerated input coverage gap is accepted for the current scope and tracked as
-future closure work unless meaningful verification stimulus is added.
+These are covergroup percentages emitted at runtime, not a newly generated
+UCDB/bin-level or RTL code-coverage report. Detailed code-coverage closure
+remains open. The reset runs use a nonzero victim instead of the first zero
+case; use baseline for complete current matrix-pattern coverage.
+Scenario bins do not measure reset phase/timing coverage.
+Earlier automatic-seed runs showed 90.91% input coverage; seed 1 is 89.53%.
+Remaining input bins must be reviewed, not declared covered.
+See NPU_RESET_REPORT.md for exact stimulus, checks, results, and limitations.

@@ -1,5 +1,2 @@
-do scripts/compile.do
-transcript file logs/uvm_run.log
-vsim work.tb_npu_nxn
-run -all
-quit -sim
+# Supported NPU baseline entrypoint; uses a dedicated library and bounded run.
+do scripts/run_npu_reset.do baseline
