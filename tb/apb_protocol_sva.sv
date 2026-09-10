@@ -53,5 +53,23 @@ module apb_protocol_sva (
 
     assert property (pwrite_stable_during_wait)
         else $error("APB protocol error: PWRITE changed during wait state");
-
+    property exit_access_after_completion;
+        @(posedge pclk) disable iff (!presetn)
+        (psel && penable && pready) |=> !penable;
+    endproperty
+    assert property (exit_access_after_completion)
+        else $error("APB: penable must drop after transfer completion");
+    int unsigned b2b_cnt = 0;
+    cover property (
+        @(posedge pclk) disable iff (!presetn)
+        (psel && penable && pready && pwrite)
+        ##1 (psel && !penable && pwrite)
+        ##1 (psel && penable && pready && pwrite)
+    ) begin
+        b2b_cnt++;
+        $display("[APB_B2B_COV] 2 btb write observed");
+    end
+    final begin
+        $display("[APB_B2B_COV] hits=%0d", b2b_cnt);
+    end
 endmodule

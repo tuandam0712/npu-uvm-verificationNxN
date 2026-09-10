@@ -9,7 +9,8 @@ class apb_base_sequence extends uvm_sequence #(apb_sequence_item);
     task apb_write(
         input bit [31:0] addr,
         input bit [31:0] data,
-        input bit        exp_slverr = 1'b0
+        input bit        exp_slverr = 1'b0,
+        input bit       keep_psel = 1'b0
     );
         apb_sequence_item item;
 
@@ -19,6 +20,7 @@ class apb_base_sequence extends uvm_sequence #(apb_sequence_item);
         item.write = 1'b1;
         item.addr  = addr;
         item.wdata = data;
+        item.keep_psel = keep_psel;
         finish_item(item);
 
         if(item.slverr !== exp_slverr) begin
@@ -126,7 +128,9 @@ class apb_reg_access_sequence extends apb_base_sequence;
         apb_write(
             APB_A_BASE + 32'h1, 32'h0000_0055, 1'b1
         );
-
+        // Two consecutive writes to different A registers
+        apb_write(APB_A_BASE,         32'h11, 1'b0, 1'b1);
+        apb_write(APB_A_BASE + 32'h4, 32'h22, 1'b0, 1'b0);
         `uvm_info("APB_SEQ", "Finished APB register access sequence", UVM_LOW)
     endtask
 

@@ -10,7 +10,7 @@ class apb_test extends uvm_test;
 
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-
+        uvm_config_db#(int)::set(this, "env.scb", "exp_cnt", 1251);
         env = apb_env::type_id::create("env", this);
     endfunction
 

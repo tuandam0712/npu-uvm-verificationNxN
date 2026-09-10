@@ -14,6 +14,7 @@ class apb_scoreboard extends uvm_scoreboard;
 
     int signed a_mem [APB_N * APB_N];
     int signed b_mem [APB_N * APB_N];
+    int exp_cnt;
 
     function new(string name = "apb_scoreboard", uvm_component parent = null);
         super.new(name, parent);
@@ -35,6 +36,9 @@ class apb_scoreboard extends uvm_scoreboard;
         for (int i = 0; i < APB_N * APB_N; i++) begin
             a_mem[i] = 0;
             b_mem[i] = 0;
+        end
+        if (!uvm_config_db#(int)::get(this, "", "exp_cnt", exp_cnt)) begin
+            `uvm_fatal("APB_SCB","Missing exp_cnt configuration")
         end
     endfunction
 
@@ -205,8 +209,12 @@ class apb_scoreboard extends uvm_scoreboard;
             $sformatf("C MATRIX CHECK SUMMARY: checked=%0d pass=%0d fail=%0d",
                       c_check_cnt, c_pass_cnt, c_fail_cnt),
             UVM_LOW)
-
-        if (fail_cnt == 0 && total_cnt > 0 && c_check_cnt >0 && c_fail_cnt == 0) begin
+        if (total_cnt != exp_cnt) begin
+            `uvm_error("APB_SCB",
+                $sformatf("Transaction count mismatch: expected=%0d actual=%0d",
+                        exp_cnt, total_cnt))
+        end
+        if (fail_cnt == 0 && total_cnt > 0 && c_check_cnt >0 && c_fail_cnt == 0 && total_cnt == exp_cnt) begin
             `uvm_info("APB_SCB", "APB SCOREBOARD PASS", UVM_LOW)
         end
         else begin

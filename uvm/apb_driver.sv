@@ -29,36 +29,48 @@ class apb_driver extends uvm_driver #(apb_sequence_item);
         @(posedge vif.pclk);
     endtask
     task drive_transfer(apb_sequence_item item);
-
-        // IDLE -> SETUP
         @(posedge vif.pclk);
+        drive_setup(item);
+        forever begin
+            @(posedge vif.pclk);
+            vif.penable <= 1'b1;
+            do begin
+                @(posedge vif.pclk);
+            end while (vif.pready !== 1'b1);
+            item.rdata = vif.prdata;
+            item.slverr = vif.pslverr;
+            if (item.keep_psel) begin
+                seq_item_port.item_done();
+                seq_item_port.try_next_item(item);
+
+                if (item == null) begin
+                    drive_idle();
+                    `uvm_fatal("APB_DRV",
+                        "keep_psel=1 but no next item is available")
+                end
+                else begin
+                    drive_setup(item);
+                    `uvm_info("APB_DRV", "btb setup driven", UVM_LOW)
+                end
+            end
+            else begin
+                drive_idle();
+                break;
+            end
+        end
+    endtask
+    task drive_setup(apb_sequence_item item);
         vif.psel    <= 1'b1;
         vif.penable <= 1'b0;
         vif.pwrite  <= item.write;
         vif.paddr   <= item.addr;
         vif.pwdata  <= item.wdata;
-
-        // SETUP -> ACCESS
-        @(posedge vif.pclk);
-        vif.penable <= 1'b1;
-
-        // Stay in ACCESS until slave is ready
-        do begin
-            @(posedge vif.pclk);
-        end while (vif.pready !== 1'b1);
-
-        // Sample response at completed ACCESS cycle
-        item.rdata  = vif.prdata;
-        item.slverr = vif.pslverr;
-        if (item.slverr) begin
-            `uvm_info("APB_DRV", $sformatf("APB slave err response addr=0x%08h wr=%0b", item.addr, item.write), UVM_HIGH)
-        end
-        // ACCESS -> IDLE
+    endtask
+    task drive_idle();
         vif.psel    <= 1'b0;
         vif.penable <= 1'b0;
         vif.pwrite  <= 1'b0;
         vif.paddr   <= 32'h0;
         vif.pwdata  <= 32'h0;
-
     endtask
 endclass
