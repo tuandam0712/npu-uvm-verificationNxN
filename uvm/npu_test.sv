@@ -75,18 +75,20 @@ class npu_test #(
             $sformatf("running seq=%s mode=%s scenario=%0d gap_cycles=%0d",
                       seq_name, mode_name(mode), scenario, gap_cycles),
             UVM_LOW)
-        seq.start(env.agent.sqr);
-
         fork
             begin
-                @(posedge env.agent.out_mon.vif.clk iff env.agent.out_mon.vif.done === 1'b1);
+                fork
+                    begin
+                        seq.start(env.agent.sqr);
+                    end
+                    begin
+                        repeat (5000) @(posedge env.agent.out_mon.vif.clk);
+                        `uvm_fatal("TEST_TIMEOUT", $sformatf("timeout waiting for sequence completion: %s", seq_name))
+                    end
+                join_any
+                disable fork;
             end
-            begin
-                repeat (5000) @(posedge env.agent.out_mon.vif.clk);
-                `uvm_fatal("TEST_TIMEOUT", $sformatf("timeout waiting for done: %s", seq_name))
-            end
-        join_any
-        disable fork;
+        join
 
         repeat (gap_cycles) @(posedge env.agent.out_mon.vif.clk);
     endtask
@@ -103,7 +105,13 @@ class npu_test #(
 
         // Original directed tests
         `uvm_info("TEST", "running original directed tests", UVM_LOW)
-        run_one_sequence(seq_t::ZERO_TEST,         "zero_seq");
+        if ($test$plusargs("RESET_DURING_DRAIN") ||
+            $test$plusargs("RESET_DURING_COMPUTE")) begin
+            // Nonzero victim exposes stale accumulator/input state after reset.
+            run_one_sequence(seq_t::ALL_POSITIVE_TEST, "reset_victim_seq");
+        end else begin
+            run_one_sequence(seq_t::ZERO_TEST, "zero_seq");
+        end
         run_one_sequence(seq_t::IDENTITY_TEST,     "identity_seq");
         run_one_sequence(seq_t::MIN_MAX_TEST,      "min_max_seq");
         run_one_sequence(seq_t::ALL_POSITIVE_TEST, "all_positive_seq");
@@ -158,6 +166,9 @@ class npu_test #(
         uvm_report_server server;
         int error_count;
         int fatal_count;
+        int expected_aborted;
+        int expected_completed;
+        bit counts_ok;
 
         server = uvm_report_server::get_server();
         error_count = server.get_severity_count(UVM_ERROR);
@@ -167,13 +178,27 @@ class npu_test #(
                          num_full_int8_random_tests + num_boundary_random_tests +
                          num_back_to_back_tests + num_random_tests;
 
-        if (env.scb.pass_count != expected_tests || env.scb.fail_count != 0) begin
+        // Expectations come from the selected scenario, not observed aborts.
+        expected_aborted = ($test$plusargs("RESET_DURING_DRAIN") ||
+                            $test$plusargs("RESET_DURING_COMPUTE")) ? 1 : 0;
+        expected_completed = expected_tests - expected_aborted;
+        counts_ok = (env.agent.drv.aborted_cnt == expected_aborted &&
+                     env.scb.pass_count == expected_completed &&
+                     env.scb.fail_count == 0 &&
+                     env.scb.in_fifo.used() == 0 && env.scb.out_fifo.used() == 0);
+
+        `uvm_info("NPU_ACCOUNTING",
+            $sformatf("requested=%0d expected_completed=%0d completed=%0d expected_aborted=%0d aborted=%0d mismatches=%0d pending_in=%0d pending_out=%0d",
+                      expected_tests, expected_completed, env.scb.pass_count,
+                      expected_aborted, env.agent.drv.aborted_cnt, env.scb.fail_count,
+                      env.scb.in_fifo.used(), env.scb.out_fifo.used()), UVM_LOW)
+
+        if (!counts_ok) begin
             `uvm_error("test result",
-                $sformatf("scoreboard count mismatch: expected=%0d scb_pass=%0d scb_fail=%0d",
-                          expected_tests, env.scb.pass_count, env.scb.fail_count))
+                "Transaction accounting mismatch; see NPU_ACCOUNTING summary")
         end
 
-        if (error_count > 0 || fatal_count > 0 || env.scb.pass_count != expected_tests || env.scb.fail_count != 0) begin
+        if (error_count > 0 || fatal_count > 0 || !counts_ok) begin
             `uvm_error("test result",
                 $sformatf("failed: tests=%0d directed=%0d extended_directed=%0d full_int8_random=%0d boundary_random=%0d btb=%0d random=%0d scb_pass=%0d scb_fail=%0d errors=%0d fatals=%0d",
                           expected_tests, num_directed_tests, num_extended_directed_tests,

@@ -3,7 +3,7 @@ class npu_scoreboard #(
     parameter int width = 8
 ) extends uvm_scoreboard;
     `uvm_component_param_utils(npu_scoreboard #(N, width))
-
+    virtual npu_if #(N, width) vif;
     typedef npu_sequence_item #(N, width) item_t;
     localparam int ACC_WIDTH = 2*width + ((N > 1) ? $clog2(N) : 1);
 
@@ -33,13 +33,20 @@ class npu_scoreboard #(
         out_export = new("out_export", this);
     endfunction
 
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        if (!uvm_config_db #(virtual npu_if #(N, width))::get(this, "", "vif", vif)) begin
+            `uvm_fatal("NOVIF", "virtual interface not found")
+        end
+    endfunction
+
     function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
         in_export.connect(in_fifo.analysis_export);
         out_export.connect(out_fifo.analysis_export);
     endfunction
 
-    task run_phase(uvm_phase phase);
+    task compare_trans();
         item_t exp_item;
         item_t act_item;
         longint signed golden_full [N-1:0][N-1:0];
@@ -86,6 +93,28 @@ class npu_scoreboard #(
                 fail_count++;
                 `uvm_error("SCB_FAIL", $sformatf("mismatch! err=%0d total_fail=%0d", errors, fail_count))
             end
+        end
+    endtask
+
+    task run_phase(uvm_phase phase);
+        forever begin
+            wait(vif.rst_n === 1'b1);
+            fork
+                begin
+                    fork
+                        begin
+                            compare_trans();
+                        end
+                        begin
+                            wait(vif.rst_n === 1'b0);
+                        end
+                    join_any
+                    disable fork;
+                end
+            join
+            in_fifo.flush();
+            out_fifo.flush();
+            `uvm_info("SCB_RESET", $sformatf("reset detected, flush fifos"), UVM_MEDIUM)
         end
     endtask
 endclass

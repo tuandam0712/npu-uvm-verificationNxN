@@ -25,8 +25,23 @@ class npu_monitor #(
     endfunction
 
     task run_phase(uvm_phase phase);
-        if (is_input_monitor) collect_input();
-        else                  collect_output();
+        forever begin
+            wait(vif.rst_n === 1'b1);
+            fork
+                begin
+                    fork
+                        begin
+                            if (is_input_monitor) collect_input();
+                            else collect_output();
+                        end
+                        begin
+                            wait(vif.rst_n === 1'b0);
+                        end
+                    join_any
+                    disable fork;
+                end
+            join
+        end
     endtask
 
     task collect_input();
