@@ -33,6 +33,13 @@ Generated local evidence: `logs/npu_reset_compile.log`,
 `logs/npu_reset_drain.log`. Logs/databases are ignored by Git; this report
 preserves the reviewed summary, and the runner regenerates the raw evidence.
 
+Runner update: new runs use `logs/npu_reset_<case>_seed<seed>.log` to preserve
+separate evidence by seed. `do scripts/run_npu_reset.do all sweep` compiles
+once and runs all three cases for seeds 1..5. The latest invocation writes
+`reports/npu_multiseed_summary.csv`, including observed counts and per-run
+coverage. This extends random operand sampling, not reset timing or parameter
+coverage. Old unsuffixed logs above identify the original seed-1 milestone.
+
 ## Stimulus and checks
 
 - Baseline retains the original 142-transaction directed/random regression.

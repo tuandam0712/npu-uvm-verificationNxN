@@ -281,9 +281,18 @@ UVM_FATAL   : 0
 ```tcl
 do scripts/run_npu_reset.do all
 # Or select one: baseline, compute, drain
+do scripts/run_npu_reset.do all 3
+# Three cases x seeds 1..5, compile once:
+do scripts/run_npu_reset.do all sweep
 ```
 
 Each reset run requests 142 transactions, aborts exactly one nonzero operation, and compares 141 subsequent results. COMPUTE reset occurs after 4/8 input slices; DRAIN reset occurs after the full feed. Both check zero C/done/valid_in during three reset clocks. Repeated resets, all possible reset timings, APB reset recovery, and parameter sweeps remain open.
+
+The optional second argument is a positive seed (default 1) or `sweep`.
+Logs use `logs/npu_reset_<case>_seed<seed>.log`. Each invocation replaces
+`reports/npu_multiseed_summary.csv` with its own observed results; logs for
+other case/seed pairs are retained. Failed/incomplete runs make the batch fail.
+Changing seed changes random matrix stimulus, not the directed reset timing.
 
 ### Run NPU coverage
 
